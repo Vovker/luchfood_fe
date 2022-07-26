@@ -6,7 +6,6 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import {Home} from "./components/home/home";
 import './styles.css';
 import {Soon} from "./components/soon/soon";
 import {Layout} from "./components/common/layout/layout";

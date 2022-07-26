@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import {IsDesktop} from "../types/index.types";
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.div<IsDesktop>`
   background: ${props => props.theme.colors.darkMain};
-  padding: 30px 44px 0 41px;
-  height: 140px;
+  padding: ${props => props.isDesktop ? '30px 44px 0 41px' : '24px 16px 26px 16px'};
+  height: ${props => props.isDesktop ? '140px' : '93px'};
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
 `;
 
 const Logo = styled.img`
@@ -13,13 +15,14 @@ const Logo = styled.img`
   margin-bottom: 9px;
 `;
 
-const WorkHours = styled.div`
+const WorkHours = styled.div<IsDesktop>`
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${props => props.isDesktop ? '400' : '700'};
   font-size: 17px;
   line-height: 20px;
   color: ${props => props.theme.colors.white};
-  margin-left: 13px;
+  margin-left: ${props => props.isDesktop ? '13px' : '0'};
+  margin-top: ${props => props.isDesktop ? '0' : '6px'};
 `;
 
 const Socials = styled.div`
