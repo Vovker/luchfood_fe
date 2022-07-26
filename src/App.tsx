@@ -6,27 +6,23 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import {PageWrapper} from "./components/common/pageWrapper/pageWrapper";
 import {Home} from "./components/home/home";
-import {Header} from "./components/common/header/header";
 import './styles.css';
-import {Footer} from "./components/common/footer/footer";
+import {Soon} from "./components/soon/soon";
+import {Layout} from "./components/common/layout/layout";
 
 function App() {
   return (
-    <div id={'root'}>
-      <ThemeProvider theme={theme}>
-        <PageWrapper>
-          <Header/>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home/>} />
-            </Routes>
-          </Router>
-          <Footer/>
-        </PageWrapper>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route index element={<Home/>}/>
+            <Route path="soon" element={<Soon/>}/>
+          </Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
