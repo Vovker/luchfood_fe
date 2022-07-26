@@ -17,8 +17,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout/>}>
-            <Route index element={<Home/>}/>
-            <Route path="soon" element={<Soon/>}/>
+            <Route index element={<Soon/>}/>
           </Route>
         </Routes>
       </Router>
