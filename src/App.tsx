@@ -10,23 +10,24 @@ import {MainPageWrapper} from "./components/common/pageWrappers/mainPageWrapper/
 import {Home} from "./components/home/home";
 import {Header} from "./components/common/header/header";
 import './styles.css';
+import {Layout} from "./components/common/layout/layout";
 import {Footer} from "./components/common/footer/footer";
 
 function App() {
   return (
-    <div id={'root'}>
-      <ThemeProvider theme={theme}>
-        <MainPageWrapper>
-          <Header/>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home/>} />
-            </Routes>
-          </Router>
-          <Footer/>
-        </MainPageWrapper>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <MainPageWrapper>
+        <Header/>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout/>}>
+              <Route index element={<Home/>}/>
+            </Route>
+          </Routes>
+        </Router>
+        <Footer/>
+      </MainPageWrapper>
+    </ThemeProvider>
   );
 }
 

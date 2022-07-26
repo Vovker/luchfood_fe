@@ -19,7 +19,7 @@ import searchIcon from '../../../assets/search_icon.svg';
 
 export const Header = () => {
   return (
-    <>
+    <header>
       <HeaderWrapper>
         <AddressWrapper>
           <Address>
@@ -52,7 +52,7 @@ export const Header = () => {
         <SubHeaderLink href={'/'}>Галерея</SubHeaderLink>
         <Search/>
       </SubHeaderWrapper>
-    </>
+    </header>
   );
 }
 
