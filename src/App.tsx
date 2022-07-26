@@ -6,7 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import {PageWrapper} from "./components/common/pageWrapper/pageWrapper";
+import {MainPageWrapper} from "./components/common/pageWrappers/mainPageWrapper/mainPageWrapper";
 import {Home} from "./components/home/home";
 import {Header} from "./components/common/header/header";
 import './styles.css';
@@ -16,7 +16,7 @@ function App() {
   return (
     <div id={'root'}>
       <ThemeProvider theme={theme}>
-        <PageWrapper>
+        <MainPageWrapper>
           <Header/>
           <Router>
             <Routes>
@@ -24,7 +24,7 @@ function App() {
             </Routes>
           </Router>
           <Footer/>
-        </PageWrapper>
+        </MainPageWrapper>
       </ThemeProvider>
     </div>
   );

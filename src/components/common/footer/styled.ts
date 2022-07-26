@@ -3,6 +3,7 @@ import styled from "styled-components";
 const FooterWrapper = styled.div`
   background: ${props => props.theme.colors.darkMain};
   padding: 30px 44px 0 41px;
+  box-sizing: border-box;
   height: 140px;
   display: flex;
   justify-content: space-between;

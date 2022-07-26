@@ -2,12 +2,9 @@ import {
   PageWrapperStyled
 } from "./styled";
 import React from "react";
+import {PageWrapperProps} from "./mainPageWrapper.types";
 
-type PageWrapperProps = {
-  children: React.ReactNode
-}
-
-const PageWrapper = (props: PageWrapperProps) => {
+const MainPageWrapper = (props: PageWrapperProps) => {
   return (
     <PageWrapperStyled>
       {props.children}
@@ -16,5 +13,5 @@ const PageWrapper = (props: PageWrapperProps) => {
 }
 
 export {
-  PageWrapper
+  MainPageWrapper
 }
