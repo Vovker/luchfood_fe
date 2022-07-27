@@ -12,7 +12,7 @@ const AfishaCarouselContainer = styled.div`
 `
 
 const CarouselWrapper = styled.div`
-  width: 980px;
+  width: 1020px;
   height: 321px;
 `
 
@@ -29,7 +29,7 @@ const StyledButtonBack = styled(ButtonBack)`
   z-index: 10;
 `;
 
-const StyledButtonForward = styled(ButtonBack)`
+const StyledButtonForward = styled(ButtonNext)`
   border: none;
   width: 55px;
   height: 55px;

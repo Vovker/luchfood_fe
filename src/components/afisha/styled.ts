@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
-
+const AfishaHeader = styled.div`
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
 const AfishaDate = styled.div`
   font-weight: 700;
@@ -14,7 +20,7 @@ const AfishaTitle = styled.h4`
   line-height: 28px;
 `
 
-const AfishaLink = styled.a`
+const AfishaLink = styled(Link)`
   text-decoration: none;
   gap: 11px;
   line-height: 21px;
@@ -25,8 +31,15 @@ const AfishaLink = styled.a`
   align-items: center;
 `
 
+const CustomLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`
+
 export {
+  AfishaHeader,
   AfishaDate,
   AfishaTitle,
-  AfishaLink
+  AfishaLink,
+  CustomLink
 }
