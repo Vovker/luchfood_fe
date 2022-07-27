@@ -1,14 +1,20 @@
 import styled from "styled-components";
+import {IsDesktop} from "../types/index.types";
 
-const HeaderWrapper = styled.div`
+const HeaderContainer = styled.header`
+  
+`
+
+const HeaderWrapper = styled.div<IsDesktop>`
   position: relative;
   background: ${props => props.theme.colors.darkMain};
   display: flex;
+  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
   justify-content: center;
   align-content: center;
   width: 100%;
   height: 96px;
-  padding: 0 90px;
+  padding: ${props => props.isDesktop ? '0 90px' : '13px 0'};
   box-sizing: border-box;
 `;
 
@@ -22,10 +28,10 @@ const AddressWrapper = styled.div`
   gap: 8px;
 `;
 
-const Address = styled.div`
+const Address = styled.div<IsDesktop>`
   font-style: normal;
   font-weight: 700;
-  font-size: 17px;
+  font-size: ${props => props.isDesktop ? '17px' : '14px'};
   line-height: 20px;
   color: ${props => props.theme.colors.white};
 `;
@@ -33,30 +39,32 @@ const Address = styled.div`
 const LogoWrapper = styled.a`
   margin: auto 0;
   display: flex;
+  justify-content: center;
 `;
 
-const Logo = styled.img`
-  width: 241px;
+const Logo = styled.img<IsDesktop>`
+  width: ${props => props.isDesktop ? '241px' : '159px'};
 `;
 
-const SocialNetworksWrapper = styled.div`
-  width: 400px;
-  margin-left: auto;
+const SocialNetworksWrapper = styled.div<IsDesktop>`
+  width: ${props => props.isDesktop ? '400px' : '100%'};
+  margin-left: ${props => props.isDesktop ? 'auto' : '0'};
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 23px;
 `;
 
-const SocialNetworkLink = styled.a`
+const SocialNetworkLink = styled.a<IsDesktop>`
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: ${props => props.isDesktop ? '20px' : '15px'};
+  line-height: ${props => props.isDesktop ? '24px' : '18px'};
   color: ${props => props.theme.colors.white};
   text-decoration: none;
   
   &:nth-child(1) {
-    margin-left: auto;
+    margin-left: ${props => props.isDesktop ? 'auto' : '0'};
   }
   
   &:hover {
@@ -68,20 +76,25 @@ const SocialNetworkIcon = styled.img`
   width: 32px;
 `;
 
-const SubHeaderWrapper = styled.div`
-  height: 54px;
+const SubHeaderWrapper = styled.div<IsDesktop>`
+  height: ${props => props.isDesktop ? '54px' : '100%'};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 90px;
+  padding: ${props => props.isDesktop ? '0 90px' : '20px 15px'};
   background: ${props => props.theme.colors.redMain};
+  max-width: 100%;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  gap: ${props => props.isDesktop ? 'none' : '50px'};
+  font-weight: 700;
+  font-size: ${props => props.isDesktop ? '20px' : '14px'};
+  line-height: ${props => props.isDesktop ? '20px' : '17px'};
+  white-space: nowrap;
 `;
 
 const SubHeaderLink = styled.a`
   font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
   color: ${props => props.theme.colors.darkMain};
   text-decoration: none;
   padding-bottom: 3px;
@@ -116,5 +129,6 @@ export {
   SubHeaderWrapper,
   SubHeaderLink,
   SearchComponentWrapper,
-  SearchIcon
+  SearchIcon,
+  HeaderContainer
 }
