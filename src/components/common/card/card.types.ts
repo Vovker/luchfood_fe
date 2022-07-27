@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 
 export interface ICardImgProps {
   image: string,
@@ -15,4 +15,5 @@ export interface ICardProps {
   width:number,
   height: number,
   children: ReactNode
+  style?: React.CSSProperties
 }

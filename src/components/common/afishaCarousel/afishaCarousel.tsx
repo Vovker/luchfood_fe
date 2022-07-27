@@ -30,7 +30,7 @@ export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
             {
               slides.map((slide, index)=>
                 <Slide index={index} key={index}>
-                  <Card width={300} height={230} imgUrl={slide.imageUrl}>
+                  <Card width={300} height={230} imgUrl={slide.imageUrl} style={{padding: '0 10px'}}>
                     <AfishaDate> {slide.date} </AfishaDate>
                     <AfishaTitle> {slide.title} </AfishaTitle>
                   </Card>

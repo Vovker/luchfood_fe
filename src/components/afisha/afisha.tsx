@@ -76,7 +76,7 @@ export const Afisha = () => {
 
 const AfishaItem:React.FC<IAfishaItemProps> = ({url, title, date, imageUrl}) => {
   return(
-    <Card width={300} height={230} imgUrl={imageUrl}>
+    <Card width={328} height={230} imgUrl={imageUrl}>
       <AfishaDate> {date} </AfishaDate>
       <AfishaTitle> {title} </AfishaTitle>
       <AfishaLink href={`/news/${url}`}> Подробнее <OrangeArrow/> </AfishaLink>
