@@ -10,49 +10,62 @@ import {
   SubHeaderLink,
   SubHeaderWrapper,
   SearchIcon,
-  SearchComponentWrapper
+  SearchComponentWrapper,
+  HeaderContainer
 } from './styled';
 import logo from '../../../assets/logo.svg';
 import telegramIcon from '../../../assets/social_icons/telegram.svg';
 import instagramIcon from '../../../assets/social_icons/instagram.svg';
 import searchIcon from '../../../assets/search_icon.svg';
+import useMediaQuery from "../../../hooks/useMatchMedia";
 
 export const Header = () => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
-    <header>
-      <HeaderWrapper>
-        <AddressWrapper>
-          <Address>
-            <b>Ул. Толбухина 4б (территория завода “Луч”)</b>
-          </Address>
-          <Address>
-            Часы работы <b>: пн-вс с 08:00 до 02.00</b>
-          </Address>
-        </AddressWrapper>
+    <HeaderContainer>
+      <HeaderWrapper isDesktop={isDesktop}>
+        {
+          isDesktop && <AddressWrapper>
+				<Address>
+					<b>Ул. Толбухина 4б (территория завода “Луч”)</b>
+				</Address>
+				<Address>
+					Часы работы <b>: пн-вс с 08:00 до 02.00</b>
+				</Address>
+			</AddressWrapper>
+        }
         <LogoWrapper href={'/'}>
-          <Logo src={logo}/>
+          <Logo src={logo} isDesktop={isDesktop}/>
         </LogoWrapper>
-        <SocialNetworksWrapper>
-          <SocialNetworkLink href={'tel:+375291234567'}>
+        <SocialNetworksWrapper isDesktop={isDesktop}>
+          <SocialNetworkLink href={'tel:+375291234567'} isDesktop={isDesktop}>
             +375(29) 123-45-67
           </SocialNetworkLink>
-          <SocialNetworkLink href={'#'}>
-            <SocialNetworkIcon src={telegramIcon}/>
-          </SocialNetworkLink>
-          <SocialNetworkLink href={'#'}>
-            <SocialNetworkIcon src={instagramIcon}/>
-          </SocialNetworkLink>
+          {
+            isDesktop &&
+			  <>
+				  <SocialNetworkLink href={'#'}>
+					  <SocialNetworkIcon src={telegramIcon}/>
+				  </SocialNetworkLink>
+				  <SocialNetworkLink href={'#'}>
+					  <SocialNetworkIcon src={instagramIcon}/>
+				  </SocialNetworkLink>
+			  </>
+          }
+
         </SocialNetworksWrapper>
       </HeaderWrapper>
-      <SubHeaderWrapper>
+      <SubHeaderWrapper isDesktop={isDesktop}>
         <SubHeaderLink href={'/'}>Операторы</SubHeaderLink>
         <SubHeaderLink href={'/'}>Новости</SubHeaderLink>
         <SubHeaderLink href={'/'}>О нас</SubHeaderLink>
         <SubHeaderLink href={'/'}>Афиша</SubHeaderLink>
         <SubHeaderLink href={'/'}>Галерея</SubHeaderLink>
-        <Search/>
+        {isDesktop && <Search/>}
       </SubHeaderWrapper>
-    </header>
+    </HeaderContainer>
   );
 }
 
