@@ -10,6 +10,8 @@ import {MainPageWrapper} from "./components/common/pageWrappers/mainPageWrapper/
 import {Home} from "./components/home/home";
 import './styles.css';
 import {Layout} from "./components/common/layout/layout";
+import {News} from "./components/news/news";
+import {Afisha} from "./components/afisha/afisha";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout/>}>
               <Route index element={<Home/>}/>
+              <Route path="news" element={<News/>}/>
+              <Route path="afisha" element={<Afisha/>}/>
             </Route>
           </Routes>
         </Router>

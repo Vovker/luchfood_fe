@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 const NewsHeaderWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
