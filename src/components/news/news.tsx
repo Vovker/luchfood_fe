@@ -18,10 +18,43 @@ import React from "react";
 import {NewsItemProps, NewsProps} from "./news.types";
 import moment from "moment";
 import arrow from '../../assets/orange-arrow.svg';
+import {CardImg} from "../common/card/styled";
 
-const data = [
+const data: NewsItemProps[] = [
   {
-
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    publicationDate: '08.05.2000',
+    description: 'В шоке был даже кот....',
+    url: 'google.com'
+  },
+  {
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    publicationDate: '08.05.2000',
+    description: 'В шоке был даже кот....',
+    url: 'google.com'
+  },
+  {
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    publicationDate: '08.05.2000',
+    description: 'В шоке был даже кот....',
+    url: 'google.com'
+  },
+  {
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    publicationDate: '08.05.2000',
+    description: 'В шоке был даже кот....',
+    url: 'google.com'
+  },
+  {
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    publicationDate: '08.05.2000',
+    description: 'В шоке был даже кот....',
+    url: 'google.com'
   }
 ]
 
@@ -33,7 +66,7 @@ export const News: React.FC<NewsProps> = ({news}) => {
         <NewsHeaderTitle>Новости</NewsHeaderTitle>
         <NewsListWrapper>
           {
-            news.map((value, index) =>
+            data.map((value, index) =>
               <NewsItem
                 image={value.image}
                 title={value.title}
@@ -63,7 +96,7 @@ const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, descr
           <NewsListItemContentFooterIcon src={arrow}/>
         </NewsListItemContentFooter>
       </NewsListItemContentWrapper>
-      <NewsListItemImage image={image}/>
+      <CardImg height='150px' width='230px' image={image}/>
     </NewsListItemWrapper>
   );
 }

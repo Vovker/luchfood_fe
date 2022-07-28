@@ -4,13 +4,13 @@ export type NewsItemTypes = {
 };
 
 export interface NewsProps {
-  news: NewsItemProps[];
+  news?: NewsItemProps[];
 }
 
 export interface NewsItemProps {
   image: string;
   title: string;
-  publicationDate: Date;
+  publicationDate: string;
   description: string;
   url: string;
 }
