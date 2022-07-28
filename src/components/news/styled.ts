@@ -28,9 +28,8 @@ const NewsListWrapper = styled.div`
 
 const NewsListItemWrapper = styled.div`
   display: flex;
-  width: 100%;
   height: 150px;
-  gap: 60px;
+  
 `;
 
 const NewsListItemImage = styled.div<NewsItemTypes>`
@@ -40,19 +39,15 @@ const NewsListItemImage = styled.div<NewsItemTypes>`
 `;
 
 const NewsListItemContentWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  
 `;
 
-const NewsListItemContentHeader = styled.div`
+const NewsListItemContentInfo = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  flex-direction: column;
+  gap: 13px;
 `;
 
-const NewsListItemContentHeaderTitle = styled.div`
-  margin-right: 12px;
+const NewsListItemContentInfoTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -60,7 +55,7 @@ const NewsListItemContentHeaderTitle = styled.div`
   color: ${props => props.theme.colors.darkMain};
 `;
 
-const NewsListItemContentHeaderDate = styled.div`
+const NewsListItemContentInfoDate = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -81,7 +76,6 @@ const NewsListItemContentText = styled.div`
 `;
 
 const NewsListItemContentFooter = styled(Link)`
-  margin-left: auto;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -104,8 +98,8 @@ export {
   NewsListItemContentFooter,
   NewsListItemContentFooterIcon,
   NewsListItemContentWrapper,
-  NewsListItemContentHeader,
-  NewsListItemContentHeaderTitle,
-  NewsListItemContentHeaderDate,
+  NewsListItemContentInfo,
+  NewsListItemContentInfoTitle,
+  NewsListItemContentInfoDate,
   NewsListItemContentText
 }

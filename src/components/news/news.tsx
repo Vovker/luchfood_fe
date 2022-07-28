@@ -5,9 +5,9 @@ import {
   NewsHeaderWrapper,
   NewsListItemContentFooter,
   NewsListItemContentFooterIcon,
-  NewsListItemContentHeader,
-  NewsListItemContentHeaderDate,
-  NewsListItemContentHeaderTitle,
+  NewsListItemContentInfo,
+  NewsListItemContentInfoDate,
+  NewsListItemContentInfoTitle,
   NewsListItemContentText,
   NewsListItemContentWrapper,
   NewsListItemImage,
@@ -23,39 +23,46 @@ import {CardImg} from "../common/card/styled";
 const data: NewsItemProps[] = [
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    title: 'Vegan Fest',
+    publicationDate: 'Июль 16, 2022',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus...',
+    url: ''
+  },
+  {
+    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
+    title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
+    description: 'Ведущий Виталий Цаль проиграл в казино!',
     url: 'google.com'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
+    description: 'Ведущий Виталий Цаль проиграл в казино!',
     url: 'google.com'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
+    description: 'Ведущий Виталий Цаль проиграл в казино!',
     url: 'google.com'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
+    description: 'Ведущий Виталий Цаль проиграл в казино!',
     url: 'google.com'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
+    title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
+    description: 'Ведущий Виталий Цаль проиграл в казино!',
     url: 'google.com'
-  }
+  },
 ]
 
 
@@ -86,15 +93,18 @@ const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, descr
   return (
     <NewsListItemWrapper>
       <NewsListItemContentWrapper>
-        <NewsListItemContentHeader>
-          <NewsListItemContentHeaderTitle>{title}</NewsListItemContentHeaderTitle>
-          <NewsListItemContentHeaderDate>{moment(publicationDate).format()}</NewsListItemContentHeaderDate>
-        </NewsListItemContentHeader>
-        <NewsListItemContentText>{description}</NewsListItemContentText>
-        <NewsListItemContentFooter to={url}>
-          Читать новость
-          <NewsListItemContentFooterIcon src={arrow}/>
-        </NewsListItemContentFooter>
+        <NewsListItemContentInfo>
+          <NewsListItemContentInfoTitle>
+            {title}
+            <NewsListItemContentInfoDate>
+              {moment(publicationDate).format()}
+            </NewsListItemContentInfoDate>
+          </NewsListItemContentInfoTitle>
+          <NewsListItemContentText>
+            {description}
+          </NewsListItemContentText>
+        </NewsListItemContentInfo>
+
       </NewsListItemContentWrapper>
       <CardImg height='150px' width='230px' image={image}/>
     </NewsListItemWrapper>
