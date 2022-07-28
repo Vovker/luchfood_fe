@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import {ITitleProps, IWrapperProps} from "./common.types";
+import {ElementWithGap, ITitleProps, IWrapperProps} from "./common.types";
 
 const Wrapper = styled.div<IWrapperProps>`
   width: ${props => props.width+'px'};
   padding-top:${props => props.paddingTop?  props.paddingTop+'px' : 0};
+  margin-bottom: ${props => props.marginBottom? props.marginBottom + 'px':0};
 `
 
 const Title = styled.div<ITitleProps>`
@@ -11,6 +12,17 @@ const Title = styled.div<ITitleProps>`
   font-weight: 700;
   line-height: 47px;
   margin-bottom: ${props => props.marginBottom ? props.marginBottom+'px' : 0};
+`
+
+const ItemPageWrapper = styled.div<ElementWithGap>`
+  display: flex;
+  gap: ${props => props.gap ? props.gap + 'px' : 0};
+`
+
+const InfoWrapper = styled.div<ElementWithGap>`
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.gap ? props.gap + 'px' : 0};
 `
 
 const Search = styled.input`
@@ -23,10 +35,15 @@ const Search = styled.input`
   font-weight: 400;
   line-height: 25px;
   color: ${props => props.theme.colors.darkMain};
+  &::placeholder{
+    text-align: right;
+  }
 `
 
 export {
   Wrapper,
   Title,
-  Search
+  Search,
+  ItemPageWrapper,
+  InfoWrapper
 }

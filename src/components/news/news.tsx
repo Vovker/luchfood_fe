@@ -5,11 +5,12 @@ import {
   NewsHeaderWrapper,
   NewsListItemContentFooter,
   NewsListItemContentFooterIcon,
-  NewsListItemContentHeader,
-  NewsListItemContentHeaderDate,
-  NewsListItemContentHeaderTitle,
+  NewsListItemContentInfo,
+  NewsListItemContentInfoDate,
+  NewsListItemContentInfoTitle,
   NewsListItemContentText,
   NewsListItemContentWrapper,
+  NewsListItemImage,
   NewsListItemWrapper,
   NewsListWrapper
 } from './styled'

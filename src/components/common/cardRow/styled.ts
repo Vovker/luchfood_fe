@@ -6,7 +6,7 @@ const RowWrapper = styled.div<RowWrapperProps>`
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   width: ${props => (props.itemsPerRow*300)+((props.itemsPerRow-1)*40)+'px'};
 `
 

@@ -7,7 +7,7 @@ export const BackButton:React.FC<IBackButtonProps> = ({title}) => {
 
   return (
     <Button>
-      <BlackButton style={{transform:'rotate(180deg)'}}/>
+      <BlackButton fill="#1E1E1E" style={{transform:'rotate(180deg)'}}/>
       {title}
     </Button>
   )

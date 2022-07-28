@@ -20,8 +20,8 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import {ICarouselProps, ISlideProps} from "./cornersCarousel.types";
 import React from "react";
 import kitchenTypeIcon from '../../../assets/corners/kitchen-type-icon.svg';
-import addressIcon from '../../../assets/corners/address-icon.svg';
-import arrowIcon from '../../../assets/black-arrow.svg';
+import {ReactComponent as AddressIcon} from '../../../assets/corners/address-icon.svg';
+import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 
 const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
   return (
@@ -56,10 +56,10 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           <StyledDot slide={9}/>
         </DotsWrapper>
         <StyledButtonBack>
-          <StyledButtonIcon isReverse={true} src={arrowIcon}/>
+          <ArrowIcon fill="#1E1E1E" style={{transform:"rotate(180deg)"}}/>
         </StyledButtonBack>
         <StyledButtonNext>
-          <StyledButtonIcon isReverse={false} src={arrowIcon}/>
+          <ArrowIcon fill="#1E1E1E"/>
         </StyledButtonNext>
       </CarouselProvider>
     </SliderWrapper>
@@ -80,7 +80,7 @@ const Card: React.FC<ISlideProps> = ({
       <CardContentWrapper>
         <CardTitle>{title}</CardTitle>
         <CardInfoLineWrapper>
-          <CardInfoLineIcon src={addressIcon}/>
+          <AddressIcon fill="white"/>
           {address}
         </CardInfoLineWrapper>
         <CardInfoLineWrapper>

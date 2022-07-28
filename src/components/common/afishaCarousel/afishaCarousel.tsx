@@ -6,7 +6,7 @@ import {AfishaDate, AfishaTitle, CustomLink} from "../../afisha/styled";
 import {AfishaCarouselContainer, CarouselWrapper, StyledButtonBack, StyledButtonForward} from "./styled";
 import { Title } from "../styled";
 import {StyledButtonIcon} from "../cornersCarousel/styled";
-import arrowIcon from "../../../assets/black-arrow.svg";
+import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 
 interface IAfishaCarouselProps {
   slides: IAfishaItemProps[]
@@ -41,10 +41,10 @@ export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
             }
           </Slider>
           <StyledButtonBack>
-            <StyledButtonIcon isReverse={true} src={arrowIcon}/>
+            <ArrowIcon fill="#1E1E1E" style={{transform:"rotate(180deg)"}}/>
           </StyledButtonBack>
           <StyledButtonForward>
-            <StyledButtonIcon isReverse={false} src={arrowIcon}/>
+            <ArrowIcon fill="#1E1E1E"/>
           </StyledButtonForward>
         </CarouselProvider>
       </CarouselWrapper>

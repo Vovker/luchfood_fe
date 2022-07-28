@@ -10,7 +10,7 @@ import {
 } from './styled';
 import leftIcon from '../../../assets/delivery_banner/leftImage.png';
 import rightIcon from '../../../assets/delivery_banner/rightImage.png';
-import arrowIcon from '../../../assets/black-arrow.svg';
+import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 
 export const DeliveryBanner = () => {
   return (
@@ -25,7 +25,7 @@ export const DeliveryBanner = () => {
         </BannerSubtitle>
         <BannerButton>
           Заказать доставку
-          <BannerButtonIcon src={arrowIcon}/>
+          <ArrowIcon fill="#1E1E1E"/>
         </BannerButton>
       </BannerTextWrapper>
       <RightBannerImage src={rightIcon}/>

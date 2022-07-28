@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-const ItemPageWrapper = styled.div`
-  display: flex;
-  gap: 54px;
-`
-
-const InfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`
 
 const InfoDate = styled.div`
   width: fit-content;
@@ -46,8 +36,6 @@ const SocialImg = styled.img`
 `
 
 export {
-  ItemPageWrapper,
-  InfoWrapper,
   InfoDate,
   InfoCategory,
   InfoDescription,

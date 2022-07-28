@@ -1,7 +1,7 @@
 import React from "react";
-import {Title, Wrapper } from "../../common/styled";
+import {InfoWrapper, ItemPageWrapper, Title, Wrapper } from "../../common/styled";
 import { CardImg } from "../../common/card/styled";
-import {InfoCategory, InfoDate, InfoDescription, InfoWrapper, ItemPageWrapper, SocialImg, SocialLinks } from "./styled";
+import {InfoCategory, InfoDate, InfoDescription, SocialImg, SocialLinks } from "./styled";
 import coloredIstagramIcon from "../../../assets/social_icons/instagramColored.svg";
 import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
@@ -13,8 +13,8 @@ export const AfishaItemPage:React.FC = () => {
     <>
       <BackButton title='Вся Афиша'/>
       <Wrapper width={980} paddingTop={72}>
-        <ItemPageWrapper>
-          <InfoWrapper>
+        <ItemPageWrapper gap={54}>
+          <InfoWrapper gap={16}>
             <Title>
               Vegan Fest- фестиваль вегетарианской кухни
             </Title>
