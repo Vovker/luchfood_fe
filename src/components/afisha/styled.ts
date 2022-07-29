@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {IsDesktop} from "../common/types/index.types";
 
-const AfishaHeader = styled.div`
-  margin-bottom: 40px;
+const AfishaHeader = styled.div<IsDesktop>`
+  margin-bottom: ${props => props.isDesktop ? '40px' : '20px'};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: ${props => props.isDesktop ? '100%' : 'fit-content'};
 `
 
 
@@ -13,6 +15,12 @@ const AfishaTitle = styled.h4`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
+`
+
+const AfishaFooterMobile = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const AfishaLink = styled(Link)`
@@ -35,5 +43,6 @@ export {
   AfishaHeader,
   AfishaTitle,
   AfishaLink,
-  CustomLink
+  CustomLink,
+  AfishaFooterMobile
 }

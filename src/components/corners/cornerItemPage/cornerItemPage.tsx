@@ -16,12 +16,15 @@ import {
   MenuRow,
   MenuItem,
   ItemChar,
-  CharWeight
+  CharWeight,
+  ItemTitle,
+  CharPrice,
 } from "./styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import {ReactComponent as MenuIcon} from "../../../assets/corners/menu-icon.svg";
 import stars from "../../../assets/corners/stars.svg";
 import {CornerMenu} from "./cornerItemPage.types";
+import useMediaQuery from "../../../hooks/useMatchMedia";
 
 const data: CornerMenu[] = [
   {
@@ -36,8 +39,8 @@ const data: CornerMenu[] = [
   },
   {
     title: 'Peбра классические',
-    price: 18,
-    weight: 200,
+    price: 118,
+    weight: 1200,
   },
   {
     title: 'Peбра Кола-Барбекю',
@@ -52,7 +55,7 @@ const data: CornerMenu[] = [
   {
     title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
     price: 8,
-    weight: 200,
+    weight: 1200,
   },
   {
     title: 'Peбра классические',
@@ -85,27 +88,36 @@ const data: CornerMenu[] = [
 
 export const CornerItemPage = () => {
 
+  // function formatDataToView<T>(array: Array<T>) {
+  //   const itemsPerRow = array.length / 2
+  //   let firstRow: Array<T> = []
+  //   let secondRow: Array<T> = []
+  //   array.forEach((el, index) => index < itemsPerRow ? firstRow.push(el) : secondRow.push(el))
+  //   return [firstRow, secondRow]
+  // }
+
   function formatDataToView<T>(array: Array<T>) {
-    const itemsPerRow = array.length / 2
-    let firstRow: Array<T> = []
-    let secondRow: Array<T> = []
-    array.forEach((el, index) => index < itemsPerRow ? firstRow.push(el) : secondRow.push(el))
-    return [firstRow, secondRow]
+    let rows: Array<T[]> = []
+    array.forEach((el, index, arr) => index % 2 ? rows.push([arr[index], arr[index + 1]]) : '')
+    return rows
   }
 
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
     <>
       <BackButton title="Все корнеры"/>
       <CornerWrapper>
-        <Wrapper width={980} paddingTop={72}>
-          <ItemPageWrapper gap={56}>
+        <Wrapper width={isDesktop ? 980 : 345} paddingTop={isDesktop ? 72 : 16}>
+          <ItemPageWrapper gap={isDesktop ? 55 : 16} isDesktop={isDesktop}>
             <InfoWrapper gap={28}>
-              <TitleWithLogo>
+              <TitleWithLogo isDesktop={isDesktop}>
                 <CornerLogo src={"https://brandlogos.net/wp-content/uploads/2021/11/mcdonalds-logo.png"}/>
-                Vegan Fest- фестиваль вегетарианской кухни
+                Vegan Fest
               </TitleWithLogo>
-              <InfoDescription>
+              {!isDesktop && <CardImg width={345} height={265}
+									  image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
+              <InfoDescription isDesktop={isDesktop}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
                 quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in
                 faucibus.
@@ -117,31 +129,52 @@ export const CornerItemPage = () => {
               {/*</DeliveryButton>*/}
             </InfoWrapper>
             <div>
-              <CardImg width="433px" height="333px"
-                       image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>
+              {isDesktop && <CardImg width={433} height={333}
+									 image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
             </div>
           </ItemPageWrapper>
         </Wrapper>
         <MenuContainer>
-          <StarsImg src={stars} alt="nothing special here, just stars"/>
-          <Wrapper width={980} paddingTop={44}>
+          {isDesktop && <StarsImg src={stars} alt="nothing special here, just stars"/>}
+          <Wrapper width={isDesktop ? 980 : 345} paddingTop={isDesktop ? 44 : 27}>
             <MenuTitle>
               <MenuIcon/>
               Меню
             </MenuTitle>
             <ItemRows>
               {
+                // formatDataToView(data).map((itemRow, index) =>
+                //   <MenuRow key={index}>
+                //     {
+                //       itemRow.map((item, idx) =>
+                //         <MenuItem key={idx} isDesktop={isDesktop}>
+                //           {item.title}
+                //           <ItemChar isDesktop={isDesktop}>
+                //             <CharWeight>
+                //               {`${item.weight} гр`}
+                //             </CharWeight>
+                //             {`${item.price} Br`}
+                //           </ItemChar>
+                //         </MenuItem>
+                //       )
+                //     }
+                //   </MenuRow>
+                // )
                 formatDataToView(data).map((itemRow, index) =>
-                  <MenuRow key={index}>
+                  <MenuRow key={index} isDesktop={isDesktop}>
                     {
                       itemRow.map((item, idx) =>
-                        <MenuItem key={idx}>
-                          {item.title}
-                          <ItemChar>
+                        <MenuItem key={idx} isDesktop={isDesktop}>
+                          <ItemTitle isDesktop={isDesktop}>
+                            {item.title}
+                          </ItemTitle>
+                          <ItemChar isDesktop={isDesktop}>
                             <CharWeight>
                               {`${item.weight} гр`}
                             </CharWeight>
-                            {`${item.price} Br`}
+                            <CharPrice>
+                              {`${item.price} Br`}
+                            </CharPrice>
                           </ItemChar>
                         </MenuItem>
                       )
@@ -150,9 +183,9 @@ export const CornerItemPage = () => {
                 )
               }
             </ItemRows>
-            <MenuFooter>
-              * Meню представлено для ознакомления, актуальное меню может отличаться
-            </MenuFooter>
+            {isDesktop && <MenuFooter>
+				* Meню представлено для ознакомления, актуальное меню может отличаться
+			</MenuFooter>}
           </Wrapper>
         </MenuContainer>
       </CornerWrapper>

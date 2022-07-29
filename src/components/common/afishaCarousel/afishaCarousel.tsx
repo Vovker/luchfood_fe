@@ -4,10 +4,11 @@ import {IAfishaItemProps} from "../../afisha/afisha.types";
 import {Card} from "../card/card";
 import {AfishaTitle, CustomLink} from "../../afisha/styled";
 import {AfishaCarouselContainer, CarouselWrapper, StyledButtonBack, StyledButtonForward} from "./styled";
-import {StyledDate, Title } from "../styled";
+import {StyledDate } from "../styled";
 import {StyledButtonIcon} from "../cornersCarousel/styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import theme from "../../../theme";
+import { Title } from "../title/title";
 
 interface IAfishaCarouselProps {
   slides: IAfishaItemProps[]

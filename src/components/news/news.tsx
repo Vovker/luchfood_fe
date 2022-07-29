@@ -13,9 +13,13 @@ import {NewsItemProps, NewsProps} from "./news.types";
 import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {CardImg} from "../common/card/styled";
 import {BackButton} from "../common/backButton/backButton";
-import {Title, Wrapper} from "../common/styled";
+import {ItemWrapper, Wrapper} from "../common/styled";
 import theme from "../../theme";
 import {Search} from "../common/search/search";
+import {Title} from '../common/title/title';
+import useMediaQuery from "../../hooks/useMatchMedia";
+import {Card} from "../common/card/card";
+import {IsDesktop} from "../common/types/index.types";
 
 const data: NewsItemProps[] = [
   {
@@ -64,28 +68,46 @@ const data: NewsItemProps[] = [
 
 
 export const News: React.FC<NewsProps> = ({news}) => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
     <>
       <BackButton title="Назад"/>
-      <Wrapper width={980} paddingTop={72} marginBottom={60}>
-        <NewsHeaderWrapper>
-          <Title>Новости</Title>
-          <Search placeholder="Поиск по новостям"/>
-        </NewsHeaderWrapper>
-        <NewsListWrapper>
-          {
-            data.map((value, index) =>
-              <NewsItem
-                key={index}
-                image={value.image}
-                title={value.title}
-                publicationDate={value.publicationDate}
-                description={value.description}
-                url={value.url}
-              />
-            )
-          }
-        </NewsListWrapper>
+      <Wrapper width={980}
+               paddingTop={isDesktop? 72 : 20}
+               marginBottom={isDesktop? 60 : 36}>
+        <ItemWrapper isDesktop={isDesktop}>
+          <NewsHeaderWrapper isDesktop={isDesktop}>
+            <Title>Новости</Title>
+            <Search placeholder="Поиск по новостям"/>
+          </NewsHeaderWrapper>
+          <NewsListWrapper isDesktop={isDesktop}>
+            {
+              data.map((value, index) =>
+                {
+                  return isDesktop
+                    ? <NewsItem
+                      key={index}
+                      image={value.image}
+                      title={value.title}
+                      publicationDate={value.publicationDate}
+                      description={value.description}
+                      url={value.url}
+                    />
+                    : <NewsItemMobile
+                      key={index}
+                      image={value.image}
+                      title={value.title}
+                      publicationDate={value.publicationDate}
+                      description={value.description}
+                      url={value.url}
+                    />
+                }
+              )
+            }
+          </NewsListWrapper>
+        </ItemWrapper>
       </Wrapper>
     </>
   )
@@ -109,7 +131,37 @@ const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, descr
           <Arrow fill={theme.colors.redMain}/>
         </NewsListItemLink>
       </NewsListItemContentInfo>
-      <CardImg height='150px' width='230px' image={image}/>
+      <CardImg height={150} width={230} image={image}/>
     </NewsListItemWrapper>
   );
+}
+
+const NewsItemMobile: React.FC<NewsItemProps> = ({
+                                                   image,
+                                                   title,
+                                                   publicationDate,
+                                                   description,
+                                                   url
+                                                 }) => {
+  return (
+    <Card
+      width={345}
+      height={225}
+      imgUrl={image}
+    >
+      <NewsListItemContentInfoTitle>
+        {title}
+      </NewsListItemContentInfoTitle>
+      <NewsListItemContentInfoDate>
+        {publicationDate}
+      </NewsListItemContentInfoDate>
+      <NewsListItemContentText isMobile={true}>
+        {description}
+      </NewsListItemContentText>
+      <NewsListItemLink to={url}>
+        Читать новость
+        <Arrow fill={theme.colors.redMain} width="27px" height="27px"/>
+      </NewsListItemLink>
+    </Card>
+  )
 }

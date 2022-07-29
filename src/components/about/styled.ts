@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {IsDesktop} from "../common/types/index.types";
 
 
 const AboutContainer = styled.div`
@@ -23,12 +24,11 @@ const DescriptionLink = styled.a`
   text-decoration: none;
 `
 
-const AboutMap = styled.div`
+const AboutMap = styled.div<IsDesktop>`
   //TOOD temporary 
   width: 100%;
-  height: 405px;
+  height: ${props => props.isDesktop ? '405px' : '225px'};
   background-color: red;
-  margin-bottom: 60px;
 `
 
 export {

@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {IsDesktop} from "../common/types/index.types";
 
-const NewsHeaderWrapper = styled.div`
+const NewsHeaderWrapper = styled.div<IsDesktop>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
+  justify-content: ${props => props.isDesktop ? 'space-between' : 'center'};
+  margin-bottom: ${props => props.isDesktop ? '40px' : '20px'};
+  width: 100%;
 `;
 
 
-const NewsListWrapper = styled.div`
+const NewsListWrapper = styled.div<IsDesktop>`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${props => props.isDesktop ? '40px' : '30px'};
 `;
 
 const NewsListItemWrapper = styled.div`
@@ -46,12 +48,12 @@ const NewsListItemContentInfoDate = styled.div`
   line-height: 20.62px;
 `;
 
-const NewsListItemContentText = styled.div`
-  height: 75px;
-  width: 690px;
-  font-size: 18px;
+const NewsListItemContentText = styled.div<IsDesktop>`
+  height: ${props => props.isMobile ? '42px' : '75px'};
+  width: ${props => props.isMobile ? '345px' : '690px'};
+  font-size: ${props => props.isMobile ? '14px' : '18px'};
   font-weight: 700;
-  line-height: 25px;
+  line-height: ${props => props.isMobile ? '21px' : '25px'};
   overflow: hidden;
   text-overflow: ellipsis;
 `;

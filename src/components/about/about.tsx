@@ -1,15 +1,27 @@
 import React from "react";
 import {BackButton} from "../common/backButton/backButton";
-import {Title, Wrapper} from "../common/styled";
+import {ItemPageWrapper, Wrapper} from "../common/styled";
+import {Title} from "../common/title/title";
 import {AboutContainer, AboutDescription, AboutMap, DescriptionLine, DescriptionLink} from "./styled";
+import useMediaQuery from "../../hooks/useMatchMedia";
 
 export const About = () => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
     <>
       <BackButton title="Назад"/>
-      <Wrapper width={956} paddingTop={72}>
-        <AboutContainer>
-          <Title>О нас</Title>
+      <Wrapper
+        width={isDesktop ? 956 : 345} paddingTop={isDesktop ? 72 : 16}
+        marginBottom={60}
+      >
+        <ItemPageWrapper gap={isDesktop ? 16 : 24}>
+          <Title align="center" marginBottom={isDesktop ? 0 : -5}>
+            О нас
+          </Title>
+          {!isDesktop && <AboutMap isDesktop={isDesktop}/>
+          }
           <AboutDescription>
             <DescriptionLine>
               ЛУЧшая улица
@@ -38,10 +50,8 @@ export const About = () => {
               </DescriptionLink>
             </DescriptionLine>
           </AboutDescription>
-          <AboutMap>
-
-          </AboutMap>
-        </AboutContainer>
+          {isDesktop && <AboutMap isDesktop={isDesktop}/>}
+        </ItemPageWrapper>
       </Wrapper>
     </>
   )

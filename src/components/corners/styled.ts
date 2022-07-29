@@ -1,18 +1,24 @@
 import styled from "styled-components";
 import {FilterOptionStyle} from "./corners.types";
+import {IsDesktop} from "../common/types/index.types";
 
-const CornerHeader = styled.div`
+const CornerHeader = styled.div<IsDesktop>`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 31px;
-  margin-top: 72px;
-  height: 50px;
+  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
+  justify-content: ${props => props.isDesktop ? 'space-between' : 'center'};
+  align-items: ${props => props.isDesktop ? 'flex-end' : 'center'};
+  margin-bottom: ${props => props.isDesktop ? '31px' : '0'};
+  height: ${props => props.isDesktop ? '50px' : 'fit-content'};
+  gap: ${props => props.isDesktop ? '0' : '20px'};
+  width: ${props => props.isDesktop ? '100%' : '345px'};
 `
 
-const CornerFilter = styled.div`
+const CornerFilter = styled.div<IsDesktop>`
   display: flex;
-  gap: 25px;
+  gap: ${props => props.isDesktop ? '25px' : '42px'};
+  margin-bottom: ${props => props.isDesktop ? '0' : '20px'};
+  width: ${props => props.isDesktop ? 'fit-content' : '100%'};
+  overflow-x: scroll;
 `
 
 const FilterOption = styled.input`
@@ -24,7 +30,7 @@ const OptionLabel = styled.label<FilterOptionStyle>`
   font-weight: 400;
   line-height: 25px;
   background-color: ${props => props.isChecked ? props.theme.colors.white : 'inherit'};
-  padding: 4px 11px;
+  padding: ${props => props.isMobile ? '6px 15px 6px 14px' : '4px 11px'};
 `
 
 const CornerTitle = styled.div`

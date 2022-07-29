@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {IsDesktop} from "../../common/types/index.types";
 
 const CornerWrapper = styled.div`
   display: flex;
@@ -11,10 +12,11 @@ const CornerWrapper = styled.div`
   flex: 1 1 auto;
 `
 
-const TitleWithLogo = styled.div`
+const TitleWithLogo = styled.div<IsDesktop>`
   display: flex;
-  gap: 8px;
+  gap: ${props => props.isDesktop ? '8px' : '11px'};
   align-items: center;
+  justify-content: ${props => props.isDesktop ? 'flex-start' : 'center'};
   font-size: 22px;
   font-weight: 700;
   line-height: 26px;
@@ -52,12 +54,12 @@ const MenuContainer = styled.div`
   color: ${props => props.theme.colors.white};
 `
 
-const MenuTitle = styled.div`
-  font-size: 22px;
+const MenuTitle = styled.div<IsDesktop>`
+  font-size: ${props => props.isDesktop ? '22px' : '20px'};
   font-weight: 700;
-  line-height: 26px;
+  line-height: ${props => props.isDesktop ? '26px' : '24px'};
   display: flex;
-  gap: 17px;
+  gap: ${props => props.isDesktop ? '17px' : '11px'};
   align-items: center;
   margin-bottom: 24px;
 `
@@ -79,40 +81,51 @@ const ItemRows = styled.div`
   justify-content: space-between;
   margin-bottom: 52px;
   flex-wrap: wrap;
-  gap: 35px;
-`
-
-const MenuRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-`
-
-const MenuItem = styled.div`
-  display: flex;
-  justify-content: space-between;
   gap: 22px;
-  width: 433px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid ${props => props.theme.colors.white};
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 28px;
 `
 
-const ItemChar = styled.div`
+const MenuRow = styled.div<IsDesktop>`
+  display: flex;
+  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
+  justify-content: space-between;
+  gap: ${props => props.isDesktop ? '114px' : '22px'};
+`
+
+const MenuItem = styled.div<IsDesktop>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 133px;
-  font-size: 18px;
+  gap: 10px;
+  width: ${props => props.isDesktop ? '433px' : '345px'};
+  padding-bottom: ${props => props.isDesktop ? '22px' : '13px'};
+  border-bottom: 1px solid ${props => props.theme.colors.white};
+  font-size: ${props => props.isDesktop ? '20px' : '16px'};
   font-weight: 700;
-  line-height: 25px;
+  line-height: ${props => props.isDesktop ? '28px' : '22px'};
+`
+
+const ItemChar = styled.div<IsDesktop>`
+  gap: ${props => props.isDesktop ? '12px' : '8px'};
+  display: flex;
+  align-items: center;
+  font-size: ${props => props.isDesktop ? '18px' : '14px'};
+  font-weight: 700;
+  line-height: ${props => props.isDesktop ? '25px' : '19px'};
 `
 
 const CharWeight = styled.div`
-  border-right: 1px solid ${props => props.theme.colors.white};
   padding-right: 12px;
+  border-right: 1px solid ${props => props.theme.colors.white};
+  min-width: 42px;
+`
+
+const CharPrice = styled.div`
+  min-width: 42px;
+`
+
+
+const ItemTitle = styled.div<IsDesktop>`
+  max-width: ${props => props.isDesktop ? '279px' : '217px'};
 `
 
 export {
@@ -128,5 +141,7 @@ export {
   MenuRow,
   MenuItem,
   ItemChar,
-  CharWeight
+  CharWeight,
+  ItemTitle,
+  CharPrice,
 }

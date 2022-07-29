@@ -1,22 +1,19 @@
 import styled from "styled-components";
-import {ElementWithGap, ITitleProps, IWrapperProps} from "./common.types";
+import {ElementWithGap, IItemWrapper, IWrapperProps} from "./common.types";
+import {IsDesktop} from "./types/index.types";
 
 const Wrapper = styled.div<IWrapperProps>`
   width: ${props => props.width+'px'};
   padding-top:${props => props.paddingTop?  props.paddingTop+'px' : 0};
   margin-bottom: ${props => props.marginBottom? props.marginBottom + 'px':0};
+  max-width: 100%;
 `
 
-const Title = styled.div<ITitleProps>`
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 47px;
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom+'px' : 0};
-`
 
 const ItemPageWrapper = styled.div<ElementWithGap>`
   display: flex;
   gap: ${props => props.gap ? props.gap + 'px' : 0};
+  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
 `
 
 const InfoWrapper = styled.div<ElementWithGap>`
@@ -26,17 +23,22 @@ const InfoWrapper = styled.div<ElementWithGap>`
 `
 
 
-const StyledDate = styled.div`
+const StyledDate = styled.div<IsDesktop>`
   font-weight: 700;
-  font-size: 14px;
+  font-size: ${props => props.isDesktop ? '14px' : '16px'};
   line-height: 21px;
 `
 
+const ItemWrapper = styled.div<IItemWrapper>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.isDesktop? 'flex-start' : 'center'};
+`
 
 export {
   Wrapper,
-  Title,
   ItemPageWrapper,
   InfoWrapper,
-  StyledDate
+  StyledDate,
+  ItemWrapper
 }
