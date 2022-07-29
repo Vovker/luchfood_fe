@@ -19,7 +19,7 @@ const HeaderWrapper = styled.div<IsDesktop>`
 `;
 
 const AddressWrapper = styled.div`
-  width: 400px;
+  width: 450px;
   margin: auto auto auto 0;
   display: flex;
   justify-content: flex-start;
@@ -47,7 +47,7 @@ const Logo = styled.img<IsDesktop>`
 `;
 
 const SocialNetworksWrapper = styled.div<IsDesktop>`
-  width: ${props => props.isDesktop ? '400px' : '100%'};
+  width: ${props => props.isDesktop ? '450px' : '100%'};
   margin-left: ${props => props.isDesktop ? 'auto' : '0'};
   display: flex;
   align-items: center;

@@ -25,22 +25,22 @@ export const Footer = () => {
         {
           !isDesktop &&
             <Address isDesktop={isDesktop}>
-              <b>Ул. Толбухина 4б (территория завода “Луч”)</b>
+              <b>Проспект Независимости 95к2 (территория завода “Луч”)</b>
             </Address>
         }
         <WorkHours isDesktop={isDesktop}>
-          {isDesktop && "Часы работы:"} <b>пн-вс с 08:00 до 02.00</b>
+          {isDesktop && "Часы работы:"} <b>пн-вс с 12:00 до 02.00</b>
         </WorkHours>
       </div>
       {
         isDesktop &&
           <div style={{display: 'flex', alignItems: 'flex-end', flexDirection: 'column'}}>
 			  <Socials>
-				  <SocialLink href={'tel:+375291234567'}>+375(29) 123-45-67</SocialLink>
-				  <SocialLink>
+				  <SocialLink to={'tel:+375296707088'}>+375 (29) 670-70-88</SocialLink>
+				  <SocialLink to={'/'}>
 					  <SocialIcon src={telegramIcon}/>
 				  </SocialLink>
-				  <SocialLink>
+				  <SocialLink to={'/'}>
 					  <SocialIcon src={instagramIcon}/>
 				  </SocialLink>
 			  </Socials>

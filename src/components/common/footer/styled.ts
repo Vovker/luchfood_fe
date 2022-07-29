@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import {IsDesktop} from "../types/index.types";
+import {Link} from "react-router-dom";
 
 const FooterWrapper = styled.div<IsDesktop>`
   background: ${props => props.theme.colors.darkMain};
   padding: ${props => props.isDesktop ? '30px 44px 0 41px' : '24px 16px 26px 16px'};
-  height: ${props => props.isDesktop ? '140px' : '93px'};
+  height: ${props => props.isDesktop ? '140px' : 'auto'};
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -36,7 +37,7 @@ const SocialIcon = styled.img`
   width: 32px;
 `;
 
-const SocialLink = styled.a`
+const SocialLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.colors.white};
   font-style: normal;

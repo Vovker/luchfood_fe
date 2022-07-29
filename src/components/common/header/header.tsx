@@ -29,10 +29,10 @@ export const Header = () => {
         {
           isDesktop && <AddressWrapper>
 				<Address>
-					<b>Ул. Толбухина 4б (территория завода “Луч”)</b>
+					<b>Проспект Независимости 95 к 2 (территория завода “Луч”)</b>
 				</Address>
 				<Address>
-					Часы работы <b>: пн-вс с 08:00 до 02.00</b>
+					Часы работы <b>: пн-вс с 12:00 до 02.00</b>
 				</Address>
 			</AddressWrapper>
         }
@@ -40,8 +40,8 @@ export const Header = () => {
           <Logo src={logo} isDesktop={isDesktop}/>
         </LogoWrapper>
         <SocialNetworksWrapper isDesktop={isDesktop}>
-          <SocialNetworkLink href={'tel:+375291234567'} isDesktop={isDesktop}>
-            +375(29) 123-45-67
+          <SocialNetworkLink href={'tel:+375296707088'} isDesktop={isDesktop}>
+            +375 (29) 670-70-88
           </SocialNetworkLink>
           {
             isDesktop &&
@@ -49,7 +49,7 @@ export const Header = () => {
 				  <SocialNetworkLink href={'#'}>
 					  <SocialNetworkIcon src={telegramIcon}/>
 				  </SocialNetworkLink>
-				  <SocialNetworkLink href={'#'}>
+				  <SocialNetworkLink href={'https://instagram.com/luchshaya_ulitsa?igshid=YmMyMTA2M2Y='}>
 					  <SocialNetworkIcon src={instagramIcon}/>
 				  </SocialNetworkLink>
 			  </>

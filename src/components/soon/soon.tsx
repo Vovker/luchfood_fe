@@ -21,10 +21,10 @@ export const Soon = () => {
             <SoonImg isDesktop={isDesktop} width='345px' height='365px' src={promoWithTitle}/>
             <SoonImg isDesktop={isDesktop} width='345px' height='138px' src={promoBurger}/>
             <SocialLinks>
-              <SocialLink>
+              <SocialLink href={'/'}>
                 <img src={telegramIcon} alt=""/>
               </SocialLink>
-              <SocialLink>
+              <SocialLink href={'https://instagram.com/luchshaya_ulitsa?igshid=YmMyMTA2M2Y='}>
                 <img src={instagramIcon} alt=""/>
               </SocialLink>
             </SocialLinks>

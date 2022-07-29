@@ -22,7 +22,7 @@ const SocialLinks = styled.div`
   flex-direction: column;
   gap: 13px;
 `
-const SocialLink = styled.div`
+const SocialLink = styled.a`
   background-color: ${props => props.theme.colors.redMain};
   width: 46px;
   height: 46px;
