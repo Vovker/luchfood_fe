@@ -3,12 +3,97 @@ import {InfoDescription,} from "../../afisha/afishaItemPage/styled";
 import {BackButton} from "../../common/backButton/backButton";
 import {CardImg} from "../../common/card/styled";
 import {InfoWrapper, ItemPageWrapper, Wrapper} from "../../common/styled";
-import {CornerLogo, CornerWrapper, DeliveryButton, MenuTitle, MenuContainer, TitleWithLogo, StarsImg, MenuFooter} from "./styled";
+import {
+  CornerLogo,
+  CornerWrapper,
+  DeliveryButton,
+  MenuTitle,
+  MenuContainer,
+  TitleWithLogo,
+  StarsImg,
+  MenuFooter,
+  ItemRows,
+  MenuRow,
+  MenuItem,
+  ItemChar,
+  CharWeight
+} from "./styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import {ReactComponent as MenuIcon} from "../../../assets/corners/menu-icon.svg";
 import stars from "../../../assets/corners/stars.svg";
+import {CornerMenu} from "./cornerItemPage.types";
+
+const data: CornerMenu[] = [
+  {
+    title: 'Peбра классические',
+    price: 18,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекю',
+    price: 8,
+    weight: 200,
+  },
+  {
+    title: 'Peбра классические',
+    price: 18,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекю',
+    price: 8,
+    weight: 200,
+  },
+  {
+    title: 'Peбра классические',
+    price: 18,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекююююю',
+    price: 8,
+    weight: 200,
+  },
+  {
+    title: 'Peбра классические',
+    price: 18,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекю',
+    price: 8,
+    weight: 200,
+  },
+  {
+    title: 'Peбра классические',
+    price: 18,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекю',
+    price: 8,
+    weight: 200,
+  },
+  {
+    title: 'Peбра Кола-Барбекю',
+    price: 8,
+    weight: 200
+  }
+
+]
+
 
 export const CornerItemPage = () => {
+
+  function formatDataToView<T>(array: Array<T>) {
+    const itemsPerRow = array.length / 2
+    let firstRow: Array<T> = []
+    let secondRow: Array<T> = []
+    array.forEach((el, index) => index < itemsPerRow ? firstRow.push(el) : secondRow.push(el))
+    return [firstRow, secondRow]
+  }
+
+
   return (
     <>
       <BackButton title="Все корнеры"/>
@@ -28,7 +113,7 @@ export const CornerItemPage = () => {
               </InfoDescription>
               {/*<DeliveryButton>*/}
               {/*  Заказать доставку*/}
-              {/*  <ArrowIcon fill="white"/>*/}
+              {/*  <ArrowIcon fill={theme.colors.white}/>*/}
               {/*</DeliveryButton>*/}
             </InfoWrapper>
             <div>
@@ -44,7 +129,27 @@ export const CornerItemPage = () => {
               <MenuIcon/>
               Меню
             </MenuTitle>
-            <></>
+            <ItemRows>
+              {
+                formatDataToView(data).map((itemRow, index) =>
+                  <MenuRow key={index}>
+                    {
+                      itemRow.map((item, idx) =>
+                        <MenuItem key={idx}>
+                          {item.title}
+                          <ItemChar>
+                            <CharWeight>
+                              {`${item.weight} Br`}
+                            </CharWeight>
+                            {`${item.price} Br`}
+                          </ItemChar>
+                        </MenuItem>
+                      )
+                    }
+                  </MenuRow>
+                )
+              }
+            </ItemRows>
             <MenuFooter>
               * Meню представлено для ознакомления, актуальное меню может отличаться
             </MenuFooter>

@@ -1,24 +1,21 @@
-import {BlockWrapper} from "../common/pageWrappers/blockWrapper/styled";
-import theme from "../../theme";
 import {
-  NewsHeaderTitle,
   NewsHeaderWrapper,
-  NewsListItemContentFooter,
-  NewsListItemContentFooterIcon,
   NewsListItemContentInfo,
   NewsListItemContentInfoDate,
   NewsListItemContentInfoTitle,
   NewsListItemContentText,
-  NewsListItemContentWrapper,
-  NewsListItemImage,
+  NewsListItemLink,
   NewsListItemWrapper,
   NewsListWrapper
 } from './styled'
 import React from "react";
 import {NewsItemProps, NewsProps} from "./news.types";
-import moment from "moment";
-import arrow from '../../assets/orange-arrow.svg';
+import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {CardImg} from "../common/card/styled";
+import {BackButton} from "../common/backButton/backButton";
+import {Title, Wrapper} from "../common/styled";
+import theme from "../../theme";
+import {Search} from "../common/search/search";
 
 const data: NewsItemProps[] = [
   {
@@ -26,55 +23,60 @@ const data: NewsItemProps[] = [
     title: 'Vegan Fest',
     publicationDate: 'Июль 16, 2022',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus...',
-    url: ''
+    url: '1'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
     title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
     description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: 'google.com'
+    url: '2'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
     title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
     description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: 'google.com'
+    url: '3'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
     title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
     description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: 'google.com'
+    url: '4'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
     title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
     description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: 'google.com'
+    url: '5'
   },
   {
     image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
     title: 'В шоке был даже кот....',
     publicationDate: '08.05.2000',
     description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: 'google.com'
+    url: '6'
   },
 ]
 
 
 export const News: React.FC<NewsProps> = ({news}) => {
-  return(
-    <BlockWrapper backgroundColor={theme.colors.liteBackground}>
-      <NewsHeaderWrapper>
-        <NewsHeaderTitle>Новости</NewsHeaderTitle>
+  return (
+    <>
+      <BackButton title="Назад"/>
+      <Wrapper width={980} paddingTop={72} marginBottom={60}>
+        <NewsHeaderWrapper>
+          <Title>Новости</Title>
+          <Search placeholder="Поиск по новостям"/>
+        </NewsHeaderWrapper>
         <NewsListWrapper>
           {
             data.map((value, index) =>
               <NewsItem
+                key={index}
                 image={value.image}
                 title={value.title}
                 publicationDate={value.publicationDate}
@@ -84,28 +86,29 @@ export const News: React.FC<NewsProps> = ({news}) => {
             )
           }
         </NewsListWrapper>
-      </NewsHeaderWrapper>
-    </BlockWrapper>
+      </Wrapper>
+    </>
   )
 }
 
 const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, description, url}) => {
   return (
     <NewsListItemWrapper>
-      <NewsListItemContentWrapper>
-        <NewsListItemContentInfo>
-          <NewsListItemContentInfoTitle>
-            {title}
-            <NewsListItemContentInfoDate>
-              {moment(publicationDate).format()}
-            </NewsListItemContentInfoDate>
-          </NewsListItemContentInfoTitle>
-          <NewsListItemContentText>
-            {description}
-          </NewsListItemContentText>
-        </NewsListItemContentInfo>
-
-      </NewsListItemContentWrapper>
+      <NewsListItemContentInfo>
+        <NewsListItemContentInfoTitle>
+          {title}
+          <NewsListItemContentInfoDate>
+            {publicationDate}
+          </NewsListItemContentInfoDate>
+        </NewsListItemContentInfoTitle>
+        <NewsListItemContentText>
+          {description}
+        </NewsListItemContentText>
+        <NewsListItemLink to={url}>
+          Читать новость
+          <Arrow fill={theme.colors.redMain}/>
+        </NewsListItemLink>
+      </NewsListItemContentInfo>
       <CardImg height='150px' width='230px' image={image}/>
     </NewsListItemWrapper>
   );

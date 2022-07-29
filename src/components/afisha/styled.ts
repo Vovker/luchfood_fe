@@ -8,11 +8,6 @@ const AfishaHeader = styled.div`
   align-items: center;
 `
 
-const AfishaDate = styled.div`
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
-`
 
 const AfishaTitle = styled.h4`
   font-weight: 700;
@@ -38,7 +33,6 @@ const CustomLink = styled(Link)`
 
 export {
   AfishaHeader,
-  AfishaDate,
   AfishaTitle,
   AfishaLink,
   CustomLink
