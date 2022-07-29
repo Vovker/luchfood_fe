@@ -1,8 +1,10 @@
 import React from "react";
 import {BackButton} from "../common/backButton/backButton";
-import {StyledDate, Title, Wrapper} from "../common/styled";
+import {ItemWrapper, StyledDate, Wrapper} from "../common/styled";
 import {CardRow} from "../common/cardRow/cardRow";
 import {Card} from "../common/card/card";
+import useMediaQuery from "../../hooks/useMatchMedia";
+import { Title } from "../common/title/title";
 
 interface GalleryTypes {
   image: string,
@@ -40,29 +42,45 @@ const data: GalleryTypes[] = [
   },
 ]
 
+
+
 export const Gallery = () => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
     <>
       <BackButton title="Назад"/>
       <Wrapper
         width={980}
-        paddingTop={72}
-        marginBottom={60}
+        paddingTop={isDesktop ? 72 : 16}
+        marginBottom={isDesktop ? 60 : 40}
       >
-        <Title marginBottom={40}>
-          Галерея
-        </Title>
-        <CardRow itemsPerRow={3}>
-          {
-            data.map(post=>
-              <Card height={230} width={300} imgUrl={post.image} key={post.image}>
-                <StyledDate>
-                  {post.date}
-                </StyledDate>
-              </Card>
-            )
-          }
-        </CardRow>
+        <ItemWrapper isDesktop={isDesktop}>
+          <Title marginBottom={isDesktop ? 40 : 19}>
+            Галерея
+          </Title>
+          <CardRow
+            itemsPerRow={isDesktop? 3 : 1}
+            gap={isDesktop? 40 : 20}
+            itemWidth={isDesktop ? 300 : 345}
+          >
+            {
+              data.map(post=>
+                <Card
+                  width={isDesktop ? 300 : 345}
+                  height={isDesktop ? 230 : 264}
+                  imgUrl={post.image}
+                  key={post.image}
+                >
+                  <StyledDate>
+                    {post.date}
+                  </StyledDate>
+                </Card>
+              )
+            }
+          </CardRow>
+        </ItemWrapper>
       </Wrapper>
     </>
   )

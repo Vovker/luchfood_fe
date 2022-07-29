@@ -5,5 +5,7 @@ export interface ICardRowProps extends RowWrapperProps{
 }
 
 export interface RowWrapperProps {
-  itemsPerRow: number
+  itemsPerRow: number,
+  gap?: number,
+  itemWidth?: number
 }

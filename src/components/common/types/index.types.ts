@@ -1,3 +1,4 @@
 export interface IsDesktop {
-  isDesktop?: boolean
+  isDesktop?: boolean,
+  isMobile?: boolean
 }
