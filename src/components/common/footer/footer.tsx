@@ -36,11 +36,11 @@ export const Footer = () => {
         isDesktop &&
           <div style={{display: 'flex', alignItems: 'flex-end', flexDirection: 'column'}}>
 			  <Socials>
-				  <SocialLink to={'tel:+375296707088'}>+375 (29) 670-70-88</SocialLink>
-				  <SocialLink to={'/'}>
+				  <SocialLink href={'tel:+375296707088'}>+375 (29) 670-70-88</SocialLink>
+				  <SocialLink href={'/'}>
 					  <SocialIcon src={telegramIcon}/>
 				  </SocialLink>
-				  <SocialLink to={'/'}>
+				  <SocialLink href={'https://instagram.com/luchshaya_ulitsa?igshid=YmMyMTA2M2Y='}>
 					  <SocialIcon src={instagramIcon}/>
 				  </SocialLink>
 			  </Socials>

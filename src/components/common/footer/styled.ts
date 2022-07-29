@@ -37,7 +37,7 @@ const SocialIcon = styled.img`
   width: 32px;
 `;
 
-const SocialLink = styled(Link)`
+const SocialLink = styled.a`
   text-decoration: none;
   color: ${props => props.theme.colors.white};
   font-style: normal;
