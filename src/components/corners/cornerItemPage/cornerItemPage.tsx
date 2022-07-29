@@ -25,7 +25,7 @@ import {CornerMenu} from "./cornerItemPage.types";
 
 const data: CornerMenu[] = [
   {
-    title: 'Peбра классические',
+    title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
     price: 18,
     weight: 200,
   },
@@ -50,7 +50,7 @@ const data: CornerMenu[] = [
     weight: 200,
   },
   {
-    title: 'Peбра Кола-Барбекююююю',
+    title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
     price: 8,
     weight: 200,
   },
@@ -70,7 +70,7 @@ const data: CornerMenu[] = [
     weight: 200,
   },
   {
-    title: 'Peбра Кола-Барбекю',
+    title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
     price: 8,
     weight: 200,
   },
@@ -139,7 +139,7 @@ export const CornerItemPage = () => {
                           {item.title}
                           <ItemChar>
                             <CharWeight>
-                              {`${item.weight} Br`}
+                              {`${item.weight} гр`}
                             </CharWeight>
                             {`${item.price} Br`}
                           </ItemChar>
