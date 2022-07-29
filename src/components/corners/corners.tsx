@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import {BackButton} from "../common/backButton/backButton";
 import {CardRow} from "../common/cardRow/cardRow";
-import {Search, Title, Wrapper} from "../common/styled";
+import {Title, Wrapper} from "../common/styled";
 import {CornersTypes, IFilterOption} from "./corners.types";
 import {Card} from "../common/card/card";
 import {CornerAddress, CornerDescription, CornerFilter, CornerHeader, CornerTitle, FilterOption, OptionLabel} from "./styled";
 import {ReactComponent as AddressIcon} from "../../assets/corners/address-icon.svg";
 import { CustomLink } from "../afisha/styled";
+import theme from "../../theme";
+import {Search} from "../common/search/search";
 
 const data: CornersTypes[] = [
   {
@@ -124,14 +126,13 @@ export const Corners = () => {
               )
             }
           </CornerFilter>
-          <Search type="text" placeholder="Поиск"/>
+          <Search placeholder="Поиск"/>
         </CornerHeader>
         <CardRow itemsPerRow={3}>
           {
             data.map((corner) =>
-              <CustomLink to={corner.url}>
+              <CustomLink to={corner.url} key={corner.url}>
                 <Card
-                  key={corner.url}
                   width={300}
                   height={230}
                   imgUrl={corner.image
@@ -140,7 +141,7 @@ export const Corners = () => {
                     {corner.name}
                   </CornerTitle>
                   <CornerAddress>
-                    <AddressIcon fill="black"/>
+                    <AddressIcon fill={theme.colors.darkMain}/>
                     {corner.address}
                   </CornerAddress>
                   <CornerDescription>

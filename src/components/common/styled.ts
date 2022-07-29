@@ -25,25 +25,18 @@ const InfoWrapper = styled.div<ElementWithGap>`
   gap: ${props => props.gap ? props.gap + 'px' : 0};
 `
 
-const Search = styled.input`
-  height: 25px;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  font-family: Jura;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 25px;
-  color: ${props => props.theme.colors.darkMain};
-  &::placeholder{
-    text-align: right;
-  }
+
+const StyledDate = styled.div`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
 `
+
 
 export {
   Wrapper,
   Title,
-  Search,
   ItemPageWrapper,
-  InfoWrapper
+  InfoWrapper,
+  StyledDate
 }

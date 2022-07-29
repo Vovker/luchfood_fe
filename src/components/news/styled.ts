@@ -1,27 +1,16 @@
 import styled from "styled-components";
-import {NewsItemTypes} from "./news.types";
 import {Link} from "react-router-dom";
 
 const NewsHeaderWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 `;
 
-const NewsHeaderTitle = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 47px;
-  color: ${props => props.theme.colors.darkMain};
-`;
 
 const NewsListWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   gap: 40px;
 `;
@@ -29,17 +18,10 @@ const NewsListWrapper = styled.div`
 const NewsListItemWrapper = styled.div`
   display: flex;
   height: 150px;
-  
+  justify-content: space-between;
+  gap: 60px;
 `;
 
-const NewsListItemImage = styled.div<NewsItemTypes>`
-  width: 230px;
-  height: 150px;
-  background-image: url(${props => props.image});
-`;
-
-const NewsListItemContentWrapper = styled.div`
-`;
 
 const NewsListItemContentInfo = styled.div`
   display: flex;
@@ -53,51 +35,47 @@ const NewsListItemContentInfoTitle = styled.div`
   font-size: 24px;
   line-height: 28px;
   color: ${props => props.theme.colors.darkMain};
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
 const NewsListItemContentInfoDate = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 14px;
-  line-height: 150%;
-  color: ${props => props.theme.colors.darkMain};
+  line-height: 20.62px;
 `;
 
 const NewsListItemContentText = styled.div`
   height: 75px;
-  font-style: normal;
-  font-weight: 700;
+  width: 690px;
   font-size: 18px;
-  line-height: 140%;
+  font-weight: 700;
+  line-height: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-bottom: 12px;
 `;
 
-const NewsListItemContentFooter = styled(Link)`
+const NewsListItemLink = styled(Link)`
+  text-decoration: none;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
   color: ${props => props.theme.colors.redMain};
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
 `;
 
-const NewsListItemContentFooterIcon = styled.img`
-  margin-left: 11px;
-  width: 20px;
-`;
 
 
 export {
   NewsHeaderWrapper,
-  NewsHeaderTitle,
   NewsListWrapper,
   NewsListItemWrapper,
-  NewsListItemImage,
-  NewsListItemContentFooter,
-  NewsListItemContentFooterIcon,
-  NewsListItemContentWrapper,
+  NewsListItemLink,
   NewsListItemContentInfo,
   NewsListItemContentInfoTitle,
   NewsListItemContentInfoDate,

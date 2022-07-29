@@ -4,7 +4,7 @@ import {FilterOptionStyle} from "./corners.types";
 const CornerHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 31px;
   margin-top: 72px;
   height: 50px;
@@ -13,7 +13,6 @@ const CornerHeader = styled.div`
 const CornerFilter = styled.div`
   display: flex;
   gap: 25px;
-  margin-top: 12px;
 `
 
 const FilterOption = styled.input`

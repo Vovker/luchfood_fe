@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import wave from '../../../assets/delivery_banner/wave.svg'
 
 const BannerWrapper = styled.div`
   background: ${props => props.theme.colors.redMain};
@@ -78,6 +79,13 @@ const BannerButton = styled.button`
   }
 `;
 
+const Wave = styled.div`
+  height: 76px;
+  width: 100%;
+  background-image: url(${wave});
+  background-color: ${props => props.theme.colors.darkMain};
+`
+
 export {
   BannerWrapper,
   LeftBannerImage,
@@ -86,5 +94,6 @@ export {
   BannerTitle,
   BannerTextWrapper,
   BannerButton,
-  BannerButtonIcon
+  BannerButtonIcon,
+  Wave
 }

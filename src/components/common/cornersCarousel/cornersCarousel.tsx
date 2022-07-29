@@ -22,6 +22,7 @@ import React from "react";
 import kitchenTypeIcon from '../../../assets/corners/kitchen-type-icon.svg';
 import {ReactComponent as AddressIcon} from '../../../assets/corners/address-icon.svg';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
+import theme from "../../../theme";
 
 const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
   return (
@@ -56,10 +57,10 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           <StyledDot slide={9}/>
         </DotsWrapper>
         <StyledButtonBack>
-          <ArrowIcon fill="#1E1E1E" style={{transform:"rotate(180deg)"}}/>
+          <ArrowIcon fill={theme.colors.darkMain} style={{transform:"rotate(180deg)"}}/>
         </StyledButtonBack>
         <StyledButtonNext>
-          <ArrowIcon fill="#1E1E1E"/>
+          <ArrowIcon fill={theme.colors.darkMain}/>
         </StyledButtonNext>
       </CarouselProvider>
     </SliderWrapper>
@@ -80,7 +81,7 @@ const Card: React.FC<ISlideProps> = ({
       <CardContentWrapper>
         <CardTitle>{title}</CardTitle>
         <CardInfoLineWrapper>
-          <AddressIcon fill="white"/>
+          <AddressIcon fill={theme.colors.white}/>
           {address}
         </CardInfoLineWrapper>
         <CardInfoLineWrapper>

@@ -1,12 +1,13 @@
 import React from "react";
 import {Card} from "../common/card/card";
-import { AfishaDate, AfishaHeader, AfishaLink, AfishaTitle } from "./styled";
+import {AfishaHeader, AfishaLink, AfishaTitle } from "./styled";
 import {ReactComponent as OrangeArrow} from '../../assets/orange-arrow.svg'
 import {IAfishaItemProps} from "./afisha.types";
 import {CardRow} from "../common/cardRow/cardRow";
-import {Search, Title, Wrapper } from "../common/styled";
+import {StyledDate, Title, Wrapper } from "../common/styled";
 import {AfishaCarousel} from "../common/afishaCarousel/afishaCarousel";
 import {BackButton} from "../common/backButton/backButton";
+import { Search } from "../common/search/search";
 
 
 const data: IAfishaItemProps[] = [
@@ -57,7 +58,7 @@ export const Afisha = () => {
       <Wrapper width={980} paddingTop={72}>
         <AfishaHeader>
           <Title>Афиша</Title>
-          <Search type="text" placeholder='Найти мероприятие'/>
+          <Search placeholder='Найти мероприятие'/>
         </AfishaHeader>
         <CardRow itemsPerRow={3}>
           {
@@ -80,7 +81,7 @@ export const Afisha = () => {
 const AfishaItem:React.FC<IAfishaItemProps> = ({url, title, date, imageUrl}) => {
   return(
     <Card width={300} height={230} imgUrl={imageUrl}>
-      <AfishaDate> {date} </AfishaDate>
+      <StyledDate> {date} </StyledDate>
       <AfishaTitle> {title} </AfishaTitle>
       <AfishaLink to={url}> Подробнее <OrangeArrow/> </AfishaLink>
     </Card>

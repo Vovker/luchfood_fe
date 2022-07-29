@@ -6,6 +6,9 @@ const CornerWrapper = styled.div`
   align-items: center;
   width: 100vw;
   gap: 60px;
+  height: 100%;
+  justify-content: space-between;
+  flex: 1 1 auto;
 `
 
 const TitleWithLogo = styled.div`
@@ -56,6 +59,7 @@ const MenuTitle = styled.div`
   display: flex;
   gap: 17px;
   align-items: center;
+  margin-bottom: 24px;
 `
 
 const StarsImg = styled.img`
@@ -70,6 +74,47 @@ const MenuFooter = styled.div`
   line-height: 25px;
 `
 
+const ItemRows = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 52px;
+  flex-wrap: wrap;
+  gap: 35px;
+`
+
+const MenuRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`
+
+const MenuItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  width: 433px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid ${props => props.theme.colors.white};
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+`
+
+const ItemChar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 133px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+`
+
+const CharWeight = styled.div`
+  border-right: 1px solid ${props => props.theme.colors.white};
+  padding-right: 12px;
+`
+
 export {
   TitleWithLogo,
   CornerLogo,
@@ -78,5 +123,10 @@ export {
   MenuContainer,
   MenuTitle,
   StarsImg,
-  MenuFooter
+  MenuFooter,
+  ItemRows,
+  MenuRow,
+  MenuItem,
+  ItemChar,
+  CharWeight
 }
