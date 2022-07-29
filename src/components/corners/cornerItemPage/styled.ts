@@ -104,7 +104,7 @@ const ItemChar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 133px;
+  min-width: 133px;
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
