@@ -8,7 +8,7 @@ import {
   NewsListItemWrapper,
   NewsListWrapper
 } from './styled'
-import React from "react";
+import React, {useEffect} from "react";
 import {NewsItemProps, NewsProps} from "./news.types";
 import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {CardImg} from "../common/card/styled";
@@ -20,54 +20,22 @@ import {Title} from '../common/title/title';
 import useMediaQuery from "../../hooks/useMatchMedia";
 import {Card} from "../common/card/card";
 import {IsDesktop} from "../common/types/index.types";
-
-const data: NewsItemProps[] = [
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Vegan Fest',
-    publicationDate: 'Июль 16, 2022',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus...',
-    url: '1'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'В шоке был даже кот....',
-    publicationDate: '08.05.2000',
-    description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: '2'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'В шоке был даже кот....',
-    publicationDate: '08.05.2000',
-    description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: '3'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'В шоке был даже кот....',
-    publicationDate: '08.05.2000',
-    description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: '4'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'В шоке был даже кот....',
-    publicationDate: '08.05.2000',
-    description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: '5'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'В шоке был даже кот....',
-    publicationDate: '08.05.2000',
-    description: 'Ведущий Виталий Цаль проиграл в казино!',
-    url: '6'
-  },
-]
+import {useAppDispatch} from "../../hooks/useAppDispatch";
+import {getNews} from '../../store/actions/news.action';
+import {useAppSelector} from "../../hooks/useAppSelector";
+import moment from "moment";
+import {API_URL} from "../../store/endpoints";
 
 
-export const News: React.FC<NewsProps> = ({news}) => {
+export const News: React.FC<NewsProps> = () => {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getNews(10, 0));
+  }, [])
+
+  const {news, isLoading} = useAppSelector(state => state.news)
 
   const isDesktop = useMediaQuery('(min-width: 1073px)')
 
@@ -75,8 +43,8 @@ export const News: React.FC<NewsProps> = ({news}) => {
     <>
       <BackButton title="Назад"/>
       <Wrapper width={980}
-               paddingTop={isDesktop? 72 : 20}
-               marginBottom={isDesktop? 60 : 36}>
+               paddingTop={isDesktop ? 72 : 20}
+               marginBottom={isDesktop ? 60 : 36}>
         <ItemWrapper isDesktop={isDesktop}>
           <NewsHeaderWrapper isDesktop={isDesktop}>
             <Title>Новости</Title>
@@ -84,24 +52,23 @@ export const News: React.FC<NewsProps> = ({news}) => {
           </NewsHeaderWrapper>
           <NewsListWrapper isDesktop={isDesktop}>
             {
-              data.map((value, index) =>
-                {
+              news.map((value, index) => {
                   return isDesktop
                     ? <NewsItem
                       key={index}
-                      image={value.image}
+                      image={value.img}
                       title={value.title}
-                      publicationDate={value.publicationDate}
+                      publicationDate={value.created_at}
                       description={value.description}
-                      url={value.url}
+                      id={value.id}
                     />
                     : <NewsItemMobile
                       key={index}
-                      image={value.image}
+                      image={value.img}
                       title={value.title}
-                      publicationDate={value.publicationDate}
+                      publicationDate={value.created_at}
                       description={value.description}
-                      url={value.url}
+                      id={value.id}
                     />
                 }
               )
@@ -113,52 +80,52 @@ export const News: React.FC<NewsProps> = ({news}) => {
   )
 }
 
-const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, description, url}) => {
+const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, description, id}) => {
   return (
     <NewsListItemWrapper>
       <NewsListItemContentInfo>
         <NewsListItemContentInfoTitle>
           {title}
           <NewsListItemContentInfoDate>
-            {publicationDate}
+            {moment(publicationDate).locale('ru').format('DD MM YYYY')}
           </NewsListItemContentInfoDate>
         </NewsListItemContentInfoTitle>
         <NewsListItemContentText>
           {description}
         </NewsListItemContentText>
-        <NewsListItemLink to={url}>
+        <NewsListItemLink to={`/news/${id}`}>
           Читать новость
           <Arrow fill={theme.colors.redMain}/>
         </NewsListItemLink>
       </NewsListItemContentInfo>
-      <CardImg height={150} width={230} image={image}/>
+      <CardImg height={150} width={230} image={`${API_URL}/${image}`}/>
     </NewsListItemWrapper>
   );
 }
 
 const NewsItemMobile: React.FC<NewsItemProps> = ({
-                                                   image,
-                                                   title,
-                                                   publicationDate,
-                                                   description,
-                                                   url
-                                                 }) => {
+     image,
+     title,
+     publicationDate,
+     description,
+     id
+   }) => {
   return (
     <Card
       width={345}
       height={225}
-      imgUrl={image}
+      imgUrl={`${API_URL}/${image}`}
     >
       <NewsListItemContentInfoTitle>
         {title}
       </NewsListItemContentInfoTitle>
       <NewsListItemContentInfoDate>
-        {publicationDate}
+        {moment(publicationDate).locale('ru').format('DD MMMM YYYY')}
       </NewsListItemContentInfoDate>
       <NewsListItemContentText isMobile={true}>
         {description}
       </NewsListItemContentText>
-      <NewsListItemLink to={url}>
+      <NewsListItemLink to={`/news/${id}`}>
         Читать новость
         <Arrow fill={theme.colors.redMain} width="27px" height="27px"/>
       </NewsListItemLink>
