@@ -8,8 +8,8 @@ export const Card:React.FC<ICardProps> = ({imgUrl, children, width, height}) => 
     <CardWrapper width={`${width}px`}>
       <CardImg
         image={imgUrl}
-        width={`${width}px`}
-        height={`${height}px`}
+        width={width}
+        height={height}
       />
       {children}
     </CardWrapper>

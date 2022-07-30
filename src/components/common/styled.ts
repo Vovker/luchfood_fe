@@ -1,32 +1,44 @@
 import styled from "styled-components";
-import {ITitleProps, IWrapperProps} from "./common.types";
+import {ElementWithGap, IItemWrapper, IWrapperProps} from "./common.types";
+import {IsDesktop} from "./types/index.types";
 
 const Wrapper = styled.div<IWrapperProps>`
   width: ${props => props.width+'px'};
   padding-top:${props => props.paddingTop?  props.paddingTop+'px' : 0};
+  margin-bottom: ${props => props.marginBottom? props.marginBottom + 'px':0};
+  max-width: 100%;
 `
 
-const Title = styled.div<ITitleProps>`
-  font-size: 40px;
+
+const ItemPageWrapper = styled.div<ElementWithGap>`
+  display: flex;
+  gap: ${props => props.gap ? props.gap + 'px' : 0};
+  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
+`
+
+const InfoWrapper = styled.div<ElementWithGap>`
+  display: flex;
+  flex-direction: column;
+  gap: ${props => props.gap ? props.gap + 'px' : 0};
+`
+
+
+const StyledDate = styled.div<IsDesktop>`
   font-weight: 700;
-  line-height: 47px;
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom+'px' : 0};
+  font-size: ${props => props.isDesktop ? '14px' : '16px'};
+  line-height: 21px;
 `
 
-const Search = styled.input`
-  height: 25px;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  font-family: Jura;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 25px;
-  color: ${props => props.theme.colors.darkMain};
+const ItemWrapper = styled.div<IItemWrapper>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.isDesktop? 'flex-start' : 'center'};
 `
 
 export {
   Wrapper,
-  Title,
-  Search
+  ItemPageWrapper,
+  InfoWrapper,
+  StyledDate,
+  ItemWrapper
 }

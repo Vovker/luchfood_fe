@@ -1,25 +1,20 @@
 import styled from "styled-components";
+import {IsDesktop} from "../types/index.types";
+import {Link} from "react-router-dom";
+import {ButtonBack, ButtonNext} from "pure-react-carousel";
 
-const CarouselContainer = styled.div`
+const CarouselContainer = styled.div<IsDesktop>`
   width: 100%;
-  height: 706px;
+  height: ${props => props.isDesktop ? '706px' : 'fit-content'};
   background: ${props => props.theme.colors.darkMain};
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 42px 0;
+  padding: ${props => props.isDesktop ? '42px 0' : '67px 0 40px 0'};
   box-sizing: border-box;
 `;
 
-const CarouselTitle = styled.div`
-  margin-bottom: 24px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 47px;
-  color: ${props => props.theme.colors.white};
-`;
 
 const PosterLinkIcon = styled.img`
   margin-left: 11px;
@@ -36,19 +31,20 @@ const PosterLink = styled.a`
   font-size: 20px;
   line-height: 24px;
   color: ${props => props.theme.colors.mint};
-  
+
   &:hover {
     cursor: pointer;
-    
+
     ${PosterLinkIcon} {
       margin-left: 20px;
     }
   }
 `;
 
-const SliderWrapper = styled.div`
-  width: 1200px;
-  height: 480px;
+const SliderWrapper = styled.div<IsDesktop>`
+  width: ${props => props.isDesktop ? '1200px' : '345px'};
+  height: ${props => props.isDesktop ? '480px' : '456px'};
+  position: relative;
 `;
 
 const CardWrapper = styled.div`
@@ -104,9 +100,65 @@ const PublicationDescription = styled.div`
   color: ${props => props.theme.colors.white};
 `;
 
+const MobileCardWrapper = styled.div`
+  color: white;
+`
+
+const MobileLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => props.theme.colors.mint};
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+`
+
+const MobileTitle = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: ${props => props.theme.colors.mint};
+`
+
+const MobileDescription = styled.div`
+  height: 84px;
+  width: 345px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
+const StyledButtonBack = styled(ButtonBack)`
+  border: none;
+  width: 43px;
+  height: 43px;
+  background: rgba(255, 255, 255, 0.83);
+  position: absolute;
+  backdrop-filter: blur(18.7636px);
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  z-index: 10;
+`;
+
+const StyledButtonNext = styled(ButtonNext)`
+  border: none;
+  width: 43px;
+  height: 43px;
+  background: rgba(255, 255, 255, 0.83);
+  position: absolute;
+  backdrop-filter: blur(18.7636px);
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  z-index: 10;
+`;
+
+
 export {
   CarouselContainer,
-  CarouselTitle,
   PosterLink,
   PosterLinkIcon,
   SliderWrapper,
@@ -114,6 +166,12 @@ export {
   CardImage,
   PublicationDate,
   PublicationTitle,
-  PublicationDescription
+  PublicationDescription,
+  MobileCardWrapper,
+  MobileLink,
+  MobileTitle,
+  MobileDescription,
+  StyledButtonBack,
+  StyledButtonNext
 }
 

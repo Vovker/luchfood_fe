@@ -5,6 +5,7 @@ import {
 import {PhotoSection} from "./photoSection/photoSection";
 import {DeliveryBanner} from "../banners/deliveryBanner/deliveryBanner";
 import {UpdatesCarousel} from "../common/updatesCarousel/updatesCarousel";
+import useMediaQuery from "../../hooks/useMatchMedia";
 
 const slides = [
   {
@@ -174,9 +175,12 @@ const updatesSlides = [
 ]
 
 export const Home = () => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
     <>
-      <CornersSliderWrapper>
+      <CornersSliderWrapper isDesktop={isDesktop}>
         <CornersCarousel
           slides={slides}
         />

@@ -20,17 +20,23 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import {ICarouselProps, ISlideProps} from "./cornersCarousel.types";
 import React from "react";
 import kitchenTypeIcon from '../../../assets/corners/kitchen-type-icon.svg';
-import addressIcon from '../../../assets/corners/address-icon.svg';
-import arrowIcon from '../../../assets/black-arrow.svg';
+import {ReactComponent as AddressIcon} from '../../../assets/corners/address-icon.svg';
+import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
+import theme from "../../../theme";
+import useMediaQuery from "../../../hooks/useMatchMedia";
+import { CardImg } from "../card/styled";
 
 const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
-    <SliderWrapper>
+    <SliderWrapper isDesktop={isDesktop}>
       <CarouselProvider
-        naturalSlideWidth={315}
-        naturalSlideHeight={450}
+        naturalSlideWidth={isDesktop ? 315 : 345}
+        naturalSlideHeight={isDesktop ? 450 : 493}
         totalSlides={slides.length}
-        visibleSlides={4}
+        visibleSlides={isDesktop ? 4 : 1}
         infinite={true}
         playDirection={'forward'}
         isPlaying={true}
@@ -39,27 +45,59 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           {
             slides.map((slide, index) =>
               <Slide index={index} key={index}>
-                <Card
-                  url={slide.url}
-                  title={slide.title}
-                  imageUrl={slide.imageUrl}
-                  address={slide.address}
-                  kitchenType={slide.kitchenType}
-                />
+                {
+                  isDesktop
+                    ? <Card
+                      url={slide.url}
+                      title={slide.title}
+                      imageUrl={slide.imageUrl}
+                      address={slide.address}
+                      kitchenType={slide.kitchenType}
+                    />
+                    :  <MobileCard
+                      url={slide.url}
+                      title={slide.title}
+                      imageUrl={slide.imageUrl}
+                      address={slide.address}
+                      kitchenType={slide.kitchenType}
+                    />
+                }
               </Slide>
             )
           }
         </Slider>
         <DotsWrapper>
-          <StyledDot slide={1}/>
-          <StyledDot slide={5}/>
-          <StyledDot slide={9}/>
+          {isDesktop
+            ? <>
+              <StyledDot slide={1}/>
+              <StyledDot slide={5}/>
+              <StyledDot slide={9}/>
+            </>
+            : <>
+              {
+                slides.map((slide,index)=>
+                  <StyledDot slide={index+1} key={index}/>
+                )
+              }
+            </>
+          }
+
+
         </DotsWrapper>
         <StyledButtonBack>
-          <StyledButtonIcon isReverse={true} src={arrowIcon}/>
+          <ArrowIcon
+            fill={theme.colors.darkMain}
+            style={{transform:"rotate(180deg)"}}
+            width={isDesktop ? '32px' : '25px'}
+            height={isDesktop ? '32px' : '25px'}
+          />
         </StyledButtonBack>
         <StyledButtonNext>
-          <StyledButtonIcon isReverse={false} src={arrowIcon}/>
+          <ArrowIcon
+            fill={theme.colors.darkMain}
+            width={isDesktop ? '32px' : '25px'}
+            height={isDesktop ? '32px' : '25px'}
+          />
         </StyledButtonNext>
       </CarouselProvider>
     </SliderWrapper>
@@ -80,7 +118,7 @@ const Card: React.FC<ISlideProps> = ({
       <CardContentWrapper>
         <CardTitle>{title}</CardTitle>
         <CardInfoLineWrapper>
-          <CardInfoLineIcon src={addressIcon}/>
+          <AddressIcon fill={theme.colors.white}/>
           {address}
         </CardInfoLineWrapper>
         <CardInfoLineWrapper>
@@ -90,6 +128,18 @@ const Card: React.FC<ISlideProps> = ({
       </CardContentWrapper>
     </CardWrapper>
   );
+}
+
+const MobileCard: React.FC<ISlideProps> = ({
+                                             title,
+                                             address,
+                                             kitchenType,
+                                             url,
+                                             imageUrl
+                                           }) => {
+  return (
+    <CardImg width={345} height={493} image={imageUrl}/>
+  )
 }
 
 export default CornersCarousel;

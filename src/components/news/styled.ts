@@ -1,111 +1,85 @@
 import styled from "styled-components";
-import {NewsItemTypes} from "./news.types";
 import {Link} from "react-router-dom";
+import {IsDesktop} from "../common/types/index.types";
 
-const NewsHeaderWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-`;
-
-const NewsHeaderTitle = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 47px;
-  color: ${props => props.theme.colors.darkMain};
-`;
-
-const NewsListWrapper = styled.div`
+const NewsHeaderWrapper = styled.div<IsDesktop>`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => props.isDesktop ? 'space-between' : 'center'};
+  margin-bottom: ${props => props.isDesktop ? '40px' : '20px'};
+  width: 100%;
+`;
+
+
+const NewsListWrapper = styled.div<IsDesktop>`
+  display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: ${props => props.isDesktop ? '40px' : '30px'};
 `;
 
 const NewsListItemWrapper = styled.div`
   display: flex;
-  width: 100%;
   height: 150px;
+  justify-content: space-between;
   gap: 60px;
 `;
 
-const NewsListItemImage = styled.div<NewsItemTypes>`
-  width: 230px;
-  height: 150px;
-  background-image: url(${props => props.image});
-`;
 
-const NewsListItemContentWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  
-`;
-
-const NewsListItemContentHeader = styled.div`
+const NewsListItemContentInfo = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  flex-direction: column;
+  gap: 13px;
 `;
 
-const NewsListItemContentHeaderTitle = styled.div`
-  margin-right: 12px;
+const NewsListItemContentInfoTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
   color: ${props => props.theme.colors.darkMain};
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
-const NewsListItemContentHeaderDate = styled.div`
-  font-style: normal;
+const NewsListItemContentInfoDate = styled.div`
   font-weight: 700;
   font-size: 14px;
-  line-height: 150%;
-  color: ${props => props.theme.colors.darkMain};
+  line-height: 20.62px;
 `;
 
-const NewsListItemContentText = styled.div`
-  height: 75px;
-  font-style: normal;
+const NewsListItemContentText = styled.div<IsDesktop>`
+  height: ${props => props.isMobile ? '42px' : '75px'};
+  width: ${props => props.isMobile ? '345px' : '690px'};
+  font-size: ${props => props.isMobile ? '14px' : '18px'};
   font-weight: 700;
-  font-size: 18px;
-  line-height: 140%;
+  line-height: ${props => props.isMobile ? '21px' : '25px'};
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-bottom: 12px;
 `;
 
-const NewsListItemContentFooter = styled(Link)`
-  margin-left: auto;
+const NewsListItemLink = styled(Link)`
+  text-decoration: none;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
   color: ${props => props.theme.colors.redMain};
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
 `;
 
-const NewsListItemContentFooterIcon = styled.img`
-  margin-left: 11px;
-  width: 20px;
-`;
 
 
 export {
   NewsHeaderWrapper,
-  NewsHeaderTitle,
   NewsListWrapper,
   NewsListItemWrapper,
-  NewsListItemImage,
-  NewsListItemContentFooter,
-  NewsListItemContentFooterIcon,
-  NewsListItemContentWrapper,
-  NewsListItemContentHeader,
-  NewsListItemContentHeaderTitle,
-  NewsListItemContentHeaderDate,
+  NewsListItemLink,
+  NewsListItemContentInfo,
+  NewsListItemContentInfoTitle,
+  NewsListItemContentInfoDate,
   NewsListItemContentText
 }

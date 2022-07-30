@@ -8,22 +8,27 @@ import {
   PhotoSectionLink,
   PhotoSectionLinkIcon
 } from './styled';
-import arrowIcon from '../../../assets/black-arrow.svg';
+import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
+import {Title} from "../../common/title/title";
+import useMediaQuery from "../../../hooks/useMatchMedia";
 
 export const PhotoSection: React.FC<IPhotoSectionProps> = ({urls}) => {
+
+  const isDesktop = useMediaQuery('(min-width: 1073px)')
+
   return (
     <PhotoSectionWrapper>
-      <PhotoSectionTitle>Фотографии</PhotoSectionTitle>
-      <PhotoSectionInner>
+      <Title align="center" marginBottom={24}>Фотографии</Title>
+      <PhotoSectionInner isDesktop={isDesktop}>
         {
           urls.map((url: string, index: number) => {
-            return <PhotoSectionImg key={index} url={url}/>
+            return <PhotoSectionImg key={index} url={url} isDesktop={isDesktop}/>
           })
         }
       </PhotoSectionInner>
-      <PhotoSectionLink>
+      <PhotoSectionLink isDesktop={isDesktop}>
         Перейти к галерее
-        <PhotoSectionLinkIcon src={arrowIcon}/>
+        <ArrowIcon fill="#1E1E1E"/>
       </PhotoSectionLink>
     </PhotoSectionWrapper>
   );

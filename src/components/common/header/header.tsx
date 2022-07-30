@@ -59,10 +59,10 @@ export const Header = () => {
       </HeaderWrapper>
       <SubHeaderWrapper isDesktop={isDesktop}>
         <SubHeaderLink href={'/'}>Операторы</SubHeaderLink>
-        <SubHeaderLink href={'/'}>Новости</SubHeaderLink>
-        <SubHeaderLink href={'/'}>О нас</SubHeaderLink>
-        <SubHeaderLink href={'/'}>Афиша</SubHeaderLink>
-        <SubHeaderLink href={'/'}>Галерея</SubHeaderLink>
+        <SubHeaderLink href={'/news'}>Новости</SubHeaderLink>
+        <SubHeaderLink href={'/about'}>О нас</SubHeaderLink>
+        <SubHeaderLink href={'/afisha'}>Афиша</SubHeaderLink>
+        <SubHeaderLink href={'/gallery'}>Галерея</SubHeaderLink>
         {isDesktop && <Search/>}
       </SubHeaderWrapper>
     </HeaderContainer>
