@@ -100,7 +100,6 @@ export const Afisha = () => {
                         </AfishaFooterMobile>
                       </>
                   }
-
                 </Card>
               )
             }
@@ -110,5 +109,9 @@ export const Afisha = () => {
       </Wrapper>
     </>
   )
+}
+
+const AfishaCard = () => {
+
 }
 
