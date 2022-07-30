@@ -29,37 +29,37 @@ import useMediaQuery from "../../../hooks/useMatchMedia";
 const data: CornerMenu[] = [
   {
     title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
-    price: 18,
+    price: 1,
     weight: 200,
   },
   {
     title: 'Peбра Кола-Барбекю',
-    price: 8,
+    price: 2,
     weight: 200,
   },
   {
     title: 'Peбра классические',
-    price: 118,
+    price: 3,
     weight: 1200,
   },
   {
     title: 'Peбра Кола-Барбекю',
-    price: 8,
+    price: 4,
     weight: 200,
   },
   {
     title: 'Peбра классические',
-    price: 18,
+    price: 5,
     weight: 200,
   },
   {
     title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
-    price: 8,
+    price: 6,
     weight: 1200,
   },
   {
     title: 'Peбра классические',
-    price: 18,
+    price: 7,
     weight: 200,
   },
   {
@@ -69,38 +69,33 @@ const data: CornerMenu[] = [
   },
   {
     title: 'Peбра классические',
-    price: 18,
+    price: 9,
     weight: 200,
   },
   {
     title: 'Peбра Кола-Барбекююююю фывфывфывфыввфывфыв',
-    price: 8,
+    price: 10,
     weight: 200,
   },
   {
     title: 'Peбра Кола-Барбекю',
-    price: 8,
+    price: 11,
     weight: 200
   }
 
 ]
 
+function formatDataToView<T>(array: Array<T>) {
+  let rows: Array<T[]> = []
+  array.forEach((el, index, arr) => {
+    if(index % 2 !== 1){
+      arr[index + 1] ? rows.push([el, arr[index + 1]]) : rows.push([el])
+    }
+  })
+  return rows
+}
 
 export const CornerItemPage = () => {
-
-  // function formatDataToView<T>(array: Array<T>) {
-  //   const itemsPerRow = array.length / 2
-  //   let firstRow: Array<T> = []
-  //   let secondRow: Array<T> = []
-  //   array.forEach((el, index) => index < itemsPerRow ? firstRow.push(el) : secondRow.push(el))
-  //   return [firstRow, secondRow]
-  // }
-
-  function formatDataToView<T>(array: Array<T>) {
-    let rows: Array<T[]> = []
-    array.forEach((el, index, arr) => index % 2 ? rows.push([arr[index], arr[index + 1]]) : '')
-    return rows
-  }
 
   const isDesktop = useMediaQuery('(min-width: 1073px)')
 
@@ -143,23 +138,6 @@ export const CornerItemPage = () => {
             </MenuTitle>
             <ItemRows>
               {
-                // formatDataToView(data).map((itemRow, index) =>
-                //   <MenuRow key={index}>
-                //     {
-                //       itemRow.map((item, idx) =>
-                //         <MenuItem key={idx} isDesktop={isDesktop}>
-                //           {item.title}
-                //           <ItemChar isDesktop={isDesktop}>
-                //             <CharWeight>
-                //               {`${item.weight} гр`}
-                //             </CharWeight>
-                //             {`${item.price} Br`}
-                //           </ItemChar>
-                //         </MenuItem>
-                //       )
-                //     }
-                //   </MenuRow>
-                // )
                 formatDataToView(data).map((itemRow, index) =>
                   <MenuRow key={index} isDesktop={isDesktop}>
                     {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ButtonBack, ButtonNext, Dot} from "pure-react-carousel";
+import {IsDesktop} from "../types/index.types";
 
 
 const SliderContainer = styled.div`
@@ -12,10 +13,9 @@ const SliderContainer = styled.div`
 `;
 
 
-const SliderWrapper = styled.div`
+const SliderWrapper = styled.div<IsDesktop>`
   position: relative;
-  overflow: hidden;
-  width: 1260px;
+  width: ${props => props.isDesktop ? '1260px' : '345px'};
 `;
 
 const CardContentWrapper = styled.div`
