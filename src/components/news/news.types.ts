@@ -10,7 +10,7 @@ export interface NewsProps {
 export interface NewsItemProps {
   image: string;
   title: string;
-  publicationDate: string;
+  publicationDate: Date;
   description: string;
-  url: string;
+  id: number;
 }
