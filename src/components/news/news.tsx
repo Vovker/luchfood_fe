@@ -10,69 +10,43 @@ import {
   NewsListItemContentHeaderTitle,
   NewsListItemContentText,
   NewsListItemContentWrapper,
-  NewsListItemImage,
   NewsListItemWrapper,
   NewsListWrapper
 } from './styled'
-import React from "react";
-import {NewsItemProps, NewsProps} from "./news.types";
+import React, {useEffect} from "react";
+import {NewsItemProps} from "./news.types";
 import moment from "moment";
 import arrow from '../../assets/orange-arrow.svg';
 import {CardImg} from "../common/card/styled";
+import {useAppDispatch} from "../../hooks/useAppDispatch";
+import {getNews} from "../../store/actions/news.action";
+import {useAppSelector} from "../../hooks/useAppSelector";
+import {API_URL} from "../../store/endpoints";
 
-const data: NewsItemProps[] = [
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
-    publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
-    url: 'google.com'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
-    publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
-    url: 'google.com'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
-    publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
-    url: 'google.com'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
-    publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
-    url: 'google.com'
-  },
-  {
-    image: "https://qame.info/wp-content/uploads/2022/01/maxresdefault-1.webp",
-    title: 'Ведущий Виталий Цаль проиграл в казино!',
-    publicationDate: '08.05.2000',
-    description: 'В шоке был даже кот....',
-    url: 'google.com'
-  }
-]
+export const News = () => {
 
+  const dispatch = useAppDispatch();
 
-export const News: React.FC<NewsProps> = ({news}) => {
+  useEffect(() => {
+    dispatch(getNews(10,0));
+  }, [])
+
+  const {news, isLoading} = useAppSelector(state => state.news)
+
   return(
     <BlockWrapper backgroundColor={theme.colors.liteBackground}>
       <NewsHeaderWrapper>
         <NewsHeaderTitle>Новости</NewsHeaderTitle>
         <NewsListWrapper>
           {
-            data.map((value, index) =>
+            news.map((value, index) =>
               <NewsItem
-                image={value.image}
+                key={index}
+                image={`${API_URL}/${value.img}`}
                 title={value.title}
-                publicationDate={value.publicationDate}
+                publicationDate={value.created_at}
                 description={value.description}
-                url={value.url}
+                id={value.id}
               />
             )
           }
@@ -82,16 +56,16 @@ export const News: React.FC<NewsProps> = ({news}) => {
   )
 }
 
-const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, description, url}) => {
+const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, description, id}) => {
   return (
     <NewsListItemWrapper>
       <NewsListItemContentWrapper>
         <NewsListItemContentHeader>
           <NewsListItemContentHeaderTitle>{title}</NewsListItemContentHeaderTitle>
-          <NewsListItemContentHeaderDate>{moment(publicationDate).format()}</NewsListItemContentHeaderDate>
+          <NewsListItemContentHeaderDate>{moment(publicationDate).locale('ru').format('DD MMMM YYYY')}</NewsListItemContentHeaderDate>
         </NewsListItemContentHeader>
         <NewsListItemContentText>{description}</NewsListItemContentText>
-        <NewsListItemContentFooter to={url}>
+        <NewsListItemContentFooter to={`/news/${id}`}>
           Читать новость
           <NewsListItemContentFooterIcon src={arrow}/>
         </NewsListItemContentFooter>
