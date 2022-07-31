@@ -14,24 +14,22 @@ import leftIcon from '../../../assets/delivery_banner/leftImage.png';
 import rightIcon from '../../../assets/delivery_banner/rightImage.png';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 import theme from "../../../theme";
-import useMediaQuery from "../../../hooks/useMatchMedia";
 import React from "react";
 import {IsDesktop} from "../../common/types/index.types";
+import {isMobile} from "react-device-detect";
 
 export const DeliveryBanner = () => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
-
   return (
     <>
-      <BannerWrapper isDesktop={isDesktop}>
-        {!isDesktop && <BannerText isDesktop={false}/>}
+      <BannerWrapper>
+        {isMobile && <BannerText isDesktop={false}/>}
         <ContentWrapper>
-          <LeftBannerImage src={leftIcon} isDesktop={isDesktop}/>
-          {isDesktop && <BannerText isDesktop={true}/>}
-          <RightBannerImage src={rightIcon} isDesktop={isDesktop}/>
+          <LeftBannerImage src={leftIcon}/>
+          {!isMobile && <BannerText isDesktop={true}/>}
+          <RightBannerImage src={rightIcon}/>
         </ContentWrapper>
-        {!isDesktop &&
+        {isMobile &&
           <BannerButton>
           Заказать доставку
           </BannerButton>
@@ -43,19 +41,19 @@ export const DeliveryBanner = () => {
   );
 }
 
-const BannerText: React.FC<IsDesktop> = ({isDesktop}) => {
+const BannerText: React.FC<IsDesktop> = () => {
 
   return(
     <BannerTextWrapper>
-      <BannerTitle isDesktop={isDesktop}>
+      <BannerTitle>
         Доставка в течении получаса
       </BannerTitle>
-      <BannerSubtitle isDesktop={isDesktop}>
+      <BannerSubtitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat turpis lorem, eget dapibus dui
         feugiat sed. Interdum et malesuada fames
       </BannerSubtitle>
       {
-        isDesktop &&
+        !isMobile &&
         <BannerButton>
         Заказать доставку
         <ArrowIcon fill={theme.colors.darkMain}/>

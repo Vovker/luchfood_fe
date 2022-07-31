@@ -14,7 +14,7 @@ import {
   StyledDot,
   StyledButtonBack,
   StyledButtonNext,
-  StyledButtonIcon
+  MobileImage
 } from './styled';
 import "pure-react-carousel/dist/react-carousel.es.css";
 import {ICarouselProps, ISlideProps} from "./cornersCarousel.types";
@@ -23,20 +23,18 @@ import kitchenTypeIcon from '../../../assets/corners/kitchen-type-icon.svg';
 import {ReactComponent as AddressIcon} from '../../../assets/corners/address-icon.svg';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 import theme from "../../../theme";
-import useMediaQuery from "../../../hooks/useMatchMedia";
-import { CardImg } from "../card/styled";
+import {isMobile} from "react-device-detect";
 
 const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
-    <SliderWrapper isDesktop={isDesktop}>
+    <SliderWrapper>
       <CarouselProvider
-        naturalSlideWidth={isDesktop ? 315 : 345}
-        naturalSlideHeight={isDesktop ? 450 : 493}
+        naturalSlideWidth={!isMobile ? 315 : 345}
+        naturalSlideHeight={!isMobile ? 450 : 493}
         totalSlides={slides.length}
-        visibleSlides={isDesktop ? 4 : 1}
+        visibleSlides={!isMobile ? 4 : 1}
         infinite={true}
         playDirection={'forward'}
         isPlaying={true}
@@ -46,7 +44,7 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
             slides.map((slide, index) =>
               <Slide index={index} key={index}>
                 {
-                  isDesktop
+                  !isMobile
                     ? <Card
                       url={slide.url}
                       title={slide.title}
@@ -67,7 +65,7 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           }
         </Slider>
         <DotsWrapper>
-          {isDesktop
+          {!isMobile
             ? <>
               <StyledDot slide={1}/>
               <StyledDot slide={5}/>
@@ -88,15 +86,15 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           <ArrowIcon
             fill={theme.colors.darkMain}
             style={{transform:"rotate(180deg)"}}
-            width={isDesktop ? '32px' : '25px'}
-            height={isDesktop ? '32px' : '25px'}
+            width={!isMobile ? '32px' : '25px'}
+            height={!isMobile ? '32px' : '25px'}
           />
         </StyledButtonBack>
         <StyledButtonNext>
           <ArrowIcon
             fill={theme.colors.darkMain}
-            width={isDesktop ? '32px' : '25px'}
-            height={isDesktop ? '32px' : '25px'}
+            width={!isMobile ? '32px' : '25px'}
+            height={!isMobile ? '32px' : '25px'}
           />
         </StyledButtonNext>
       </CarouselProvider>
@@ -131,14 +129,10 @@ const Card: React.FC<ISlideProps> = ({
 }
 
 const MobileCard: React.FC<ISlideProps> = ({
- title,
- address,
- kitchenType,
- url,
  imageUrl
 }) => {
   return (
-    <CardImg image={imageUrl}/>
+    <MobileImage image={imageUrl}/>
   )
 }
 

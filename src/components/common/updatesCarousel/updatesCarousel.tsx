@@ -8,38 +8,31 @@ import {
   PublicationDescription,
   PublicationTitle,
   MobileCardWrapper,
-  MobileLink, MobileTitle, MobileDescription, StyledButtonBack, StyledButtonNext
+  MobileLink, MobileTitle, MobileDescription, StyledButtonBack, StyledButtonNext, MobileCardImage, UpdatesCarouselTitle
 } from './styled';
 import {ReactComponent as GreenArrow} from '../../../assets/green-arrow.svg';
 import React from "react";
 import {IUpdatesCarouselProps, UpdatesCarouselTypes} from "./updatesCarousel.types";
 import {CarouselProvider, Slide, Slider} from "pure-react-carousel";
-import useMediaQuery from "../../../hooks/useMatchMedia";
-import {Card} from '../card/card';
 import {StyledDate} from '../styled';
-import {Title} from "../title/title";
 import theme from "../../../theme";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
+import {isMobile} from "react-device-detect";
 
 export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
-    <CarouselContainer isDesktop={isDesktop}>
-      <Title
-        marginBottom={43}
-        align="center"
-        color={theme.colors.white}
-      >
+    <CarouselContainer>
+      <UpdatesCarouselTitle>
         Последние обновления
-      </Title>
-      <SliderWrapper isDesktop={isDesktop}>
+      </UpdatesCarouselTitle>
+      <SliderWrapper>
         <CarouselProvider
-          naturalSlideWidth={isDesktop ? 380 : 346}
-          naturalSlideHeight={isDesktop ? 480 : 456}
+          naturalSlideWidth={!isMobile ? 380 : 346}
+          naturalSlideHeight={!isMobile ? 480 : 456}
           totalSlides={slides.length}
-          visibleSlides={isDesktop ? 3 : 1}
+          visibleSlides={!isMobile ? 3 : 1}
           infinite={true}
           playDirection={'forward'}
           isPlaying={true}
@@ -49,7 +42,7 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
               slides.map((slide, index: number) =>
                 <Slide index={index} key={index}>
                   {
-                    isDesktop
+                    !isMobile
                       ? <CardDesktop
                         title={slide.title}
                         date={slide.date}
@@ -69,29 +62,25 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
               )
             }
           </Slider>
-          {!isDesktop &&
-			  <>
-				  <StyledButtonBack>
-					  <ArrowIcon
-                fill={theme.colors.darkMain}
-                style={{transform: "rotate(180deg)"}}
-                width='25px'
-                height='25px'
+          <StyledButtonBack>
+            <ArrowIcon
+              fill={isMobile ? theme.colors.darkMain : theme.colors.white}
+              style={{transform: "rotate(180deg)"}}
+              width={isMobile ? '25px' : '30px'}
+              height={isMobile ? '25px' : '30px'}
             />
-				  </StyledButtonBack>
-				  <StyledButtonNext>
-					  <ArrowIcon
-                fill={theme.colors.darkMain}
-                width='25px'
-                height='25px'
+          </StyledButtonBack>
+          <StyledButtonNext>
+            <ArrowIcon
+              fill={isMobile ? theme.colors.darkMain : theme.colors.white}
+              width={isMobile ? '25px' : '30px'}
+              height={isMobile ? '25px' : '30px'}
             />
-				  </StyledButtonNext>
-			  </>
-          }
+          </StyledButtonNext>
         </CarouselProvider>
       </SliderWrapper>
       {
-        isDesktop &&
+        !isMobile &&
 		  <PosterLink>
 			  Вся афиша
 			  <GreenArrow/>
@@ -115,20 +104,15 @@ const CardDesktop: React.FC<UpdatesCarouselTypes> = ({title, date, description, 
 const CardMobile: React.FC<UpdatesCarouselTypes> = ({title, date, description, imageUrl, url}) => {
   return (
     <MobileCardWrapper>
-      <Card
-        width={346}
-        height={265}
-        imgUrl={imageUrl}
-        key={url}>
-        <StyledDate> {date} </StyledDate>
-        <MobileTitle> {title} </MobileTitle>
-        <MobileDescription>
-          {description}
-        </MobileDescription>
-        <MobileLink to={url}>
-          Подробнее <GreenArrow/>
-        </MobileLink>
-      </Card>
+      <MobileCardImage image={imageUrl}/>
+      <StyledDate> {date} </StyledDate>
+      <MobileTitle> {title} </MobileTitle>
+      <MobileDescription>
+        {description}
+      </MobileDescription>
+      <MobileLink to={url}>
+        Подробнее <GreenArrow/>
+      </MobileLink>
     </MobileCardWrapper>
   )
 }

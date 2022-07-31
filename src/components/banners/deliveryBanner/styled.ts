@@ -1,27 +1,41 @@
 import styled from "styled-components";
 import wave from '../../../assets/delivery_banner/wave.svg'
-import {IsDesktop} from "../../common/types/index.types";
 
-const BannerWrapper = styled.div<IsDesktop>`
+const BannerWrapper = styled.div`
   background: ${props => props.theme.colors.redMain};
   width: 100%;
-  height: ${props => props.isDesktop ? '357px' : ''};
+  height: 357px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
+  flex-direction: row;
   overflow: hidden;
+
+  @media(max-width: 480px){
+    flex-direction: column;
+    height: fit-content;
+  }
 `;
 
-const LeftBannerImage = styled.img<IsDesktop>`
-  height: ${props => props.isDesktop ? '357px ' : '170px'};
-  margin-right: ${props => props.isDesktop ? '-40px ' : '0'};
+const LeftBannerImage = styled.img`
+  height: 357px;
+  margin-right: -40px;
+  
+  @media(max-width: 480px){
+    height: 170px;
+    margin-right: 0;
+  }
 `;
 
-const RightBannerImage = styled.img<IsDesktop>`
+const RightBannerImage = styled.img`
   pointer-events: none;
-  width: ${props => props.isDesktop ? '489px ' : '245px'};
-  margin-left: ${props => props.isDesktop ? '-120px' : '0'};
+  width: 489px;
+  margin-left: -120px;
+
+  @media(max-width: 480px){
+    width: 245px;
+    margin-left: 0;
+  }
 `;
 
 const BannerTextWrapper = styled.div`
@@ -33,25 +47,40 @@ const BannerTextWrapper = styled.div`
   max-width: 100%;
 `;
 
-const BannerTitle = styled.div<IsDesktop>`
-  margin-bottom: ${props => props.isDesktop ? '24px' : '16px'};
-  margin-top: ${props => props.isDesktop ? '0' : '24px'};
+const BannerTitle = styled.div`
+  margin-bottom: 24px;
+  margin-top: 0;
   color: ${props => props.theme.colors.darkMain};
   font-style: normal;
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '40px' : '20px'};
-  line-height: ${props => props.isDesktop ? '47px' : '24px'};
+  font-size: 40px;
+  line-height: 47px;
   text-align: center;
+  
+  @media(max-width: 480px){
+    margin-top: 24px;
+    line-height: 24px;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
 `;
 
-const BannerSubtitle = styled.div<IsDesktop>`
+const BannerSubtitle = styled.div`
   font-style: normal;
-  margin-bottom: ${props => props.isDesktop ? '20px' : '8px'};
+  margin-bottom: 20px;
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '18px' : '14px'};
-  line-height: ${props => props.isDesktop ? '27px' : '21px'};
+  font-size: 18px;
+  line-height: 27px;
   text-align: center;
-  width: ${props => props.isDesktop ? 'fit-content' : '344px'};
+  width: fit-content;
+  
+  @media(max-width: 480px){
+    width: 344px;
+    line-height: 21px;
+    font-size: 14px;
+    margin-bottom: 8px;
+
+  }
 `;
 
 const BannerButtonIcon = styled.img`
@@ -59,9 +88,9 @@ const BannerButtonIcon = styled.img`
   margin-left: 11px;
 `;
 
-const BannerButton = styled.button<IsDesktop>`
-  width: ${props => props.isDesktop ? '266px ' : '236px'};
-  height: ${props => props.isDesktop ? '54px ' : '44px'};
+const BannerButton = styled.button`
+  width: 266px;
+  height: 54px;
   background: ${props => props.theme.colors.white};
   display: flex;
   align-items: center;
@@ -75,7 +104,6 @@ const BannerButton = styled.button<IsDesktop>`
   color: ${props => props.theme.colors.darkMain};  
   transition: 0.5s;
   font-family: ${props => props.theme.fonts.jura};
-  margin-top: ${props => props.isDesktop ? '0 ' : '40px'};
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -83,6 +111,12 @@ const BannerButton = styled.button<IsDesktop>`
     ${BannerButtonIcon} {
       margin-left: 20px;
     }
+  }
+  
+  @media(max-width: 480px){
+    height: 44px;
+    width: 236px;
+    margin-top: 40px;
   }
 `;
 
