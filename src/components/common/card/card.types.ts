@@ -2,8 +2,6 @@ import {ReactNode} from "react";
 
 export interface ICardImgProps {
   image: string,
-  width: number,
-  height: number
 }
 
 export interface ICardWrapperProps{
