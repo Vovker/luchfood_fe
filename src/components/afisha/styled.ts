@@ -121,5 +121,5 @@ export {
   AfishaCardImage,
   MobileAfishaCardImage,
   AfishaCardRow,
-  AfishaHeaderTitle
+  AfishaHeaderTitle,
 }

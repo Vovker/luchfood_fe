@@ -1,14 +1,12 @@
 import React from "react";
 import {BackButton} from "../../common/backButton/backButton";
-import {CardImg} from "../../common/card/styled";
-import {InfoWrapper, ItemPageWrapper, Wrapper} from "../../common/styled";
 import {
   CornerLogo,
   CornerWrapper,
   DeliveryButton,
   MenuTitle,
   MenuContainer,
-  TitleWithLogo,
+  CornerItemImage,
   StarsImg,
   MenuFooter,
   ItemRows,
@@ -18,13 +16,15 @@ import {
   CharWeight,
   ItemTitle,
   CharPrice,
+  CornerItemWrapper,
+  CornerInfoDescription, CornerTitleWithLogo, MobileCornerItemImage, CornerInfoWrapper, CornerMenuWrapper,
 } from "./styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import {ReactComponent as MenuIcon} from "../../../assets/corners/menu-icon.svg";
 import stars from "../../../assets/corners/stars.svg";
 import {CornerMenu} from "./cornerItemPage.types";
-import useMediaQuery from "../../../hooks/useMatchMedia";
 import {routes} from "../../../routes/routes";
+import {isMobile} from "react-device-detect";
 
 const data: CornerMenu[] = [
   {
@@ -88,7 +88,7 @@ const data: CornerMenu[] = [
 function formatDataToView<T>(array: Array<T>) {
   let rows: Array<T[]> = []
   array.forEach((el, index, arr) => {
-    if(index % 2 !== 1){
+    if (index % 2 !== 1) {
       arr[index + 1] ? rows.push([el, arr[index + 1]]) : rows.push([el])
     }
   })
@@ -97,41 +97,38 @@ function formatDataToView<T>(array: Array<T>) {
 
 export const CornerItemPage = () => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
     <>
       <BackButton title="Все корнеры" url={`/${routes.corners}`}/>
       <CornerWrapper>
-        <Wrapper width={isDesktop ? 980 : 345} paddingTop={isDesktop ? 72 : 16}>
-          <ItemPageWrapper gap={isDesktop ? 55 : 16} isDesktop={isDesktop}>
-            <InfoWrapper gap={28}>
-              <TitleWithLogo isDesktop={isDesktop}>
-                <CornerLogo src={"https://brandlogos.net/wp-content/uploads/2021/11/mcdonalds-logo.png"}/>
-                Vegan Fest
-              </TitleWithLogo>
-              {!isDesktop && <CardImg
-									  image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
-              {/*<InfoDescription isDesktop={isDesktop}>*/}
-              {/*  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae*/}
-              {/*  quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in*/}
-              {/*  faucibus.*/}
-              {/*  Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat*/}
-              {/*</InfoDescription>*/}
-              {/*<DeliveryButton>*/}
-              {/*  Заказать доставку*/}
-              {/*  <ArrowIcon fill={theme.colors.white}/>*/}
-              {/*</DeliveryButton>*/}
-            </InfoWrapper>
-            <div>
-              {isDesktop && <CardImg
-									 image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
-            </div>
-          </ItemPageWrapper>
-        </Wrapper>
+        <CornerItemWrapper>
+          <CornerInfoWrapper>
+            <CornerTitleWithLogo>
+              <CornerLogo src={"https://brandlogos.net/wp-content/uploads/2021/11/mcdonalds-logo.png"}/>
+              Vegan Fest
+            </CornerTitleWithLogo>
+            {isMobile && <MobileCornerItemImage
+				src="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
+            <CornerInfoDescription>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
+              quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in
+              faucibus.
+              Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
+            </CornerInfoDescription>
+            {/*<DeliveryButton>*/}
+            {/*  Заказать доставку*/}
+            {/*  <ArrowIcon fill={theme.colors.white}/>*/}
+            {/*</DeliveryButton>*/}
+          </CornerInfoWrapper>
+          <div>
+            {!isMobile && <CornerItemImage
+				image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
+          </div>
+        </CornerItemWrapper>
         <MenuContainer>
-          {isDesktop && <StarsImg src={stars} alt="nothing special here, just stars"/>}
-          <Wrapper width={isDesktop ? 980 : 345} paddingTop={isDesktop ? 44 : 27}>
+          {!isMobile && <StarsImg src={stars} alt="nothing special here, just stars"/>}
+          <CornerMenuWrapper>
             <MenuTitle>
               <MenuIcon/>
               Меню
@@ -139,14 +136,14 @@ export const CornerItemPage = () => {
             <ItemRows>
               {
                 formatDataToView(data).map((itemRow, index) =>
-                  <MenuRow key={index} isDesktop={isDesktop}>
+                  <MenuRow key={index}>
                     {
                       itemRow.map((item, idx) =>
-                        <MenuItem key={idx} isDesktop={isDesktop}>
-                          <ItemTitle isDesktop={isDesktop}>
+                        <MenuItem key={idx}>
+                          <ItemTitle>
                             {item.title}
                           </ItemTitle>
-                          <ItemChar isDesktop={isDesktop}>
+                          <ItemChar>
                             <CharWeight>
                               {`${item.weight} гр`}
                             </CharWeight>
@@ -161,10 +158,14 @@ export const CornerItemPage = () => {
                 )
               }
             </ItemRows>
-            {isDesktop && <MenuFooter>
-				* Meню представлено для ознакомления, актуальное меню может отличаться
-			</MenuFooter>}
-          </Wrapper>
+
+            {
+              !isMobile &&
+				<MenuFooter>
+					* Meню представлено для ознакомления, актуальное меню может отличаться
+				</MenuFooter>
+            }
+          </CornerMenuWrapper>
         </MenuContainer>
       </CornerWrapper>
     </>

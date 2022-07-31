@@ -1,24 +1,67 @@
 import styled from "styled-components";
 import {FilterOptionStyle} from "./corners.types";
-import {IsDesktop} from "../common/types/index.types";
+import {CardImg} from "../common/card/styled";
 
-const CornerHeader = styled.div<IsDesktop>`
+
+const CornerWrapper = styled.div`
+  width: 980px;
+  padding-top: 72px;
+  max-width: 100%;
   display: flex;
-  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
-  justify-content: ${props => props.isDesktop ? 'space-between' : 'center'};
-  align-items: ${props => props.isDesktop ? 'flex-end' : 'center'};
-  margin-bottom: ${props => props.isDesktop ? '31px' : '0'};
-  height: ${props => props.isDesktop ? '50px' : 'fit-content'};
-  gap: ${props => props.isDesktop ? '0' : '20px'};
-  width: ${props => props.isDesktop ? '100%' : '345px'};
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 480px) {
+    padding-top: 20px;
+    margin-bottom: 48px;
+    align-items: center;
+  }
 `
 
-const CornerFilter = styled.div<IsDesktop>`
+const CornerHeader = styled.div`
   display: flex;
-  gap: ${props => props.isDesktop ? '25px' : '42px'};
-  margin-bottom: ${props => props.isDesktop ? '0' : '20px'};
-  width: ${props => props.isDesktop ? 'fit-content' : '100%'};
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 31px;
+  height: 50px;
+  width: 100%;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    height: fit-content;
+    gap: 20px;
+    width: 345px;
+  }
+`
+
+const CornerHeaderTitle = styled.div`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+`
+
+const CornerFilter = styled.div`
+  display: flex;
+  gap: 25px;
+  width: fit-content;
   overflow-x: scroll;
+  
+  @media (max-width: 480px) {
+    gap: 42px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
 `
 
 const FilterOption = styled.input`
@@ -30,7 +73,53 @@ const OptionLabel = styled.label<FilterOptionStyle>`
   font-weight: 400;
   line-height: 25px;
   background-color: ${props => props.isChecked ? props.theme.colors.white : 'inherit'};
-  padding: ${props => props.isMobile ? '6px 15px 6px 14px' : '4px 11px'};
+  padding: 4px 11px;
+  
+  @media (max-width: 480px) {
+    padding: 6px 15px 6px 14px;
+  }
+`
+
+const CornerCardRow = styled.div`
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 980px;
+
+  @media (max-width: 480px) {
+    gap: 30px;
+    width: 100%;
+  }
+`
+
+const CornerCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 300px;
+  
+  @media (max-width: 480px) {
+    padding: 0 15px;
+    width: 100%;
+  }
+`
+
+const MobileCornerItemDescription = styled.div`
+  height: 75px;
+  width: 690px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 480px) {
+    height: 42px;
+    width: 345px;
+    font-size: 14px;
+    line-height: 21px;
+  }
 `
 
 const CornerTitle = styled.div`
@@ -55,6 +144,15 @@ const CornerDescription = styled.div`
   line-height: 21px;
 `
 
+const CornerCardImage = styled(CardImg)`
+  width: 300px;
+  height: 230px;
+`
+
+const MobileCornerCardImage = styled.img`
+  width: 100%;
+`
+
 export {
   CornerHeader,
   CornerTitle,
@@ -62,5 +160,12 @@ export {
   CornerDescription,
   CornerFilter,
   FilterOption,
-  OptionLabel
+  OptionLabel,
+  CornerWrapper,
+  CornerHeaderTitle,
+  CornerCardRow,
+  CornerCardWrapper,
+  CornerCardImage,
+  MobileCornerCardImage,
+  MobileCornerItemDescription
 }
