@@ -18,6 +18,7 @@ import {CornerItemPage} from "./components/corners/cornerItemPage/cornerItemPage
 import {About} from "./components/about/about";
 import {Gallery} from "./components/gallery/gallery";
 import {NewsItemPage} from "./components/news/newsItemPage/newsItemPage";
+import 'moment/locale/ru';
 
 function App() {
   return (

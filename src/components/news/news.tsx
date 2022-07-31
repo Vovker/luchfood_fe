@@ -19,7 +19,6 @@ import {Search} from "../common/search/search";
 import {Title} from '../common/title/title';
 import useMediaQuery from "../../hooks/useMatchMedia";
 import {Card} from "../common/card/card";
-import {IsDesktop} from "../common/types/index.types";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {getNews} from '../../store/actions/news.action';
 import {useAppSelector} from "../../hooks/useAppSelector";
@@ -87,7 +86,7 @@ const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, descr
         <NewsListItemContentInfoTitle>
           {title}
           <NewsListItemContentInfoDate>
-            {moment(publicationDate).locale('ru').format('DD MM YYYY')}
+            {moment(publicationDate).locale('ru').format('DD MMMM YYYY')}
           </NewsListItemContentInfoDate>
         </NewsListItemContentInfoTitle>
         <NewsListItemContentText>
