@@ -1,27 +1,19 @@
 import React from "react";
 import {BackButton} from "../common/backButton/backButton";
-import {ItemPageWrapper, Wrapper} from "../common/styled";
-import {Title} from "../common/title/title";
-import {AboutContainer, AboutDescription, AboutMap, DescriptionLine, DescriptionLink} from "./styled";
-import useMediaQuery from "../../hooks/useMatchMedia";
+import {AboutDescription, AboutMap, AboutTitle, AboutWrapper, DescriptionLine, DescriptionLink} from "./styled";
 import {routes} from "../../routes/routes";
+import {isMobile} from "react-device-detect";
 
 export const About = () => {
-
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
     <>
       <BackButton title="Назад" url={routes.home}/>
-      <Wrapper
-        width={isDesktop ? 956 : 345} paddingTop={isDesktop ? 72 : 16}
-        marginBottom={60}
-      >
-        <ItemPageWrapper gap={isDesktop ? 16 : 24}>
-          <Title align="center" marginBottom={isDesktop ? 0 : -5}>
+      <AboutWrapper>
+          <AboutTitle>
             О нас
-          </Title>
-          {!isDesktop && <AboutMap isDesktop={isDesktop}/>
+          </AboutTitle>
+          {isMobile && <AboutMap/>
           }
           <AboutDescription>
             <DescriptionLine>
@@ -51,9 +43,8 @@ export const About = () => {
               </DescriptionLink>
             </DescriptionLine>
           </AboutDescription>
-          {isDesktop && <AboutMap isDesktop={isDesktop}/>}
-        </ItemPageWrapper>
-      </Wrapper>
+          {!isMobile && <AboutMap/>}
+      </AboutWrapper>
     </>
   )
 }

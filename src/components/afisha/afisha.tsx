@@ -12,6 +12,7 @@ import {BackButton} from "../common/backButton/backButton";
 import {Search} from "../common/search/search";
 import {isMobile} from "react-device-detect";
 import {routes} from "../../routes/routes";
+import moment from "moment";
 
 
 const data: IAfishaItemProps[] = [
@@ -95,7 +96,9 @@ const AfishaCard:React.FC<IAfishaItemProps> = ({
   return (
     <AfishaCardWrapper>
       <AfishaCardImage image={imageUrl}/>
-      <StyledDate> {date} </StyledDate>
+      <StyledDate>
+        {moment(date).locale('ru').format('DD MMMM YYYY')}
+      </StyledDate>
       <AfishaTitle> {title} </AfishaTitle>
       <AfishaLink to={url}>
         Подробнее <OrangeArrow/>
@@ -115,7 +118,9 @@ const MobileAfishaCard:React.FC<IAfishaItemProps> = ({
       <MobileAfishaCardImage src={imageUrl}/>
       <AfishaTitle>{title}</AfishaTitle>
       <AfishaFooterMobile>
-        <StyledDate> {date} </StyledDate>
+        <StyledDate>
+          {moment(date).locale('ru').format('DD MMMM YYYY')}
+        </StyledDate>
         <AfishaLink to={url}>
           Подробнее <OrangeArrow width="27px" height="27px"/>
         </AfishaLink>
