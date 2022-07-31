@@ -81,7 +81,7 @@ const NewsItem: React.FC<NewsItemProps> = ({image, title, publicationDate, descr
         <NewsListItemContentInfoTitle>
           {title}
           <NewsListItemContentInfoDate>
-            {moment(publicationDate).locale('ru').format('DD MM YYYY')}
+            {moment(publicationDate).locale('ru').format('DD MMMM YYYY')}
           </NewsListItemContentInfoDate>
         </NewsListItemContentInfoTitle>
         <NewsListItemContentText>
