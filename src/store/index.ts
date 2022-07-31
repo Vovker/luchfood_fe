@@ -1,8 +1,12 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {newsReducer} from "./reducers/news.reducer";
+import {newsByIdReducer, newsReducer} from "./reducers/news.reducer";
+import {eventsByIdReducer, eventsReducer} from "./reducers/events.reducer";
 
 const rootReducer = combineReducers({
   news: newsReducer,
+  currentNews: newsByIdReducer,
+  events: eventsReducer,
+  currentEvent: eventsByIdReducer,
 });
 
 export const store = configureStore({
