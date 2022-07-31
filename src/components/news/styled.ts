@@ -1,20 +1,46 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {IsDesktop} from "../common/types/index.types";
+import {CardImg} from "../common/card/styled";
 
-const NewsHeaderWrapper = styled.div<IsDesktop>`
+
+const NewsWrapper = styled.div`
+  width: 980px;
+  padding-top: 72px;
+  margin-bottom: 60px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 480px) {
+    padding-top: 20px;
+    margin-bottom: 36px;
+    align-items: center;
+  }
+`
+
+const NewsHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: ${props => props.isDesktop ? 'space-between' : 'center'};
-  margin-bottom: ${props => props.isDesktop ? '40px' : '20px'};
+  justify-content: space-between;
+  margin-bottom: 40px;
   width: 100%;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 `;
 
 
-const NewsListWrapper = styled.div<IsDesktop>`
+const NewsListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${props => props.isDesktop ? '40px' : '30px'};
+  gap: 40px;
+
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `;
 
 const NewsListItemWrapper = styled.div`
@@ -48,14 +74,21 @@ const NewsListItemContentInfoDate = styled.div`
   line-height: 20.62px;
 `;
 
-const NewsListItemContentText = styled.div<IsDesktop>`
-  height: ${props => props.isMobile ? '42px' : '75px'};
-  width: ${props => props.isMobile ? '345px' : '690px'};
-  font-size: ${props => props.isMobile ? '14px' : '18px'};
+const NewsListItemContentText = styled.div`
+  height: 75px;
+  width: 690px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: ${props => props.isMobile ? '21px' : '25px'};
+  line-height: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media (max-width: 480px) {
+    height: 42px;
+    width: 345px;
+    font-size: 14px;
+    line-height: 21px;
+  }
 `;
 
 const NewsListItemLink = styled(Link)`
@@ -69,11 +102,40 @@ const NewsListItemLink = styled(Link)`
   align-items: center;
   justify-content: flex-end;
   gap: 11px;
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    line-height: 19px;
+    gap: 15px;
+  }
 `;
 
+const MobileNewsListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  
+  @media (max-width: 480px) {
+    padding: 0 15px;
+  }
+`
 
+const NewsListImage = styled(CardImg)`
+  width: 230px;
+  height: 150px;
+
+  @media (max-width: 480px) {
+    width: 345px;
+    height: 225px;
+  }
+`
+
+const MobileNewsListImage = styled.img`
+  width: 100%;
+`
 
 export {
+  NewsWrapper,
   NewsHeaderWrapper,
   NewsListWrapper,
   NewsListItemWrapper,
@@ -81,5 +143,8 @@ export {
   NewsListItemContentInfo,
   NewsListItemContentInfoTitle,
   NewsListItemContentInfoDate,
-  NewsListItemContentText
+  NewsListItemContentText,
+  MobileNewsListWrapper,
+  NewsListImage,
+  MobileNewsListImage
 }

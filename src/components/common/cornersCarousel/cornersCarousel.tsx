@@ -131,14 +131,14 @@ const Card: React.FC<ISlideProps> = ({
 }
 
 const MobileCard: React.FC<ISlideProps> = ({
-                                             title,
-                                             address,
-                                             kitchenType,
-                                             url,
-                                             imageUrl
-                                           }) => {
+ title,
+ address,
+ kitchenType,
+ url,
+ imageUrl
+}) => {
   return (
-    <CardImg width={345} height={493} image={imageUrl}/>
+    <CardImg image={imageUrl}/>
   )
 }
 

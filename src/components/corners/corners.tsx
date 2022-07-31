@@ -174,7 +174,7 @@ export const Corners = () => {
                         {corner.description}
                       </CornerDescription>
                       :
-                      <NewsListItemContentText isMobile={true}>
+                      <NewsListItemContentText>
                         {corner.description}
                       </NewsListItemContentText>
                     }

@@ -22,7 +22,7 @@ export const AfishaItemPage: React.FC = () => {
             <Title align="center">
               Vegan Fest- фестиваль вегетарианской кухни
             </Title>
-            {!isDesktop && <CardImg width={345} height={265}
+            {!isDesktop && <CardImg
 									image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>}
             {
               isDesktop
@@ -52,7 +52,7 @@ export const AfishaItemPage: React.FC = () => {
             </InfoDescription>
           </InfoWrapper>
           <div>
-            {isDesktop && <CardImg width={435} height={333}
+            {isDesktop && <CardImg
 								   image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>}
             <SocialLinks isDesktop={isDesktop}>
               Поделиться:
