@@ -2,19 +2,38 @@ import styled from "styled-components";
 import {IsDesktop} from "../types/index.types";
 import {Link} from "react-router-dom";
 import {ButtonBack, ButtonNext} from "pure-react-carousel";
+import {CardImg} from "../card/styled";
 
-const CarouselContainer = styled.div<IsDesktop>`
+const CarouselContainer = styled.div`
   width: 100%;
-  height: ${props => props.isDesktop ? '706px' : 'fit-content'};
+  height: 706px;
   background: ${props => props.theme.colors.darkMain};
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: ${props => props.isDesktop ? '42px 0' : '67px 0 40px 0'};
+  padding: 42px 0;
   box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 67px 0 40px 0;
+    height: fit-content;
+  }
 `;
 
+const UpdatesCarouselTitle = styled.div`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: center;
+  margin-bottom: 34px;
+  color: ${props => props.theme.colors.white};
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+`
 
 const PosterLinkIcon = styled.img`
   margin-left: 11px;
@@ -42,9 +61,14 @@ const PosterLink = styled.a`
 `;
 
 const SliderWrapper = styled.div<IsDesktop>`
-  width: ${props => props.isDesktop ? '1200px' : '345px'};
-  height: ${props => props.isDesktop ? '480px' : '456px'};
+  width: 1200px;
+  height: 480px;
   position: relative;
+
+  @media (max-width: 480px) {
+    width: 345px;
+    height: 456px;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -104,6 +128,11 @@ const MobileCardWrapper = styled.div`
   color: white;
 `
 
+const MobileCardImage = styled(CardImg)`
+  width: 346px;
+  height: 265px;
+`
+
 const MobileLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.colors.mint};
@@ -131,29 +160,49 @@ const MobileDescription = styled.div`
 `
 
 const StyledButtonBack = styled(ButtonBack)`
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.37);
+  backdrop-filter: blur(24px);
   border: none;
-  width: 43px;
-  height: 43px;
-  background: rgba(255, 255, 255, 0.83);
   position: absolute;
-  backdrop-filter: blur(18.7636px);
   top: 50%;
-  left: 8px;
-  transform: translateY(-50%);
   z-index: 10;
+  left: -13px;
+  transform: translate(-100%, -50%);
+
+  @media (max-width: 480px) {
+    background: rgba(255, 255, 255, 0.83);
+    width: 43px;
+    height: 43px;
+    backdrop-filter: blur(18.7636px);
+    left: 8px;
+    top: 111px;
+    transform: translate(0);
+  }
 `;
 
 const StyledButtonNext = styled(ButtonNext)`
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.37);
+  backdrop-filter: blur(24px);
   border: none;
-  width: 43px;
-  height: 43px;
-  background: rgba(255, 255, 255, 0.83);
   position: absolute;
-  backdrop-filter: blur(18.7636px);
   top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
+  right: -13px;
+  transform: translate(100%, -50%);
   z-index: 10;
+
+  @media (max-width: 480px) {
+    background: rgba(255, 255, 255, 0.83);
+    width: 43px;
+    height: 43px;
+    backdrop-filter: blur(18.7636px);
+    top: 111px;
+    right: 8px;
+    transform: translate(0);
+  }
 `;
 
 
@@ -172,6 +221,8 @@ export {
   MobileTitle,
   MobileDescription,
   StyledButtonBack,
-  StyledButtonNext
+  StyledButtonNext,
+  MobileCardImage,
+  UpdatesCarouselTitle
 }
 

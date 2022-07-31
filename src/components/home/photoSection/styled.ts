@@ -1,17 +1,22 @@
 import styled from "styled-components";
-import {IsDesktop} from "../../common/types/index.types";
 
-const PhotoSectionWrapper = styled.div<IsDesktop>`
+const PhotoSectionWrapper = styled.div`
   background: ${props => props.theme.colors.liteBackground};
-  padding-top: ${props => props.isDesktop ? '74px' : '24px'};
-  padding-bottom: ${props => props.isDesktop ? '47px' : '40px'};
+  padding-top: 74px;
+  padding-bottom: 47px;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
+  @media(max-width: 480px){
+    padding-bottom: 40px;
+    padding-top: 24px;
+  }
 `;
+
 
 const PhotoSectionTitle = styled.div`
   margin-bottom: 24px;
@@ -20,27 +25,42 @@ const PhotoSectionTitle = styled.div`
   font-size: 40px;
   line-height: 47px;
   color: ${props => props.theme.colors.darkMain};
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
 `;
 
-const PhotoSectionInner = styled.div<IsDesktop>`
+const PhotoSectionInner = styled.div`
   display: flex;
-  justify-content: ${props => props.isDesktop ? 'center' : 'flex-start'};
+  justify-content: center;
   gap: 2px;
-  margin-bottom: ${props => props.isDesktop ? '41px' : '24px'};
+  margin-bottom: 41px;
   width: 100%;
   overflow: scroll;
-  padding: ${props => props.isDesktop ? '0' : '0 15px'};
+  
+  @media(max-width: 480px){
+    padding: 0 15px;
+    margin-bottom: 24px;
+    justify-content: flex-start;
+  }
 `;
 
-interface IPhotoSectionImg extends IsDesktop{
+interface IPhotoSectionImg{
   url: string;
 }
 
 const PhotoSectionImg = styled.div<IPhotoSectionImg>`
   flex-shrink: 0;
-  width: ${props => props.isDesktop ? '315px' : '260px'};
-  height: ${props => props.isDesktop ? '450px' : '370px'};
+  width: 315px;
+  height: 450px;
   background: url('${props => props.url}') center no-repeat;
+  
+  @media(max-width: 480px){
+    width: 260px;
+    height: 370px;
+  }
 `;
 
 const PhotoSectionLinkIcon = styled.img`
@@ -49,13 +69,13 @@ const PhotoSectionLinkIcon = styled.img`
   transition: 0.5s;
 `;
 
-const PhotoSectionLink = styled.a<IsDesktop>`
+const PhotoSectionLink = styled.a`
   display: flex;
   align-items: center;
   font-style: normal;
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '20px' : '16px'};
-  line-height: ${props => props.isDesktop ? '24px' : '19px'};
+  font-size: 20px;
+  line-height: 24px;
   color: ${props => props.theme.colors.darkMain};
   text-decoration: none;
   transition: 1s;
@@ -66,6 +86,11 @@ const PhotoSectionLink = styled.a<IsDesktop>`
     ${PhotoSectionLinkIcon} {
       margin-left: 20px;
     }
+  }
+  
+  @media(max-width: 480px){
+    font-size: 16px;
+    line-height: 19px;
   }
 `;
 

@@ -5,8 +5,12 @@ const CornersSliderWrapper = styled.div<IsDesktop>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.isDesktop ? '45px 0' : '23px 0'};
+  padding: 45px 0;
   width: 100%;
+  
+  @media(max-width: 480px){
+    padding: 23px 0;
+  }
 `;
 
 export {

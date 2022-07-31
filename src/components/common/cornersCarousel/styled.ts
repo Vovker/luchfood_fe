@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {ButtonBack, ButtonNext, Dot} from "pure-react-carousel";
-import {IsDesktop} from "../types/index.types";
+import {CardImg} from "../card/styled";
 
 
 const SliderContainer = styled.div`
@@ -13,9 +13,13 @@ const SliderContainer = styled.div`
 `;
 
 
-const SliderWrapper = styled.div<IsDesktop>`
+const SliderWrapper = styled.div`
   position: relative;
-  width: ${props => props.isDesktop ? '1260px' : '345px'};
+  width: 1260px;
+  
+  @media(max-width: 480px){
+    width: 345px;
+  }
 `;
 
 const CardContentWrapper = styled.div`
@@ -53,6 +57,11 @@ const CardWrapper = styled.div<ICardWrapper>`
     }
   }
 `;
+
+const MobileImage = styled(CardImg)`
+  width: 345px;
+  height: 493px;
+`
 
 const CardTitle = styled.div`
   margin-bottom: 8px;
@@ -151,5 +160,6 @@ export {
   StyledDot,
   StyledButtonBack,
   StyledButtonNext,
-  StyledButtonIcon
+  StyledButtonIcon,
+  MobileImage
 }
