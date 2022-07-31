@@ -10,15 +10,15 @@ import {
   NewsListItemLink,
   NewsListItemWrapper,
   NewsListWrapper,
-  NewsTitle,
   NewsWrapper
 } from './styled'
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {NewsItemProps, NewsProps} from "./news.types";
 import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {BackButton} from "../common/backButton/backButton";
 import theme from "../../theme";
 import {Search} from "../common/search/search";
+import {Title} from '../common/title/title';
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {getNews} from '../../store/actions/news.action';
 import {useAppSelector} from "../../hooks/useAppSelector";
@@ -26,28 +26,40 @@ import moment from "moment";
 import {API_URL} from "../../store/endpoints";
 import {isMobile} from 'react-device-detect';
 import {routes} from "../../routes/routes";
-
+import Loader from "../common/loader/loader";
 
 export const News: React.FC<NewsProps> = () => {
 
+  const ref = useRef(null);
+
+  const [page, setPage] = useState(0);
+
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getNews(10, 0));
-  }, [])
+  const {news, isLoading, error, isMore} = useAppSelector(state => state.news)
 
-  const {news, isLoading} = useAppSelector(state => state.news)
+  useEffect(() => {
+    dispatch(getNews(5, page));
+  }, []);
+
+  function loadMore(){
+    if (!isLoading) {
+      dispatch(getNews(10, page + 1))
+      setPage(prevState => prevState + 1)
+    }
+  }
 
   return (
     <>
       <BackButton title="Назад" url={routes.home}/>
       <NewsWrapper>
-          <NewsHeaderWrapper>
-            <NewsTitle>Новости</NewsTitle>
-            <Search placeholder="Поиск по новостям"/>
-          </NewsHeaderWrapper>
-          <NewsListWrapper>
-            {
+        <NewsHeaderWrapper>
+          <Title>Новости</Title>
+          <Search placeholder="Поиск по новостям"/>
+        </NewsHeaderWrapper>
+        <NewsListWrapper ref={ref}>
+          {
+            !isLoading ?
               news.map((value, index) => {
                   return !isMobile
                     ? <NewsItem
@@ -67,9 +79,12 @@ export const News: React.FC<NewsProps> = () => {
                       id={value.id}
                     />
                 }
-              )
-            }
-          </NewsListWrapper>
+              ) : <Loader/>
+          }
+          {
+            isMore && <button onClick={() => loadMore()}>Загрузить еще</button>
+          }
+        </NewsListWrapper>
       </NewsWrapper>
     </>
   )
