@@ -1,23 +1,27 @@
 import styled from "styled-components";
-import {IsDesktop} from "../types/index.types";
+import {Link} from "react-router-dom";
 
-const Button = styled.button<IsDesktop>`
-  outline: none;
-  border: none;
+const BackLink = styled(Link)`
+  text-decoration: none;
   display: flex;
   gap: 11px;
   align-items: center;
   position: absolute;
-  top: ${props => props.isDesktop ? '29px' : '18px'};
-  left: ${props => props.isDesktop ? '94px' : '15px'};
-  font-family: Jura;
+  top: 29px;
+  left: 94px;
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
   text-align: left;
   cursor: pointer;
+  color: ${props => props.theme.colors.darkMain};
+  @media (max-width: 480px) {
+    top: 18px;
+    left: 15px;
+  }
+  
 `
 
 export {
-  Button
+  BackLink
 }

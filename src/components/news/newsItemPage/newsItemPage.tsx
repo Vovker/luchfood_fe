@@ -5,13 +5,14 @@ import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
 import {isMobile} from 'react-device-detect';
 import {NewsItemImage, NewsItemInfoDescription, NewsItemInfoWrapper, NewsItemMobileImage, NewsItemTitle, NewsItemWrapper } from "./styled";
+import {routes} from "../../../routes/routes";
 
 
 export const NewsItemPage: React.FC = () => {
 
   return (
     <>
-      <BackButton title='Все новости'/>
+      <BackButton title='Все новости' url={`/${routes.news}`}/>
       {
         !isMobile
           ? <NewsItem/>

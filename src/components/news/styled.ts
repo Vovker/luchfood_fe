@@ -19,6 +19,19 @@ const NewsWrapper = styled.div`
   }
 `
 
+const NewsTitle = styled.div`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+`
+
 const NewsHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -146,5 +159,6 @@ export {
   NewsListItemContentText,
   MobileNewsListWrapper,
   NewsListImage,
-  MobileNewsListImage
+  MobileNewsListImage,
+  NewsTitle
 }

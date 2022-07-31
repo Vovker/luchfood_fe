@@ -1,5 +1,4 @@
 import React from "react";
-import {InfoDescription,} from "../../afisha/afishaItemPage/styled";
 import {BackButton} from "../../common/backButton/backButton";
 import {CardImg} from "../../common/card/styled";
 import {InfoWrapper, ItemPageWrapper, Wrapper} from "../../common/styled";
@@ -25,6 +24,7 @@ import {ReactComponent as MenuIcon} from "../../../assets/corners/menu-icon.svg"
 import stars from "../../../assets/corners/stars.svg";
 import {CornerMenu} from "./cornerItemPage.types";
 import useMediaQuery from "../../../hooks/useMatchMedia";
+import {routes} from "../../../routes/routes";
 
 const data: CornerMenu[] = [
   {
@@ -101,7 +101,7 @@ export const CornerItemPage = () => {
 
   return (
     <>
-      <BackButton title="Все корнеры"/>
+      <BackButton title="Все корнеры" url={`/${routes.corners}`}/>
       <CornerWrapper>
         <Wrapper width={isDesktop ? 980 : 345} paddingTop={isDesktop ? 72 : 16}>
           <ItemPageWrapper gap={isDesktop ? 55 : 16} isDesktop={isDesktop}>
@@ -112,12 +112,12 @@ export const CornerItemPage = () => {
               </TitleWithLogo>
               {!isDesktop && <CardImg
 									  image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
-              <InfoDescription isDesktop={isDesktop}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
-                quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in
-                faucibus.
-                Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
-              </InfoDescription>
+              {/*<InfoDescription isDesktop={isDesktop}>*/}
+              {/*  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae*/}
+              {/*  quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in*/}
+              {/*  faucibus.*/}
+              {/*  Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat*/}
+              {/*</InfoDescription>*/}
               {/*<DeliveryButton>*/}
               {/*  Заказать доставку*/}
               {/*  <ArrowIcon fill={theme.colors.white}/>*/}

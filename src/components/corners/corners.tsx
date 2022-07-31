@@ -116,7 +116,7 @@ export const Corners = () => {
 
   return (
     <>
-      <BackButton title="Назад"/>
+      <BackButton title="Назад" url="/"/>
       <Wrapper
         width={980}
         marginBottom={isDesktop ? 60 : 40}

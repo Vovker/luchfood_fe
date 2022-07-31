@@ -1,15 +1,17 @@
 import React from "react";
-import {Card} from "../common/card/card";
-import {AfishaFooterMobile, AfishaHeader, AfishaLink, AfishaTitle} from "./styled";
+import {
+  AfishaCardImage, AfishaCardRow, AfishaCardWrapper, AfishaFooterMobile, AfishaHeader,
+  AfishaHeaderTitle, AfishaLink, AfishaTitle,
+  AfishaWrapper, MobileAfishaCardImage
+} from "./styled";
 import {ReactComponent as OrangeArrow} from '../../assets/orange-arrow.svg'
 import {IAfishaItemProps} from "./afisha.types";
-import {CardRow} from "../common/cardRow/cardRow";
-import {ItemWrapper, StyledDate, Wrapper} from "../common/styled";
+import {StyledDate} from "../common/styled";
 import {AfishaCarousel} from "../common/afishaCarousel/afishaCarousel";
 import {BackButton} from "../common/backButton/backButton";
 import {Search} from "../common/search/search";
-import {Title} from "../common/title/title";
-import useMediaQuery from "../../hooks/useMatchMedia";
+import {isMobile} from "react-device-detect";
+import {routes} from "../../routes/routes";
 
 
 const data: IAfishaItemProps[] = [
@@ -54,64 +56,70 @@ const data: IAfishaItemProps[] = [
 
 export const Afisha = () => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
-
   return (
     <>
-      <BackButton title="Назад"/>
-      <Wrapper
-        width={980}
-        paddingTop={isDesktop ? 72 : 20}
-        marginBottom={isDesktop ? 0 : 48}
-      >
-        <ItemWrapper isDesktop={isDesktop}>
-          <AfishaHeader isDesktop={isDesktop}>
-            <Title>Афиша</Title>
+      <BackButton title="Назад" url={routes.home}/>
+      <AfishaWrapper>
+          <AfishaHeader>
+            <AfishaHeaderTitle>Афиша</AfishaHeaderTitle>
             <Search placeholder='Найти мероприятие'/>
           </AfishaHeader>
-          <CardRow
-            itemsPerRow={isDesktop ? 3 : 1}
-            itemWidth={isDesktop ? 300 : 345}
-            gap={isDesktop? 40 : 30}
-          >
+          <AfishaCardRow>
             {
               data.map(afisha =>
-                <Card
-                  width={isDesktop ? 300 : 345}
-                  height={isDesktop ? 230 : 265}
-                  imgUrl={afisha.imageUrl}
-                  key={afisha.url}>
-                  {
-                    isDesktop
-                      ? <>
-                        <StyledDate> {afisha.date} </StyledDate>
-                        <AfishaTitle> {afisha.title} </AfishaTitle>
-                        <AfishaLink to={afisha.url}>
-                          Подробнее <OrangeArrow/>
-                        </AfishaLink>
-                      </>
-                      : <>
-                        <AfishaTitle> {afisha.title} </AfishaTitle>
-                        <AfishaFooterMobile>
-                          <StyledDate> {afisha.date} </StyledDate>
-                          <AfishaLink to={afisha.url}>
-                            Подробнее <OrangeArrow width="27px" height="27px"/>
-                          </AfishaLink>
-                        </AfishaFooterMobile>
-                      </>
-                  }
-                </Card>
+                {
+                  return !isMobile
+                    ? <AfishaCard key={afisha.url}
+                                  {...afisha}
+                    />
+                    : <MobileAfishaCard key={afisha.url}
+                                        {...afisha}
+                    />
+                }
               )
             }
-          </CardRow>
-          {isDesktop && <AfishaCarousel slides={data}/>}
-        </ItemWrapper>
-      </Wrapper>
+          </AfishaCardRow>
+          {!isMobile && <AfishaCarousel slides={data}/>}
+      </AfishaWrapper>
     </>
   )
 }
 
-const AfishaCard = () => {
 
+const AfishaCard:React.FC<IAfishaItemProps> = ({
+  url,
+  imageUrl,
+  title,
+  date
+ }) => {
+  return (
+    <AfishaCardWrapper>
+      <AfishaCardImage image={imageUrl}/>
+      <StyledDate> {date} </StyledDate>
+      <AfishaTitle> {title} </AfishaTitle>
+      <AfishaLink to={url}>
+        Подробнее <OrangeArrow/>
+      </AfishaLink>
+    </AfishaCardWrapper>
+  )
 }
 
+const MobileAfishaCard:React.FC<IAfishaItemProps> = ({
+   url,
+   imageUrl,
+   title,
+   date
+ }) => {
+  return (
+    <AfishaCardWrapper>
+      <MobileAfishaCardImage src={imageUrl}/>
+      <AfishaTitle>{title}</AfishaTitle>
+      <AfishaFooterMobile>
+        <StyledDate> {date} </StyledDate>
+        <AfishaLink to={url}>
+          Подробнее <OrangeArrow width="27px" height="27px"/>
+        </AfishaLink>
+      </AfishaFooterMobile>
+    </AfishaCardWrapper>
+  )
+}

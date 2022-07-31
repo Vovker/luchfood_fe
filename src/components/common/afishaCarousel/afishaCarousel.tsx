@@ -1,14 +1,11 @@
 import React from "react";
 import {CarouselProvider, Slide, Slider} from "pure-react-carousel";
 import {IAfishaItemProps} from "../../afisha/afisha.types";
-import {Card} from "../card/card";
-import {AfishaTitle, CustomLink} from "../../afisha/styled";
-import {AfishaCarouselContainer, CarouselWrapper, StyledButtonBack, StyledButtonForward} from "./styled";
+import {AfishaCardImage, AfishaCardWrapper, AfishaTitle, CustomLink} from "../../afisha/styled";
+import {AfishaCarouselContainer, AfishaCarouselTitle, CarouselWrapper, StyledButtonBack, StyledButtonForward} from "./styled";
 import {StyledDate } from "../styled";
-import {StyledButtonIcon} from "../cornersCarousel/styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import theme from "../../../theme";
-import { Title } from "../title/title";
 
 interface IAfishaCarouselProps {
   slides: IAfishaItemProps[]
@@ -17,7 +14,7 @@ interface IAfishaCarouselProps {
 export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
   return (
     <AfishaCarouselContainer>
-      <Title marginBottom={55}>Архив</Title>
+      <AfishaCarouselTitle>Архив</AfishaCarouselTitle>
       <CarouselWrapper>
         <CarouselProvider
           naturalSlideWidth={300}
@@ -33,10 +30,11 @@ export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
               slides.map((slide, index)=>
                 <Slide index={index} key={index}>
                   <CustomLink to={slide.url}>
-                    <Card width={300} height={230} imgUrl={slide.imageUrl}>
+                    <AfishaCardWrapper>
+                      <AfishaCardImage image={slide.imageUrl}/>
                       <StyledDate> {slide.date} </StyledDate>
                       <AfishaTitle> {slide.title} </AfishaTitle>
-                    </Card>
+                    </AfishaCardWrapper>
                   </CustomLink>
                 </Slide>
               )
