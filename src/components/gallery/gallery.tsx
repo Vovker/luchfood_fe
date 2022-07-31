@@ -10,6 +10,7 @@ import {getGallery} from "../../store/actions/gallery.action";
 import {useAppSelector} from "../../hooks/useAppSelector";
 import {API_URL} from "../../store/endpoints";
 import moment from "moment";
+import {routes} from "../../routes/routes";
 
 export const Gallery = () => {
 
@@ -25,7 +26,7 @@ export const Gallery = () => {
 
   return (
     <>
-      <BackButton title="Назад"/>
+      <BackButton title="Назад" url={routes.home}/>
       <Wrapper
         width={980}
         paddingTop={isDesktop ? 72 : 16}

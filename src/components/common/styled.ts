@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {ElementWithGap, IItemWrapper, IWrapperProps} from "./common.types";
-import {IsDesktop} from "./types/index.types";
 
 const Wrapper = styled.div<IWrapperProps>`
   width: ${props => props.width+'px'};
@@ -43,7 +42,7 @@ const SocialImg = styled.img`
 `
 
 
-const StyledDate = styled.div<IsDesktop>`
+const StyledDate = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 21px;

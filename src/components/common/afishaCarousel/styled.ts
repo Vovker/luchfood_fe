@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ButtonBack, ButtonNext} from "pure-react-carousel";
+import {AfishaHeaderTitle} from "../../afisha/styled";
 
 
 const AfishaCarouselContainer = styled.div`
@@ -42,11 +43,14 @@ const StyledButtonForward = styled(ButtonNext)`
   z-index: 10;
 `;
 
-
+const AfishaCarouselTitle = styled(AfishaHeaderTitle)`
+  margin-bottom: 55px;
+`
 
 export {
   AfishaCarouselContainer,
   CarouselWrapper,
   StyledButtonBack,
-  StyledButtonForward
+  StyledButtonForward,
+  AfishaCarouselTitle
 }

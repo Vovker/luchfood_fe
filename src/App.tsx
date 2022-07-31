@@ -19,6 +19,7 @@ import {About} from "./components/about/about";
 import {Gallery} from "./components/gallery/gallery";
 import {NewsItemPage} from "./components/news/newsItemPage/newsItemPage";
 import 'moment/locale/ru';
+import {routes} from "./routes/routes";
 
 function App() {
   return (
@@ -26,22 +27,22 @@ function App() {
       <MainPageWrapper>
         <Router>
           <Routes>
-            <Route path="/" element={<Layout/>}>
+            <Route path={routes.home} element={<Layout/>}>
               <Route index element={<Home/>}/>
-              <Route path="corners/*" element={<Outlet/>}>
+              <Route path={`${routes.corners}/*`} element={<Outlet/>}>
                 <Route index element={<Corners/>}/>
                 <Route path=":cornerId" element={<CornerItemPage/>}/>
               </Route>
-              <Route path="news/*" element={<Outlet/>}>
+              <Route path={`${routes.news}/*`} element={<Outlet/>}>
                 <Route index element={<News/>}/>
                 <Route path=":newsId" element={<NewsItemPage/>}/>
               </Route>
-              <Route path="afisha/*" element={<Outlet/>}>
+              <Route path={`${routes.afisha}/*`} element={<Outlet/>}>
                 <Route index element={<Afisha/>}/>
                 <Route path=":afishaId" element={<AfishaItemPage/>}/>
               </Route>
-              <Route path="about" element={<About/>}/>
-              <Route path="gallery" element={<Gallery/>}/>
+              <Route path={routes.about} element={<About/>}/>
+              <Route path={routes.gallery} element={<Gallery/>}/>
             </Route>
           </Routes>
         </Router>

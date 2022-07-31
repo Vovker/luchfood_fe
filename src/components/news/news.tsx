@@ -10,6 +10,7 @@ import {
   NewsListItemLink,
   NewsListItemWrapper,
   NewsListWrapper,
+  NewsTitle,
   NewsWrapper
 } from './styled'
 import React, {useEffect} from "react";
@@ -18,13 +19,13 @@ import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {BackButton} from "../common/backButton/backButton";
 import theme from "../../theme";
 import {Search} from "../common/search/search";
-import {Title} from '../common/title/title';
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {getNews} from '../../store/actions/news.action';
 import {useAppSelector} from "../../hooks/useAppSelector";
 import moment from "moment";
 import {API_URL} from "../../store/endpoints";
 import {isMobile} from 'react-device-detect';
+import {routes} from "../../routes/routes";
 
 
 export const News: React.FC<NewsProps> = () => {
@@ -39,10 +40,10 @@ export const News: React.FC<NewsProps> = () => {
 
   return (
     <>
-      <BackButton title="Назад"/>
+      <BackButton title="Назад" url={routes.home}/>
       <NewsWrapper>
           <NewsHeaderWrapper>
-            <Title>Новости</Title>
+            <NewsTitle>Новости</NewsTitle>
             <Search placeholder="Поиск по новостям"/>
           </NewsHeaderWrapper>
           <NewsListWrapper>

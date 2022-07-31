@@ -4,6 +4,7 @@ import {ItemPageWrapper, Wrapper} from "../common/styled";
 import {Title} from "../common/title/title";
 import {AboutContainer, AboutDescription, AboutMap, DescriptionLine, DescriptionLink} from "./styled";
 import useMediaQuery from "../../hooks/useMatchMedia";
+import {routes} from "../../routes/routes";
 
 export const About = () => {
 
@@ -11,7 +12,7 @@ export const About = () => {
 
   return (
     <>
-      <BackButton title="Назад"/>
+      <BackButton title="Назад" url={routes.home}/>
       <Wrapper
         width={isDesktop ? 956 : 345} paddingTop={isDesktop ? 72 : 16}
         marginBottom={60}

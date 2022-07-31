@@ -1,13 +1,59 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {IsDesktop} from "../common/types/index.types";
+import {CardImg} from "../common/card/styled";
 
-const AfishaHeader = styled.div<IsDesktop>`
-  margin-bottom: ${props => props.isDesktop ? '40px' : '20px'};
+
+const AfishaWrapper = styled.div`
+  width: 980px;
+  padding-top: 72px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 480px) {
+    padding-top: 20px;
+    margin-bottom: 48px;
+    align-items: center;
+  }
+`
+
+const AfishaHeader = styled.div`
+  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: ${props => props.isDesktop ? '100%' : 'fit-content'};
+  width: 100%;
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+`
+
+const AfishaHeaderTitle = styled.div`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+`
+
+const AfishaCardRow = styled.div`
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 980px;
+  
+  @media (max-width: 480px) {  
+    gap: 30px;
+    width: 345px;
+  }
 `
 
 
@@ -32,6 +78,11 @@ const AfishaLink = styled(Link)`
   color: ${props => props.theme.colors.redMain};
   display: flex;
   align-items: center;
+  @media (max-width: 480px) {
+    gap: 15px;
+    line-height: 18px;
+    font-size: 16px;
+  }
 `
 
 const CustomLink = styled(Link)`
@@ -39,10 +90,36 @@ const CustomLink = styled(Link)`
   color: inherit;
 `
 
+const AfishaCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 300px;
+  @media (max-width: 480px) {
+    padding: 0 15px;
+    width: 100%;
+  }
+`
+
+const AfishaCardImage = styled(CardImg)`
+  width: 300px;
+  height: 230px;
+`
+
+const MobileAfishaCardImage = styled.img`
+  width: 100%;
+`
+
 export {
+  AfishaWrapper,
   AfishaHeader,
   AfishaTitle,
   AfishaLink,
   CustomLink,
-  AfishaFooterMobile
+  AfishaFooterMobile,
+  AfishaCardWrapper,
+  AfishaCardImage,
+  MobileAfishaCardImage,
+  AfishaCardRow,
+  AfishaHeaderTitle
 }

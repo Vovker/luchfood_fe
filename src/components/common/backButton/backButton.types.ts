@@ -1,3 +1,4 @@
 export interface IBackButtonProps {
-  title: string
+  title: string,
+  url: string
 }
