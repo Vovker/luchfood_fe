@@ -1,46 +1,82 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {SocialImg, SocialLinks, StyledDate} from "../../common/styled";
 import coloredIstagramIcon from "../../../assets/social_icons/instagramColored.svg";
 import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
 import {isMobile} from 'react-device-detect';
-import {NewsItemImage, NewsItemInfoDescription, NewsItemInfoWrapper, NewsItemMobileImage, NewsItemTitle, NewsItemWrapper } from "./styled";
+import {
+  NewsItemImage,
+  NewsItemInfoDescription,
+  NewsItemInfoWrapper,
+  NewsItemMobileImage,
+  NewsItemTitle,
+  NewsItemWrapper
+} from "./styled";
 import {routes} from "../../../routes/routes";
+import {useParams} from "react-router-dom";
+import {useAppDispatch} from "../../../hooks/useAppDispatch";
+import {getNewsById} from "../../../store/actions/news.action";
+import {useAppSelector} from "../../../hooks/useAppSelector";
+import {NewsItemTypes} from "./newsItemPage.types";
+import {API_URL} from "../../../store/endpoints";
+import moment from "moment";
 
 
 export const NewsItemPage: React.FC = () => {
+
+  const dispatch = useAppDispatch();
+  const {newsId} = useParams();
+
+  useEffect(() => {
+    dispatch(getNewsById(Number(newsId)));
+  }, [dispatch])
+
+  const {news, isLoading, error} = useAppSelector(state => state.currentNews);
 
   return (
     <>
       <BackButton title='Все новости' url={`/${routes.news}`}/>
       {
-        !isMobile
-          ? <NewsItem/>
-          : <NewsItemMobile/>
+        news && (
+          isMobile
+          ? <NewsItem
+            id={news.id}
+            title={news.title}
+            description={news.description}
+            body={news.body}
+            img={news.img}
+            created_at={news.created_at}
+          />
+          : <NewsItemMobile
+            id={news.id}
+            title={news.title}
+            description={news.description}
+            body={news.body}
+            img={news.img}
+            created_at={news.created_at}
+          />
+        )
       }
     </>
   )
 }
 
-const NewsItem = () => {
+const NewsItem: React.FC<NewsItemTypes> = ({id, description, body, title, img, created_at}) => {
   return (
-    <NewsItemWrapper>
+    <NewsItemWrapper key={id}>
       <NewsItemInfoWrapper>
         <NewsItemTitle>
-          Vegan Fest
+          {title}
         </NewsItemTitle>
         <StyledDate>
-          Июль 16, 2022
+          {moment(created_at).locale('ru').format('DD MMMM YYYY')}
         </StyledDate>
         <NewsItemInfoDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
-          quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-          Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
+          {body}
         </NewsItemInfoDescription>
       </NewsItemInfoWrapper>
       <div>
-        <NewsItemImage
-          image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
+        <NewsItemImage image={`${API_URL}/${img}`}/>
         <SocialLinks>
           Поделиться:
           <SocialImg src={coloredIstagramIcon}/>
@@ -51,22 +87,19 @@ const NewsItem = () => {
   )
 }
 
-const NewsItemMobile = () => {
+const NewsItemMobile: React.FC<NewsItemTypes> = ({id, description, body, title, img, created_at}) => {
   return (
-    <NewsItemWrapper>
+    <NewsItemWrapper key={id}>
       <NewsItemInfoWrapper>
         <NewsItemTitle>
-          Vegan Fest- фестиваль вегетарианской кухни
+          {title}
         </NewsItemTitle>
-        <NewsItemMobileImage
-          src='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
+        <NewsItemMobileImage src={`${API_URL}/${img}`}/>
         <StyledDate>
-          Июль 16, 2022
+          {moment(created_at).locale('ru').format('DD MMMM YYYY')}
         </StyledDate>
         <NewsItemInfoDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
-          quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-          Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
+          {body}
         </NewsItemInfoDescription>
       </NewsItemInfoWrapper>
       <SocialLinks>

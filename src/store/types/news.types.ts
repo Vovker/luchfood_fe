@@ -23,8 +23,24 @@ export type NewsTyped = {
   created_at: Date;
 }
 
+export type NewsByIdTyped = {
+  id: number;
+  title: string;
+  body: string;
+  description: string;
+  img: string;
+  created_at: Date;
+}
+
 export interface NewsState {
   news: NewsTyped[];
+  error: any;
+  isLoading: boolean;
+  isMore: boolean;
+}
+
+export interface NewsByIdState {
+  news: NewsByIdTyped | null;
   error: any;
   isLoading: boolean;
 }

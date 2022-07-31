@@ -1,10 +1,11 @@
-import {NewsState, NewsTyped} from "../types/news.types";
+import {NewsByIdState, NewsByIdTyped, NewsState, NewsTyped} from "../types/news.types";
 import {ActionWithPayload} from "../types/index.types";
 
 const initialState: NewsState = {
   news: [],
   error: null,
   isLoading: false,
+  isMore: true,
 }
 
 export const newsReducer = (state = initialState, action: ActionWithPayload<NewsTyped[]>): NewsState => {
@@ -13,26 +14,35 @@ export const newsReducer = (state = initialState, action: ActionWithPayload<News
       return {
         ...state,
         isLoading: true,
+        isMore: true,
       }
     case 'NEWS_SUCCESS':
-      return {
+      return <NewsState>{
         ...state,
         isLoading: false,
         error: null,
-        news: action.payload,
+        news: [...state.news, ...action.payload],
+        isMore: action.payload.length !== 0,
       }
     case 'NEWS_FAILURE':
       return {
         ...state,
         error: action.payload,
         isLoading: false,
+        isMore: false,
       }
     default:
       return state;
   }
 }
 
-export const newsByIdReducer = (state = initialState, action: ActionWithPayload<NewsTyped>): NewsState => {
+const newsByIdInitialState: NewsByIdState = {
+  news: null,
+  error: null,
+  isLoading: false,
+}
+
+export const newsByIdReducer = (state = newsByIdInitialState, action: ActionWithPayload<NewsByIdTyped>): NewsByIdState => {
   switch (action.type) {
     case 'NEWS_BY_ID_REQUEST':
       return {
@@ -43,7 +53,7 @@ export const newsByIdReducer = (state = initialState, action: ActionWithPayload<
       return {
         isLoading: false,
         error: null,
-        news: [action.payload],
+        news: action.payload,
       }
     case 'NEWS_BY_ID_FAILURE':
       return {
