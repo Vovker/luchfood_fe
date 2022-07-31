@@ -22,11 +22,34 @@ const InfoWrapper = styled.div<ElementWithGap>`
   gap: ${props => props.gap ? props.gap + 'px' : 0};
 `
 
+const SocialLinks = styled.div`
+  margin-top: 18px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  @media(max-width: 480px){
+    gap: 14px;
+    font-size: 12px;
+    line-height: 17px;
+  }
+`
+
+const SocialImg = styled.img`
+  
+`
+
 
 const StyledDate = styled.div<IsDesktop>`
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '14px' : '16px'};
+  font-size: 16px;
   line-height: 21px;
+  @media(max-width: 480px){
+    font-size: 14px;
+  }
 `
 
 const ItemWrapper = styled.div<IItemWrapper>`
@@ -40,5 +63,7 @@ export {
   ItemPageWrapper,
   InfoWrapper,
   StyledDate,
-  ItemWrapper
+  ItemWrapper,
+  SocialLinks,
+  SocialImg
 }

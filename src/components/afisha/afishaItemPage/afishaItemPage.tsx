@@ -1,7 +1,7 @@
 import React from "react";
-import {InfoWrapper, ItemPageWrapper, Wrapper} from "../../common/styled";
+import {InfoWrapper, ItemPageWrapper, SocialImg, SocialLinks, Wrapper} from "../../common/styled";
 import {CardImg} from "../../common/card/styled";
-import {InfoCategory, InfoDate, InfoDescription, MobileCategoryWrapper, SocialImg, SocialLinks} from "./styled";
+import {InfoCategory, InfoDate, InfoDescription, MobileCategoryWrapper} from "./styled";
 import coloredIstagramIcon from "../../../assets/social_icons/instagramColored.svg";
 import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
@@ -54,7 +54,7 @@ export const AfishaItemPage: React.FC = () => {
           <div>
             {isDesktop && <CardImg
 								   image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>}
-            <SocialLinks isDesktop={isDesktop}>
+            <SocialLinks>
               Поделиться:
               <SocialImg src={coloredIstagramIcon}/>
               <SocialImg src={twitterIcon}/>

@@ -22,20 +22,6 @@ const InfoDescription = styled.div<IsDesktop>`
   font-weight: 700;
   line-height: ${props => props.isDesktop ? '25px' : '21px'};
 `
-const SocialLinks = styled.div<IsDesktop>`
-  margin-top: 18px;
-  justify-content: flex-end;
-  display: flex;
-  gap: 20px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 25px;
-  margin-bottom: ${props => props.isDesktop ? '0' : '40px'};
-`
-
-const SocialImg = styled.img`
-  
-`
 
 const MobileCategoryWrapper = styled.div`
   display: flex;
@@ -47,7 +33,5 @@ export {
   InfoDate,
   InfoCategory,
   InfoDescription,
-  SocialLinks,
-  SocialImg,
   MobileCategoryWrapper
 }
