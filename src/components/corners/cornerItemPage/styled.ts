@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {IsDesktop} from "../../common/types/index.types";
+import {CardImg} from "../../common/card/styled";
 
 const CornerWrapper = styled.div`
   display: flex;
@@ -12,19 +12,58 @@ const CornerWrapper = styled.div`
   flex: 1 1 auto;
 `
 
-const TitleWithLogo = styled.div<IsDesktop>`
+const CornerItemWrapper = styled.div`
+  width: 980px;
+  padding-top: 72px;
+  margin-bottom: 60px;
+  max-width: 100%;
   display: flex;
-  gap: ${props => props.isDesktop ? '8px' : '11px'};
+  flex-direction: row;
+  gap: 55px;
+
+  @media (max-width: 480px) {
+    width: 345px;
+    margin-bottom: 40px;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 15px 0 15px;
+  }
+`
+
+const CornerInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+`
+
+const CornerTitleWithLogo = styled.div`
+  display: flex;
+  gap: 8px;
   align-items: center;
-  justify-content: ${props => props.isDesktop ? 'flex-start' : 'center'};
+  justify-content: flex-start;
   font-size: 22px;
   font-weight: 700;
   line-height: 26px;
+  
+  @media (max-width: 480px) {
+    gap: 11px;
+    justify-content: center;
+
+  }
 `
 
 const CornerLogo = styled.img`
   width: 47px;
   height: 43px;
+`
+
+const CornerItemImage = styled(CardImg)`
+  width: 435px;
+  height: 333px;
+`
+
+const MobileCornerItemImage = styled.img`
+  width: 100%;
 `
 
 const DeliveryButton = styled.button`
@@ -45,6 +84,17 @@ const DeliveryButton = styled.button`
   line-height: 24px;
 `
 
+const CornerInfoDescription = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 21px;
+  }
+`
+
 const MenuContainer = styled.div`
   width: 100%;
   background-color: ${props => props.theme.colors.darkMain};
@@ -54,14 +104,20 @@ const MenuContainer = styled.div`
   color: ${props => props.theme.colors.white};
 `
 
-const MenuTitle = styled.div<IsDesktop>`
-  font-size: ${props => props.isDesktop ? '22px' : '20px'};
+const MenuTitle = styled.div`
+  font-size: 22px;
   font-weight: 700;
-  line-height: ${props => props.isDesktop ? '26px' : '24px'};
+  line-height: 26px;
   display: flex;
-  gap: ${props => props.isDesktop ? '17px' : '11px'};
+  gap: 17px;
   align-items: center;
   margin-bottom: 24px;
+  
+  @media(max-width: 480px){
+    font-size: 20px;
+    line-height: 24px;
+    gap: 11px;
+  }
 `
 
 const StarsImg = styled.img`
@@ -84,33 +140,51 @@ const ItemRows = styled.div`
   gap: 22px;
 `
 
-const MenuRow = styled.div<IsDesktop>`
+const MenuRow = styled.div`
   display: flex;
-  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
+  flex-direction: row;
   justify-content: space-between;
-  gap: ${props => props.isDesktop ? '114px' : '22px'};
+  gap: 114px;
+
+  @media(max-width: 480px){
+    flex-direction: column;
+    gap: 22px;
+  }
 `
 
-const MenuItem = styled.div<IsDesktop>`
+const MenuItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  width: ${props => props.isDesktop ? '433px' : '345px'};
-  padding-bottom: ${props => props.isDesktop ? '22px' : '13px'};
+  width: 433px;
+  padding-bottom: 22px;
   border-bottom: 1px solid ${props => props.theme.colors.white};
-  font-size: ${props => props.isDesktop ? '20px' : '16px'};
+  font-size: 20px;
   font-weight: 700;
-  line-height: ${props => props.isDesktop ? '28px' : '22px'};
+  line-height: 28px;
+  
+  @media(max-width: 480px){
+    width: 345px;
+    padding-bottom: 13px;
+    font-size: 16px;
+    line-height: 22px;
+  }
 `
 
-const ItemChar = styled.div<IsDesktop>`
-  gap: ${props => props.isDesktop ? '12px' : '8px'};
+const ItemChar = styled.div`
+  gap: 12px;
   display: flex;
   align-items: center;
-  font-size: ${props => props.isDesktop ? '18px' : '14px'};
+  font-size: 18px;
   font-weight: 700;
-  line-height: ${props => props.isDesktop ? '25px' : '19px'};
+  line-height: 25px;
+  
+  @media(max-width: 480px){
+    gap: 8px;
+    font-size: 14px;
+    line-height: 19px;
+  }
 `
 
 const CharWeight = styled.div`
@@ -124,12 +198,26 @@ const CharPrice = styled.div`
 `
 
 
-const ItemTitle = styled.div<IsDesktop>`
-  max-width: ${props => props.isDesktop ? '279px' : '217px'};
+const ItemTitle = styled.div`
+  max-width: 279px;
+  
+  @media(max-width: 480px){
+    max-width: 217px;
+  }
+`
+const CornerMenuWrapper = styled.div`
+  width: 980px;
+  padding-top: 44px;
+  max-width: 100%;
+  
+  @media(max-width: 480px) {
+    width: 345px;
+    padding-top: 27px;
+  }
 `
 
 export {
-  TitleWithLogo,
+  CornerTitleWithLogo,
   CornerLogo,
   DeliveryButton,
   CornerWrapper,
@@ -144,4 +232,10 @@ export {
   CharWeight,
   ItemTitle,
   CharPrice,
+  CornerItemWrapper,
+  CornerInfoDescription,
+  CornerItemImage,
+  MobileCornerItemImage,
+  CornerInfoWrapper,
+  CornerMenuWrapper
 }

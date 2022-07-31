@@ -1,25 +1,24 @@
 import React, {useState} from "react";
 import {BackButton} from "../common/backButton/backButton";
-import {CardRow} from "../common/cardRow/cardRow";
-import {ItemWrapper, Wrapper} from "../common/styled";
 import {CornersTypes, IFilterOption} from "./corners.types";
-import {Card} from "../common/card/card";
 import {
-  CornerAddress,
+  CornerAddress, CornerCardImage, CornerCardRow,
+  CornerCardWrapper,
   CornerDescription,
   CornerFilter,
   CornerHeader,
+  CornerHeaderTitle,
   CornerTitle,
+  CornerWrapper,
   FilterOption,
-  OptionLabel
+  MobileCornerCardImage, MobileCornerItemDescription,
+  OptionLabel,
 } from "./styled";
 import {ReactComponent as AddressIcon} from "../../assets/corners/address-icon.svg";
 import {CustomLink} from "../afisha/styled";
 import theme from "../../theme";
 import {Search} from "../common/search/search";
-import {Title} from "../common/title/title";
-import useMediaQuery from "../../hooks/useMatchMedia";
-import {NewsListItemContentText} from "../news/styled";
+import {isMobile} from "react-device-detect";
 
 const data: CornersTypes[] = [
   {
@@ -112,79 +111,88 @@ export const Corners = () => {
 
   const [activeOption, setActiveOption] = useState('all')
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
     <>
       <BackButton title="Назад" url="/"/>
-      <Wrapper
-        width={980}
-        marginBottom={isDesktop ? 60 : 40}
-        paddingTop={isDesktop ? 72 : 20}
-      >
-        <ItemWrapper isDesktop={isDesktop}>
-          <CornerHeader isDesktop={isDesktop}>
-            <Title>
-              Корнеры
-            </Title>
-            <CornerFilter isDesktop={isDesktop}>
-              {
-                filterOptions.map(option =>
-                  <OptionLabel
-                    key={option.value}
-                    isChecked={activeOption === option.value}
-                  >
-                    <FilterOption
-                      checked={activeOption === option.value}
-                      type="radio"
-                      name={option.name}
-                      value={option.value}
-                      onClick={() => setActiveOption(option.value)}
-                      onChange={() => undefined}
-                    />
-                    {option.title}
-                  </OptionLabel>
-                )
-              }
-            </CornerFilter>
-            {isDesktop && <Search placeholder="Поиск"/>}
-          </CornerHeader>
-          <CardRow
-            itemsPerRow={isDesktop ? 3 : 1}
-            itemWidth={isDesktop ? 300 : 345}
-            gap={isDesktop ? 40 : 30}
-          >
+      <CornerWrapper>
+        <CornerHeader>
+          <CornerHeaderTitle>
+            Корнеры
+          </CornerHeaderTitle>
+          <CornerFilter>
             {
-              data.map((corner) =>
-                <CustomLink to={corner.url} key={corner.url}>
-                  <Card
-                    width={isDesktop ? 300 : 345}
-                    height={isDesktop ? 230 : 265}
-                    imgUrl={corner.image}
-                  >
-                    <CornerTitle>
-                      {corner.name}
-                    </CornerTitle>
-                    <CornerAddress>
-                      <AddressIcon fill={theme.colors.darkMain}/>
-                      {corner.address}
-                    </CornerAddress>
-                    {isDesktop
-                      ? <CornerDescription>
-                        {corner.description}
-                      </CornerDescription>
-                      :
-                      <NewsListItemContentText>
-                        {corner.description}
-                      </NewsListItemContentText>
-                    }
-                  </Card>
-                </CustomLink>
+              filterOptions.map(option =>
+                <OptionLabel
+                  key={option.value}
+                  isChecked={activeOption === option.value}
+                >
+                  <FilterOption
+                    checked={activeOption === option.value}
+                    type="radio"
+                    name={option.name}
+                    value={option.value}
+                    onClick={() => setActiveOption(option.value)}
+                    onChange={() => undefined}
+                  />
+                  {option.title}
+                </OptionLabel>
               )
             }
-          </CardRow>
-        </ItemWrapper>
-      </Wrapper>
+          </CornerFilter>
+          {!isMobile && <Search placeholder="Поиск"/>}
+        </CornerHeader>
+        <CornerCardRow>
+          {
+            data.map((corner) => {
+                return !isMobile
+                  ? <CornerCard key={corner.url} {...corner}/>
+                  : <CornerCardMobile key={corner.url} {...corner}/>
+              }
+            )
+          }
+        </CornerCardRow>
+      </CornerWrapper>
     </>
+  )
+}
+
+const CornerCard: React.FC<CornersTypes> = ({url, image, name, address, description}) => {
+  return (
+    <CustomLink to={url}>
+      <CornerCardWrapper>
+        <CornerCardImage image={image}/>
+        <CornerTitle>
+          {name}
+        </CornerTitle>
+        <CornerAddress>
+          <AddressIcon fill={theme.colors.darkMain}/>
+          {address}
+        </CornerAddress>
+        <CornerDescription>
+          {description}
+        </CornerDescription>
+      </CornerCardWrapper>
+    </CustomLink>
+  )
+}
+
+const CornerCardMobile: React.FC<CornersTypes> = ({url, image, name, address, description}) => {
+  return (
+    <CustomLink to={url}>
+      <CornerCardWrapper>
+        <MobileCornerCardImage src={image}/>
+        <CornerTitle>
+          {name}
+        </CornerTitle>
+        <CornerAddress>
+          <AddressIcon fill={theme.colors.darkMain}/>
+          {address}
+        </CornerAddress>
+        <MobileCornerItemDescription>
+          {description}
+        </MobileCornerItemDescription>
+      </CornerCardWrapper>
+    </CustomLink>
   )
 }

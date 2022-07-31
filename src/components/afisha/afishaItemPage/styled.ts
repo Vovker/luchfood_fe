@@ -56,6 +56,7 @@ const AfishaInfoDescription = styled.div`
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
+  
   @media (max-width: 480px) {
     font-size: 14px;
     line-height: 21px;
@@ -88,7 +89,6 @@ const AfishaMobileImage = styled.img`
 const AfishaItemImage = styled(CardImg)`
   width: 435px;
   height: 333px;
-  
 `
 
 export {
