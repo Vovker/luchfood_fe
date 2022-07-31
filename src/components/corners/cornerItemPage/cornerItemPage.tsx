@@ -110,7 +110,7 @@ export const CornerItemPage = () => {
                 <CornerLogo src={"https://brandlogos.net/wp-content/uploads/2021/11/mcdonalds-logo.png"}/>
                 Vegan Fest
               </TitleWithLogo>
-              {!isDesktop && <CardImg width={345} height={265}
+              {!isDesktop && <CardImg
 									  image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
               <InfoDescription isDesktop={isDesktop}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
@@ -124,7 +124,7 @@ export const CornerItemPage = () => {
               {/*</DeliveryButton>*/}
             </InfoWrapper>
             <div>
-              {isDesktop && <CardImg width={433} height={333}
+              {isDesktop && <CardImg
 									 image="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}
             </div>
           </ItemPageWrapper>

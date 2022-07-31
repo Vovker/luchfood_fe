@@ -10,8 +10,6 @@ const CardWrapper = styled.div<ICardWrapperProps>`
 `
 
 const CardImg = styled.div<ICardImgProps>`
-  min-width: ${props => props.width+'px'};
-  min-height: ${props => props.height+'px'};
   background-image: url(${props => props.image});
   background-size: cover;
   background-repeat: no-repeat;

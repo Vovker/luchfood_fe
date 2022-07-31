@@ -24,7 +24,7 @@ export const NewsItemPage: React.FC = () => {
             </Title>
             {
               !isDesktop &&
-				<CardImg width={345} height={225}
+				<CardImg
 						 image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
             }
             <StyledDate isDesktop={isDesktop}>
@@ -39,7 +39,7 @@ export const NewsItemPage: React.FC = () => {
           <div>
             {
               isDesktop &&
-				<CardImg width={435} height={333}
+				<CardImg
 						 image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
             }
             <SocialLinks isDesktop={isDesktop}>
