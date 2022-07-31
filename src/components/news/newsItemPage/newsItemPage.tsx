@@ -14,14 +14,14 @@ export const NewsItemPage: React.FC = () => {
       <BackButton title='Все новости'/>
       {
         !isMobile
-          ? <DesktopLayout/>
-          : <MobileLayout/>
+          ? <NewsItem/>
+          : <NewsItemMobile/>
       }
     </>
   )
 }
 
-const DesktopLayout = () => {
+const NewsItem = () => {
   return (
     <NewsItemWrapper>
       <NewsItemInfoWrapper>
@@ -50,7 +50,7 @@ const DesktopLayout = () => {
   )
 }
 
-const MobileLayout = () => {
+const NewsItemMobile = () => {
   return (
     <NewsItemWrapper>
       <NewsItemInfoWrapper>
