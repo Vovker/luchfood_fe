@@ -9,6 +9,7 @@ import {
   NEWS_FAILURE,
   NEWS_SUCCESS
 } from "../types/news.types";
+import {logDOM} from "@testing-library/react";
 
 export function getNews(amount: number, lastId: number): (dispatch: Dispatch) => void {
   return (dispatch) => {
@@ -33,9 +34,8 @@ export function getNewsById(id: number): (dispatch: Dispatch) => void {
       if (response.data) {
         dispatch({type: NEWS_BY_ID_SUCCESS, payload: data});
       }
-
     }, (error) => {
-      dispatch({type: NEWS_BY_ID_FAILURE, payload: error});
+      dispatch({type: NEWS_BY_ID_FAILURE, payload: error.response});
     });
   }
 }

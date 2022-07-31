@@ -7,6 +7,6 @@ export const endpoints = {
   getGalleryById: (id: number) => `${API_URL}/gallery/${id}`,
   getEventTypes: () => `${API_URL}/event-type`,
   getEvents: (amount: number, lastId: number) => `${API_URL}/event/${amount}/${lastId}`,
-  getEventsById: (id: number) => `${API_URL}/event/${id}`,
+  getEventById: (id: number) => `${API_URL}/event/${id}`,
   getKitchenTypes: () => `${API_URL}/kitchen-type`,
 }

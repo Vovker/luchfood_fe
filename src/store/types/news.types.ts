@@ -25,5 +25,6 @@ export type NewsTyped = {
 
 export interface NewsState {
   news: NewsTyped[];
+  error: any;
   isLoading: boolean;
 }
