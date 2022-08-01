@@ -49,11 +49,6 @@ const NewsHeaderWrapper = styled.div`
 const NewsListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-
-  @media (max-width: 480px) {
-    gap: 30px;
-  }
 `;
 
 const NewsListItemWrapper = styled.div`
@@ -61,6 +56,11 @@ const NewsListItemWrapper = styled.div`
   height: 150px;
   justify-content: space-between;
   gap: 60px;
+  margin-bottom: 40px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 30px;
+  }
 `;
 
 
