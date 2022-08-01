@@ -27,6 +27,7 @@ import {API_URL} from "../../store/endpoints";
 import {isMobile} from 'react-device-detect';
 import {routes} from "../../routes/routes";
 import Loader from "../common/loader/loader";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const News: React.FC<NewsProps> = () => {
 
@@ -58,32 +59,37 @@ export const News: React.FC<NewsProps> = () => {
           <Search placeholder="Поиск по новостям"/>
         </NewsHeaderWrapper>
         <NewsListWrapper ref={ref}>
-          {
-            !isLoading ?
-              news.map((value, index) => {
-                  return !isMobile
-                    ? <NewsItem
-                      key={index}
-                      image={value.img}
-                      title={value.title}
-                      publicationDate={value.created_at}
-                      description={value.description}
-                      id={value.id}
-                    />
-                    : <NewsItemMobile
-                      key={index}
-                      image={value.img}
-                      title={value.title}
-                      publicationDate={value.created_at}
-                      description={value.description}
-                      id={value.id}
-                    />
-                }
-              ) : <Loader/>
-          }
-          {
-            isMore && <button onClick={() => loadMore()}>Загрузить еще</button>
-          }
+          <InfiniteScroll
+            data-testid="episodes-infinite-scroll"
+            pageStart={0}
+            loadMore={loadMore}
+            hasMore={isMore}
+            loader={<Loader/>}
+          >
+            {
+                news.map((value, index) => {
+                    return !isMobile
+                      ? <NewsItem
+                        key={value.id}
+                        image={value.img}
+                        title={value.title}
+                        publicationDate={value.created_at}
+                        description={value.description}
+                        id={value.id}
+                      />
+                      : <NewsItemMobile
+                        key={value.id}
+                        image={value.img}
+                        title={value.title}
+                        publicationDate={value.created_at}
+                        description={value.description}
+                        id={value.id}
+                      />
+                  }
+                )
+            }
+
+          </InfiniteScroll>
         </NewsListWrapper>
       </NewsWrapper>
     </>

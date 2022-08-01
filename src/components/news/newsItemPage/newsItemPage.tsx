@@ -38,7 +38,7 @@ export const NewsItemPage: React.FC = () => {
       <BackButton title='Все новости' url={`/${routes.news}`}/>
       {
         news && (
-          isMobile
+          !isMobile
           ? <NewsItem
             id={news.id}
             title={news.title}
