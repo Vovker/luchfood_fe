@@ -18,4 +18,5 @@ export interface GalleryState {
   gallery: GalleryTyped[];
   error: any;
   isLoading: boolean;
+  isMore: boolean;
 }
