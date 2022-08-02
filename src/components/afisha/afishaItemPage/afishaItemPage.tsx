@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {SocialImg, SocialLinks} from "../../common/styled";
 import {AfishaInfoCategory, AfishaInfoDate, AfishaInfoDescription, AfishaInfoWrapper,
   AfishaItemImage,
@@ -8,44 +8,69 @@ import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
 import {isMobile} from "react-device-detect";
 import {routes} from "../../../routes/routes";
+import {useParams} from "react-router-dom";
+import {useAppDispatch} from "../../../hooks/useAppDispatch";
+import {getEventById} from "../../../store/actions/events.action";
+import {useAppSelector} from "../../../hooks/useAppSelector";
+import Loader from "../../common/loader/loader";
+import {EventTyped} from "../../../store/types/events.types";
+import {API_URL} from "../../../store/endpoints";
+import moment from "moment";
 
 
 export const AfishaItemPage: React.FC = () => {
+
+  const {afishaId} = useParams();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getEventById(Number(afishaId)));
+  }, [dispatch]);
+
+  const {event, isLoading} = useAppSelector(state => state.currentEvent);
 
   return (
     <>
       <BackButton title='Вся Афиша' url={`/${routes.afisha}`}/>
       {
-        !isMobile
-          ? <AfishaItem/>
-          : <AfishaItemMobile/>
+        !isLoading && event ? (
+            !isMobile
+              ? <AfishaItem {...event}/>
+              : <AfishaItemMobile {...event}/>
+          )
+          : <Loader/>
       }
     </>
   )
 }
 
-const AfishaItem = () => {
+const AfishaItem: React.FC<EventTyped> = ({
+  name,
+  date,
+  type,
+  description,
+  img,
+}) => {
   return (
     <AfishaItemWrapper>
         <AfishaInfoWrapper>
           <AfishaItemTitle>
-            Vegan Fest- фестиваль вегетарианской кухни
+            {name}
           </AfishaItemTitle>
           <AfishaInfoDate>
-            Июль 16, 2022 в 10.00
+            {moment(date).locale('ru').format('llll')}
           </AfishaInfoDate>
           <AfishaInfoCategory>
-            Категория: Музыка
+            Категория: {type.name}
           </AfishaInfoCategory>
           <AfishaInfoDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
-            quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-            Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
+            {description}
           </AfishaInfoDescription>
         </AfishaInfoWrapper>
         <div>
           <AfishaItemImage
-            image='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
+            image={`${API_URL}/${img}`}/>
           <SocialLinks>
             Поделиться:
             <SocialImg src={coloredIstagramIcon}/>
@@ -56,27 +81,31 @@ const AfishaItem = () => {
   )
 }
 
-const AfishaItemMobile = () => {
+const AfishaItemMobile: React.FC<EventTyped> = ({
+  name,
+  date,
+  type,
+  description,
+  img,
+}) => {
   return (
     <AfishaItemWrapper>
       <AfishaInfoWrapper>
         <AfishaItemTitle>
-          Vegan Fest- фестиваль вегетарианской кухни
+          {name}
         </AfishaItemTitle>
         <AfishaMobileImage
-          src='http://sun9-32.userapi.com/s/v1/if1/UCQ49DRyoh40eVZjeqLBnHNel6H3QZYEKD26sBErJ-xse4zEV-8ft3tsQJNGJhOpEW2WrTtZ.jpg?size=400x433&quality=96&crop=0,0,472,512&ava=1'/>
+          src={`${API_URL}/${img}`}/>
         <MobileCategoryWrapper>
           <AfishaInfoDate>
-            Июль 16, 2022 в 10.00
+            {moment(date).locale('ru').format('llll')}
           </AfishaInfoDate>
           <AfishaInfoCategory>
-            Категория: Музыка
+            Категория: {type.name}
           </AfishaInfoCategory>
         </MobileCategoryWrapper>
         <AfishaInfoDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam convallis placerat iaculis. Donec vitae
-          quam cursus, tempor quam non, euismod ipsum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-          Nunc viverra mi lacus, id condimentum leo fringilla vitae. Etiam convallis placerat
+          {description}
         </AfishaInfoDescription>
       </AfishaInfoWrapper>
       <SocialLinks>

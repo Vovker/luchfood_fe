@@ -1,5 +1,6 @@
 import {NewsByIdState, NewsByIdTyped, NewsState, NewsTyped} from "../types/news.types";
 import {ActionWithPayload} from "../types/index.types";
+import _ from "lodash";
 
 const initialState: NewsState = {
   news: [],
@@ -21,7 +22,7 @@ export const newsReducer = (state = initialState, action: ActionWithPayload<News
         ...state,
         isLoading: false,
         error: null,
-        news: [...state.news, ...action.payload],
+        news: _.unionBy(state.news, action.payload, 'id'),
         isMore: action.payload.length !== 0,
       }
     case 'NEWS_FAILURE':

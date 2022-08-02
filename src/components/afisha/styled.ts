@@ -49,6 +49,7 @@ const AfishaCardRow = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 980px;
+  margin-bottom: 40px;
   
   @media (max-width: 480px) {  
     gap: 30px;
