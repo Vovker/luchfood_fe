@@ -190,7 +190,7 @@ const StyledButtonNext = styled(ButtonNext)`
   border: none;
   position: absolute;
   top: 50%;
-  right: -13px;
+  right: 8px;
   transform: translate(100%, -50%);
   z-index: 10;
 

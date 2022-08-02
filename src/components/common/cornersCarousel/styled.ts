@@ -131,7 +131,7 @@ const StyledButtonBack = styled(ButtonBack)`
   backdrop-filter: blur(24px);
   left: 0;
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: 10;
   
@@ -150,7 +150,7 @@ const StyledButtonNext = styled(ButtonNext)`
   background: rgba(255, 255, 255, 0.83);
   backdrop-filter: blur(24px);
   position: absolute;
-  top: 50%;
+  top: 45%;
   right: 0;
   transform: translate(50%, -50%);
   z-index: 10;
