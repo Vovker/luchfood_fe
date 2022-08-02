@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {CardImg} from "../common/card/styled";
 
 const  GalleryWrapper = styled.div`
@@ -14,6 +14,7 @@ const  GalleryWrapper = styled.div`
     padding-top: 16px;
     margin-bottom: 40px;
     align-items: center;
+    width: 100%;
   }
 `
 
@@ -68,7 +69,7 @@ const GalleryCardRow = styled.div`
   
   @media (max-width: 480px) {  
     gap: 20px;
-    width: 345px;
+    width: 100%;
   }
 `
 
