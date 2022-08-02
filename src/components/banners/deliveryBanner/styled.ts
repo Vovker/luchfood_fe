@@ -112,6 +112,7 @@ const BannerButton = styled.button`
       margin-left: 20px;
     }
   }
+  gap: 11px;
   
   @media(max-width: 480px){
     height: 44px;

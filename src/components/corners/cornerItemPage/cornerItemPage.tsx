@@ -106,7 +106,7 @@ export const CornerItemPage = () => {
           <CornerInfoWrapper>
             <CornerTitleWithLogo>
               <CornerLogo src={"https://brandlogos.net/wp-content/uploads/2021/11/mcdonalds-logo.png"}/>
-              Vegan Fest
+              pizdaaaaaaaaaaaa asdasdabsdkjhasbdkhjasbdjkasdhbasd
             </CornerTitleWithLogo>
             {isMobile && <MobileCornerItemImage
 				src="https://sushichefarts.by/upload/iblock/ba7/ba79b531e47dfa1bec62fce7d1817916.jpg"/>}

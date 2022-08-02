@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {IsDesktop} from "../types/index.types";
 import {Link} from "react-router-dom";
 import {ButtonBack, ButtonNext} from "pure-react-carousel";
-import {CardImg} from "../card/styled";
+import {MobileImage} from "../cornersCarousel/styled";
 
 const CarouselContainer = styled.div`
   width: 100%;
@@ -50,24 +50,22 @@ const PosterLink = styled.a`
   font-size: 20px;
   line-height: 24px;
   color: ${props => props.theme.colors.mint};
+  gap:11px;
+  transition: 0.5s ease;
 
   &:hover {
     cursor: pointer;
-
-    ${PosterLinkIcon} {
-      margin-left: 20px;
-    }
+    gap: 20px;
   }
 `;
 
 const SliderWrapper = styled.div<IsDesktop>`
   width: 1200px;
-  height: 480px;
   position: relative;
 
   @media (max-width: 480px) {
-    width: 345px;
-    height: 456px;
+    width: 100%;
+    padding: 0 15px;
   }
 `;
 
@@ -125,12 +123,13 @@ const PublicationDescription = styled.div`
 `;
 
 const MobileCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   color: white;
 `
 
-const MobileCardImage = styled(CardImg)`
-  width: 346px;
-  height: 265px;
+const MobileCardImage = styled(MobileImage)`
 `
 
 const MobileLink = styled(Link)`
@@ -151,7 +150,7 @@ const MobileTitle = styled.div`
 
 const MobileDescription = styled.div`
   height: 84px;
-  width: 345px;
+  width: 100%;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
@@ -176,13 +175,14 @@ const StyledButtonBack = styled(ButtonBack)`
     width: 43px;
     height: 43px;
     backdrop-filter: blur(18.7636px);
-    left: 8px;
-    top: 111px;
+    left: 23px;
+    top: 30%;
     transform: translate(0);
   }
 `;
 
 const StyledButtonNext = styled(ButtonNext)`
+  
   width: 55px;
   height: 55px;
   background: rgba(255, 255, 255, 0.37);
@@ -199,8 +199,8 @@ const StyledButtonNext = styled(ButtonNext)`
     width: 43px;
     height: 43px;
     backdrop-filter: blur(18.7636px);
-    top: 111px;
-    right: 8px;
+    top: 30%;
+    right: 23px;
     transform: translate(0);
   }
 `;

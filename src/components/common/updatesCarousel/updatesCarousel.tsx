@@ -19,8 +19,17 @@ import theme from "../../../theme";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import {isMobile} from "react-device-detect";
 
-export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
 
+const ratio = 0.76589
+const padding = 30
+const otherContentHeight = 191
+
+const slideWidth = window.innerWidth-padding
+const pictureHeight = Math.round(ratio*slideWidth)
+const slideHeight = (pictureHeight)+otherContentHeight
+
+
+export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
 
   return (
     <CarouselContainer>
@@ -29,13 +38,13 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
       </UpdatesCarouselTitle>
       <SliderWrapper>
         <CarouselProvider
-          naturalSlideWidth={!isMobile ? 380 : 346}
-          naturalSlideHeight={!isMobile ? 480 : 456}
+          naturalSlideWidth={!isMobile ? 380 : slideWidth}
+          naturalSlideHeight={!isMobile ? 480 : slideHeight}
           totalSlides={slides.length}
           visibleSlides={!isMobile ? 3 : 1}
           infinite={true}
           playDirection={'forward'}
-          isPlaying={true}
+          isPlaying={false}
         >
           <Slider>
             {
@@ -102,9 +111,10 @@ const CardDesktop: React.FC<UpdatesCarouselTypes> = ({title, date, description, 
 }
 
 const CardMobile: React.FC<UpdatesCarouselTypes> = ({title, date, description, imageUrl, url}) => {
+
   return (
     <MobileCardWrapper>
-      <MobileCardImage image={imageUrl}/>
+      <MobileCardImage width={slideWidth} height={pictureHeight} image={imageUrl}/>
       <StyledDate> {date} </StyledDate>
       <MobileTitle> {title} </MobileTitle>
       <MobileDescription>

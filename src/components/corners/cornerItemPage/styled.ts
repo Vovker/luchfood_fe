@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {CardImg} from "../../common/card/styled";
 
 const CornerWrapper = styled.div`
@@ -6,7 +6,6 @@ const CornerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  gap: 60px;
   height: 100%;
   justify-content: space-between;
   flex: 1 1 auto;
@@ -22,7 +21,7 @@ const CornerItemWrapper = styled.div`
   gap: 55px;
 
   @media (max-width: 480px) {
-    width: 345px;
+    width: 100%;
     margin-bottom: 40px;
     flex-direction: column;
     gap: 16px;
@@ -48,7 +47,9 @@ const CornerTitleWithLogo = styled.div`
   @media (max-width: 480px) {
     gap: 11px;
     justify-content: center;
-
+    padding: 0 30px;
+    word-break: break-word;
+    text-align: center;
   }
 `
 
@@ -138,6 +139,10 @@ const ItemRows = styled.div`
   margin-bottom: 52px;
   flex-wrap: wrap;
   gap: 22px;
+  
+  @media(max-width: 480px){
+    
+  }
 `
 
 const MenuRow = styled.div`
@@ -147,6 +152,7 @@ const MenuRow = styled.div`
   gap: 114px;
 
   @media(max-width: 480px){
+    width: 100%;
     flex-direction: column;
     gap: 22px;
   }
@@ -165,7 +171,7 @@ const MenuItem = styled.div`
   line-height: 28px;
   
   @media(max-width: 480px){
-    width: 345px;
+    width: 100%;
     padding-bottom: 13px;
     font-size: 16px;
     line-height: 22px;
@@ -191,10 +197,18 @@ const CharWeight = styled.div`
   padding-right: 12px;
   border-right: 1px solid ${props => props.theme.colors.white};
   min-width: 42px;
+  
+  @media(max-width: 480px){
+    white-space: nowrap;
+  }
 `
 
 const CharPrice = styled.div`
   min-width: 42px;
+  
+  @media(max-width: 480px){
+    white-space: nowrap;
+  }
 `
 
 
@@ -202,7 +216,9 @@ const ItemTitle = styled.div`
   max-width: 279px;
   
   @media(max-width: 480px){
-    max-width: 217px;
+    max-width: 100%;
+    word-break: break-word;
+    hyphens: auto;
   }
 `
 const CornerMenuWrapper = styled.div`
@@ -211,8 +227,8 @@ const CornerMenuWrapper = styled.div`
   max-width: 100%;
   
   @media(max-width: 480px) {
-    width: 345px;
-    padding-top: 27px;
+    width: 100%;
+    padding: 27px 15px 0 15px;
   }
 `
 

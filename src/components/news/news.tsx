@@ -56,7 +56,7 @@ export const News: React.FC<NewsProps> = () => {
       <NewsWrapper>
         <NewsHeaderWrapper>
           <Title>Новости</Title>
-          <Search placeholder="Поиск по новостям"/>
+          {!isMobile && <Search placeholder="Поиск по новостям"/>}
         </NewsHeaderWrapper>
         <NewsListWrapper ref={ref}>
           <InfiniteScroll

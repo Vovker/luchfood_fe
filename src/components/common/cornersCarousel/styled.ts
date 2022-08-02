@@ -18,7 +18,8 @@ const SliderWrapper = styled.div`
   width: 1260px;
   
   @media(max-width: 480px){
-    width: 345px;
+    width: 100%;
+    padding: 0 15px;
   }
 `;
 
@@ -58,9 +59,18 @@ const CardWrapper = styled.div<ICardWrapper>`
   }
 `;
 
-const MobileImage = styled(CardImg)`
-  width: 345px;
-  height: 493px;
+const MobileCardWrapper = styled.div`
+  padding: 0 15px;
+`
+
+interface IMobileImage{
+  width: number
+  height: number
+}
+
+const MobileImage = styled(CardImg)<IMobileImage>`
+  width: ${props => props.width+'px'};
+  height: ${props => props.height+'px'};
 `
 
 const CardTitle = styled.div`
@@ -119,11 +129,18 @@ const StyledButtonBack = styled(ButtonBack)`
   height: 55px;
   background: rgba(255, 255, 255, 0.83);
   backdrop-filter: blur(24px);
+  left: 0;
   position: absolute;
-  top: 45%;
-  left: 10px;
-  transform: translateY(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
+  
+  @media(max-width: 480px){
+    width: 43px;
+    height: 43px;
+    transform: translate(0, -50%);
+    left: 23px;
+  }
 `;
 
 const StyledButtonNext = styled(ButtonNext)`
@@ -133,10 +150,16 @@ const StyledButtonNext = styled(ButtonNext)`
   background: rgba(255, 255, 255, 0.83);
   backdrop-filter: blur(24px);
   position: absolute;
-  top: 45%;
-  right: 10px;
-  transform: translateY(-50%);
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
   z-index: 10;
+  @media(max-width: 480px){
+    width: 43px;
+    height: 43px;
+    transform: translate(0, -50%);
+    right: 23px;
+  }
 `;
 
 interface IStyledButtonIcon {
@@ -161,5 +184,6 @@ export {
   StyledButtonBack,
   StyledButtonNext,
   StyledButtonIcon,
-  MobileImage
+  MobileImage,
+  MobileCardWrapper
 }

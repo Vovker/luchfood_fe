@@ -1,21 +1,24 @@
 import styled from "styled-components";
-import {IsDesktop} from "../types/index.types";
 
 const HeaderContainer = styled.header`
   
 `
 
-const HeaderWrapper = styled.div<IsDesktop>`
+const HeaderWrapper = styled.div`
   position: relative;
   background: ${props => props.theme.colors.darkMain};
   display: flex;
-  flex-direction: ${props => props.isDesktop ? 'row' : 'column'};
   justify-content: center;
   align-content: center;
   width: 100%;
   height: 96px;
-  padding: ${props => props.isDesktop ? '0 90px' : '13px 0'};
-  box-sizing: border-box;
+  padding: 0 90px;
+  
+  @media(max-width: 480px){
+    padding: 15px 15px 19px 15px;
+    justify-content: space-between;
+    gap: 34px;
+  }
 `;
 
 const AddressWrapper = styled.div`
@@ -26,14 +29,28 @@ const AddressWrapper = styled.div`
   flex-direction: column;
   color: ${props => props.theme.colors.white};
   gap: 8px;
+  
+  @media(max-width: 480px){
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0;
+  }
 `;
 
-const Address = styled.div<IsDesktop>`
+const Address = styled.div`
   font-style: normal;
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '17px' : '14px'};
+  font-size: 17px;
   line-height: 20px;
   color: ${props => props.theme.colors.white};
+  
+  @media(max-width: 480px){
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: right;
+    max-width: 119px;
+  }
 `;
 
 const LogoWrapper = styled.a`
@@ -42,33 +59,52 @@ const LogoWrapper = styled.a`
   justify-content: center;
 `;
 
-const Logo = styled.img<IsDesktop>`
-  width: ${props => props.isDesktop ? '241px' : '159px'};
+const Logo = styled.img`
+  width: 241px;
+  
+  @media(max-width: 480px){
+    width: 137px;
+  }
 `;
 
-const SocialNetworksWrapper = styled.div<IsDesktop>`
-  width: ${props => props.isDesktop ? '400px' : '100%'};
-  margin-left: ${props => props.isDesktop ? 'auto' : '0'};
+const SocialNetworksWrapper = styled.div`
+  width: 400px;
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 23px;
+  
+  @media(max-width: 480px){
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
-const SocialNetworkLink = styled.a<IsDesktop>`
+const SocialNetworkLink = styled.a`
   font-style: normal;
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '20px' : '15px'};
-  line-height: ${props => props.isDesktop ? '24px' : '18px'};
+  font-size: 20px;
+  line-height: 24px;
   color: ${props => props.theme.colors.white};
   text-decoration: none;
   
   &:nth-child(1) {
-    margin-left: ${props => props.isDesktop ? 'auto' : '0'};
+    margin-left: auto;
   }
   
   &:hover {
     text-decoration: underline;
+  }
+
+  @media(max-width: 480px){
+    line-height: 16px;
+    font-size: 14px;
+    white-space: nowrap;
+    
+    &:nth-child(1) {
+      margin-left: 0;
+    }
   }
 `;
 
@@ -76,21 +112,28 @@ const SocialNetworkIcon = styled.img`
   width: 32px;
 `;
 
-const SubHeaderWrapper = styled.div<IsDesktop>`
-  height: ${props => props.isDesktop ? '54px' : '100%'};
+const SubHeaderWrapper = styled.div`
+  height: 54px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.isDesktop ? '0 90px' : '20px 15px'};
+  padding: 0 90px;
   background: ${props => props.theme.colors.redMain};
   max-width: 100%;
   overflow-y: hidden;
   box-sizing: border-box;
-  gap: ${props => props.isDesktop ? 'none' : '50px'};
   font-weight: 700;
-  font-size: ${props => props.isDesktop ? '20px' : '14px'};
-  line-height: ${props => props.isDesktop ? '20px' : '17px'};
+  font-size: 20px;
+  line-height: 20px;
   white-space: nowrap;
+  
+  @media(max-width: 480px){
+    height: 100%;
+    padding: 20px 15px;
+    gap: 50px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 `;
 
 const SubHeaderLink = styled.a`
@@ -117,6 +160,13 @@ const SearchIcon = styled.img`
   }
 `;
 
+const WorkHours = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: right;
+`
+
 export {
   HeaderWrapper,
   AddressWrapper,
@@ -130,5 +180,6 @@ export {
   SubHeaderLink,
   SearchComponentWrapper,
   SearchIcon,
-  HeaderContainer
+  HeaderContainer,
+  WorkHours
 }

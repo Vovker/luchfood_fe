@@ -5,38 +5,37 @@ import {
   Socials,
   SocialLink,
   SocialIcon,
-  Copyright
+  Copyright,
+  FooterAddress
 } from './styled';
 import logo from '../../../assets/logo.svg';
 import telegramIcon from '../../../assets/social_icons/telegram.svg';
 import instagramIcon from '../../../assets/social_icons/instagram.svg';
-import useMediaQuery from "../../../hooks/useMatchMedia";
-import {Address} from "../header/styled";
+import {isMobile} from "react-device-detect";
 
 
 export const Footer = () => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
 
   return (
-    <FooterWrapper isDesktop={isDesktop}>
+    <FooterWrapper>
       <div>
-        {isDesktop && <Logo src={logo}/>}
+        {!isMobile && <Logo src={logo}/>}
         {
-          !isDesktop &&
-			<Address isDesktop={isDesktop}>
-				<b>Ул. Толбухина 4б (территория завода “Луч”)</b>
-			</Address>
+          isMobile &&
+			<FooterAddress>
+				<b>Минск, Пр. Hезависимости 95, корпус 2</b>
+			</FooterAddress>
         }
-        <WorkHours isDesktop={isDesktop}>
-          {isDesktop && "Часы работы:"} <b>пн-вс с 08:00 до 02.00</b>
+        <WorkHours>
+          {!isMobile && "Часы работы:"} <b>пн-вс с 09:00 до 02.00</b>
         </WorkHours>
       </div>
       {
-        isDesktop &&
+        !isMobile &&
 		  <div style={{display: 'flex', alignItems: 'flex-end', flexDirection: 'column'}}>
 			  <Socials>
-				  <SocialLink href={'tel:+375291234567'}>+375(29) 123-45-67</SocialLink>
+				  <SocialLink href={'tel:+375296707088'}>+375(29) 670-70-88</SocialLink>
 				  <SocialLink>
 					  <SocialIcon src={telegramIcon}/>
 				  </SocialLink>

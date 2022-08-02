@@ -115,6 +115,11 @@ const NewsListItemLink = styled(Link)`
   align-items: center;
   justify-content: flex-end;
   gap: 11px;
+  transition: 0.5s;
+  
+  &:hover{
+    gap: 20px;
+  }
 
   @media (max-width: 480px) {
     font-size: 16px;
@@ -130,6 +135,7 @@ const MobileNewsListWrapper = styled.div`
   
   @media (max-width: 480px) {
     padding: 0 15px;
+    margin-bottom: 30px;
   }
 `
 

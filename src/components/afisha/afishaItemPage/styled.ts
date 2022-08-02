@@ -80,6 +80,8 @@ const AfishaItemTitle = styled.div`
     line-height: 24px;
     text-align: center;
     margin-bottom: 14px;
+    padding: 0 30px;
+    word-break: break-word;
   }
 `
 const AfishaMobileImage = styled.img`

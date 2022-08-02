@@ -25,14 +25,18 @@ import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 import theme from "../../../theme";
 import {isMobile} from "react-device-detect";
 
-const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
+const ratio = 1.42
 
+const slideWidth = window.innerWidth
+const slideHeight = ratio*slideWidth
+
+const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
 
   return (
     <SliderWrapper>
       <CarouselProvider
-        naturalSlideWidth={!isMobile ? 315 : 345}
-        naturalSlideHeight={!isMobile ? 450 : 493}
+        naturalSlideWidth={!isMobile ? 315 : slideWidth}
+        naturalSlideHeight={!isMobile ? 450 : slideHeight}
         totalSlides={slides.length}
         visibleSlides={!isMobile ? 4 : 1}
         infinite={true}
@@ -131,8 +135,9 @@ const Card: React.FC<ISlideProps> = ({
 const MobileCard: React.FC<ISlideProps> = ({
  imageUrl
 }) => {
+
   return (
-    <MobileImage image={imageUrl}/>
+      <MobileImage image={imageUrl} width={slideWidth} height={slideHeight}/>
   )
 }
 
