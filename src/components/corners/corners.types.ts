@@ -1,4 +1,3 @@
-import {IsDesktop} from "../common/types/index.types";
 
 export interface CornersTypes {
   image: string,
@@ -15,6 +14,6 @@ export interface IFilterOption {
   title: string
 }
 
-export interface FilterOptionStyle extends IsDesktop{
+export interface FilterOptionStyle{
   isChecked?: boolean
 }

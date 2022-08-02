@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import {IsDesktop} from "../types/index.types";
 import {Link} from "react-router-dom";
 import {ButtonBack, ButtonNext} from "pure-react-carousel";
 import {MobileImage} from "../cornersCarousel/styled";
@@ -59,7 +58,7 @@ const PosterLink = styled.a`
   }
 `;
 
-const SliderWrapper = styled.div<IsDesktop>`
+const SliderWrapper = styled.div`
   width: 1200px;
   position: relative;
 

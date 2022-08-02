@@ -1,7 +1,6 @@
 import styled from "styled-components/macro";
-import {IsDesktop} from "../common/types/index.types";
 
-const CornersSliderWrapper = styled.div<IsDesktop>`
+const CornersSliderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
