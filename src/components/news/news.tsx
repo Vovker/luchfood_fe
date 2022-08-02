@@ -30,9 +30,6 @@ import Loader from "../common/loader/loader";
 import InfiniteScroll from "react-infinite-scroller";
 
 export const News: React.FC<NewsProps> = () => {
-
-  const ref = useRef(null);
-
   const [page, setPage] = useState(0);
 
   const dispatch = useAppDispatch();
@@ -41,11 +38,12 @@ export const News: React.FC<NewsProps> = () => {
 
   useEffect(() => {
     dispatch(getNews(5, page));
+    setPage(prevState => prevState + 1)
   }, []);
 
   function loadMore(){
     if (!isLoading) {
-      dispatch(getNews(10, page + 1))
+      dispatch(getNews(10, page))
       setPage(prevState => prevState + 1)
     }
   }
@@ -58,9 +56,8 @@ export const News: React.FC<NewsProps> = () => {
           <Title>Новости</Title>
           {!isMobile && <Search placeholder="Поиск по новостям"/>}
         </NewsHeaderWrapper>
-        <NewsListWrapper ref={ref}>
+        <NewsListWrapper>
           <InfiniteScroll
-            data-testid="episodes-infinite-scroll"
             pageStart={0}
             loadMore={loadMore}
             hasMore={isMore}

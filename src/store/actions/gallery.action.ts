@@ -4,7 +4,7 @@ import {endpoints} from "../endpoints";
 import {Dispatch} from "@reduxjs/toolkit";
 
 export function getGallery(amount: number, lastId: number): (dispatch: Dispatch) => void {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch({type: GALLERY_REQUEST});
     axios.get(endpoints.getGallery(amount, lastId)).then(response => {
       const {data} = response.data;
