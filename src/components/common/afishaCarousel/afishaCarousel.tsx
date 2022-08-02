@@ -1,14 +1,16 @@
 import React from "react";
 import {CarouselProvider, Slide, Slider} from "pure-react-carousel";
-import {IAfishaItemProps} from "../../afisha/afisha.types";
 import {AfishaCardImage, AfishaCardWrapper, AfishaTitle, CustomLink} from "../../afisha/styled";
 import {AfishaCarouselContainer, AfishaCarouselTitle, CarouselWrapper, StyledButtonBack, StyledButtonForward} from "./styled";
 import {StyledDate } from "../styled";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import theme from "../../../theme";
+import {EventTyped} from "../../../store/types/events.types";
+import {API_URL} from "../../../store/endpoints";
+import moment from "moment";
 
 interface IAfishaCarouselProps {
-  slides: IAfishaItemProps[]
+  slides: EventTyped[]
 }
 
 export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
@@ -29,11 +31,11 @@ export const AfishaCarousel:React.FC<IAfishaCarouselProps> = ({slides}) => {
             {
               slides.map((slide, index)=>
                 <Slide index={index} key={index}>
-                  <CustomLink to={slide.url}>
+                  <CustomLink to={`/afisha/${slide.id}`}>
                     <AfishaCardWrapper>
-                      <AfishaCardImage image={slide.imageUrl}/>
-                      <StyledDate> {slide.date} </StyledDate>
-                      <AfishaTitle> {slide.title} </AfishaTitle>
+                      <AfishaCardImage image={`${API_URL}/${slide.img}`}/>
+                      <StyledDate> {moment(slide.date).locale('ru').format('DD MMMM YYYY')} </StyledDate>
+                      <AfishaTitle> {slide.name} </AfishaTitle>
                     </AfishaCardWrapper>
                   </CustomLink>
                 </Slide>

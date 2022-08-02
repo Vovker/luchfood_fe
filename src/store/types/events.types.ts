@@ -33,4 +33,11 @@ export interface EventsState {
   events: EventTyped[];
   error: any;
   isLoading: boolean;
+  isMore: boolean;
+}
+
+export interface EventByIdState {
+  event: EventTyped | null;
+  error: any;
+  isLoading: boolean;
 }
