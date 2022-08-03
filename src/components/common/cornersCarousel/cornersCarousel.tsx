@@ -17,13 +17,16 @@ import {
   MobileImage
 } from './styled';
 import "pure-react-carousel/dist/react-carousel.es.css";
-import {ICarouselProps, ISlideProps} from "./cornersCarousel.types";
+import {ICarouselProps} from "./cornersCarousel.types";
 import React from "react";
 import kitchenTypeIcon from '../../../assets/corners/kitchen-type-icon.svg';
 import {ReactComponent as AddressIcon} from '../../../assets/corners/address-icon.svg';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 import theme from "../../../theme";
 import {isMobile} from "react-device-detect";
+import {API_URL} from "../../../store/endpoints";
+import {CornersTyped} from "../../../store/types/corners.types";
+import {useNavigate} from "react-router-dom";
 
 const ratio = 1.42
 
@@ -49,20 +52,8 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
               <Slide index={index} key={index}>
                 {
                   !isMobile
-                    ? <Card
-                      url={slide.url}
-                      title={slide.title}
-                      imageUrl={slide.imageUrl}
-                      address={slide.address}
-                      kitchenType={slide.kitchenType}
-                    />
-                    :  <MobileCard
-                      url={slide.url}
-                      title={slide.title}
-                      imageUrl={slide.imageUrl}
-                      address={slide.address}
-                      kitchenType={slide.kitchenType}
-                    />
+                    ? <Card {...slide}/>
+                    :  <MobileCard {...slide}/>
                 }
               </Slide>
             )
@@ -106,38 +97,42 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
   );
 }
 
-const Card: React.FC<ISlideProps> = ({
-   title,
+const Card: React.FC<CornersTyped> = ({
+   name,
    address,
    kitchenType,
-   url,
-   imageUrl
+   id,
+   mainImage
  }) => {
+
+  const navigate = useNavigate();
+
   return (
     <CardWrapper
-      url={imageUrl}
+      onClick={() => navigate(`/corners/${id}`)}
+      url={`${API_URL}/${mainImage}`}
     >
       <CardContentWrapper>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{name}</CardTitle>
         <CardInfoLineWrapper>
           <AddressIcon fill={theme.colors.white}/>
           {address}
         </CardInfoLineWrapper>
         <CardInfoLineWrapper>
           <CardInfoLineIcon src={kitchenTypeIcon}/>
-          Кухня: {kitchenType}
+          Кухня: {kitchenType.name}
         </CardInfoLineWrapper>
       </CardContentWrapper>
     </CardWrapper>
   );
 }
 
-const MobileCard: React.FC<ISlideProps> = ({
- imageUrl
+const MobileCard: React.FC<CornersTyped> = ({
+ mainImage
 }) => {
 
   return (
-      <MobileImage image={imageUrl} width={slideWidth} height={slideHeight}/>
+      <MobileImage image={`${API_URL}/${mainImage}`} width={slideWidth} height={slideHeight}/>
   )
 }
 

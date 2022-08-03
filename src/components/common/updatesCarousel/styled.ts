@@ -40,7 +40,7 @@ const PosterLinkIcon = styled.img`
   transition: 0.5s;
 `;
 
-const PosterLink = styled.a`
+const PosterLink = styled(Link)`
   margin-top: 40px;
   display: flex;
   align-items: center;

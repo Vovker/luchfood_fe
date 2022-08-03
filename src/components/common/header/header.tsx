@@ -9,15 +9,12 @@ import {
   SocialNetworksWrapper,
   SubHeaderLink,
   SubHeaderWrapper,
-  SearchIcon,
-  SearchComponentWrapper,
   HeaderContainer,
   WorkHours
 } from './styled';
 import logo from '../../../assets/logo.svg';
 import telegramIcon from '../../../assets/social_icons/telegram.svg';
 import instagramIcon from '../../../assets/social_icons/instagram.svg';
-import searchIcon from '../../../assets/search_icon.svg';
 import {routes} from "../../../routes/routes";
 import {isMobile} from 'react-device-detect';
 
@@ -41,14 +38,6 @@ export const Header = () => {
   );
 }
 
-const Search = () => {
-  return (
-    <SearchComponentWrapper>
-      <SearchIcon src={searchIcon}/>
-    </SearchComponentWrapper>
-  );
-}
-
 const MainHeader = () => {
   return (
     <HeaderWrapper>
@@ -60,7 +49,7 @@ const MainHeader = () => {
           Часы работы <b>: пн-вс с 09:00 до 02.00</b>
         </Address>
       </AddressWrapper>
-      <LogoWrapper href={`/${routes.home}`}>
+      <LogoWrapper href={`/`}>
         <Logo src={logo}/>
       </LogoWrapper>
       <SocialNetworksWrapper>

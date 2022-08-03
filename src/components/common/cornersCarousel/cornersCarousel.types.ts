@@ -1,11 +1,5 @@
-export interface ISlideProps {
-  imageUrl: string;
-  title: string;
-  address: string;
-  kitchenType: string;
-  url: string;
-}
+import {CornersTyped} from "../../../store/types/corners.types";
 
 export interface ICarouselProps {
-  slides: ISlideProps[];
+  slides: CornersTyped[];
 }

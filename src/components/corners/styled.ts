@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {FilterOptionStyle} from "./corners.types";
 import {CardImg} from "../common/card/styled";
 
@@ -56,11 +56,11 @@ const CornerFilter = styled.div`
   display: flex;
   gap: 25px;
   width: fit-content;
-  overflow-x: scroll;
   
   @media (max-width: 480px) {
     gap: 42px;
     margin-bottom: 20px;
+    overflow-x: auto;
     width: 100%;
   }
 `

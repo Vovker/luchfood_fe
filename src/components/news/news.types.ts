@@ -1,8 +1,3 @@
-
-export type NewsItemTypes = {
-  image: string;
-};
-
 export interface NewsProps {
   news?: NewsItemProps[];
 }

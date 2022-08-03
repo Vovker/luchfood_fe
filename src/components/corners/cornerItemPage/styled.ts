@@ -33,6 +33,7 @@ const CornerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 28px;
+  width: 100%;
 `
 
 const CornerTitleWithLogo = styled.div`
@@ -79,7 +80,7 @@ const DeliveryButton = styled.button`
   align-items: center;
   width: fit-content;
   gap: 11px;
-  font-family: Jura;
+  font-family: Jura, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -97,10 +98,12 @@ const CornerInfoDescription = styled.div`
 `
 
 const MenuContainer = styled.div`
+  padding-top: 44px;
   width: 100%;
   background-color: ${props => props.theme.colors.darkMain};
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   position: relative;
   color: ${props => props.theme.colors.white};
 `
@@ -131,6 +134,7 @@ const MenuFooter = styled.div`
   font-size: 18px;
   font-weight: 500;
   line-height: 25px;
+  width: 980px;
 `
 
 const ItemRows = styled.div`
@@ -141,7 +145,7 @@ const ItemRows = styled.div`
   gap: 22px;
   
   @media(max-width: 480px){
-    
+    margin-bottom: 10px;
   }
 `
 
@@ -149,12 +153,12 @@ const MenuRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 114px;
+  flex-wrap: wrap;
+  width: 100%;
 
   @media(max-width: 480px){
     width: 100%;
     flex-direction: column;
-    gap: 22px;
   }
 `
 
@@ -165,6 +169,7 @@ const MenuItem = styled.div`
   gap: 10px;
   width: 433px;
   padding-bottom: 22px;
+  margin-bottom: 35px;
   border-bottom: 1px solid ${props => props.theme.colors.white};
   font-size: 20px;
   font-weight: 700;
@@ -185,6 +190,7 @@ const ItemChar = styled.div`
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
+  white-space: nowrap;
   
   @media(max-width: 480px){
     gap: 8px;
@@ -197,6 +203,7 @@ const CharWeight = styled.div`
   padding-right: 12px;
   border-right: 1px solid ${props => props.theme.colors.white};
   min-width: 42px;
+  white-space: nowrap;
   
   @media(max-width: 480px){
     white-space: nowrap;
@@ -205,6 +212,7 @@ const CharWeight = styled.div`
 
 const CharPrice = styled.div`
   min-width: 42px;
+  white-space: nowrap;
   
   @media(max-width: 480px){
     white-space: nowrap;
@@ -223,12 +231,11 @@ const ItemTitle = styled.div`
 `
 const CornerMenuWrapper = styled.div`
   width: 980px;
-  padding-top: 44px;
   max-width: 100%;
   
   @media(max-width: 480px) {
     width: 100%;
-    padding: 27px 15px 0 15px;
+    padding: 0 15px;
   }
 `
 
