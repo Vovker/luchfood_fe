@@ -8,16 +8,25 @@ import {
   PublicationDescription,
   PublicationTitle,
   MobileCardWrapper,
-  MobileLink, MobileTitle, MobileDescription, StyledButtonBack, StyledButtonNext, MobileCardImage, UpdatesCarouselTitle
+  MobileLink,
+  MobileTitle,
+  MobileDescription,
+  StyledButtonBack,
+  StyledButtonNext,
+  MobileCardImage,
+  UpdatesCarouselTitle
 } from './styled';
 import {ReactComponent as GreenArrow} from '../../../assets/green-arrow.svg';
 import React from "react";
-import {IUpdatesCarouselProps, UpdatesCarouselTypes} from "./updatesCarousel.types";
+import {IUpdatesCarouselProps} from "./updatesCarousel.types";
 import {CarouselProvider, Slide, Slider} from "pure-react-carousel";
 import {StyledDate} from '../styled';
 import theme from "../../../theme";
 import {ReactComponent as ArrowIcon} from "../../../assets/black-arrow.svg";
 import {isMobile} from "react-device-detect";
+import {API_URL} from "../../../store/endpoints";
+import moment from "moment";
+import {EventTyped} from "../../../store/types/events.types";
 
 
 const ratio = 0.76589
@@ -52,20 +61,8 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
                 <Slide index={index} key={index}>
                   {
                     !isMobile
-                      ? <CardDesktop
-                        title={slide.title}
-                        date={slide.date}
-                        description={slide.description}
-                        imageUrl={slide.imageUrl}
-                        url={slide.url}
-                      />
-                      : <CardMobile
-                        title={slide.title}
-                        date={slide.date}
-                        description={slide.description}
-                        imageUrl={slide.imageUrl}
-                        url={slide.url}
-                      />
+                      ? <CardDesktop {...slide}/>
+                      : <CardMobile {...slide}/>
                   }
                 </Slide>
               )
@@ -90,7 +87,7 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
       </SliderWrapper>
       {
         !isMobile &&
-		  <PosterLink>
+		  <PosterLink to={'/afisha'}>
 			  Вся афиша
 			  <GreenArrow/>
 		  </PosterLink>
@@ -99,28 +96,28 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
   );
 }
 
-const CardDesktop: React.FC<UpdatesCarouselTypes> = ({title, date, description, imageUrl, url}) => {
+const CardDesktop: React.FC<EventTyped> = ({img, name, description, id, date}) => {
   return (
     <CardWrapper>
-      <CardImage url={imageUrl}/>
-      <PublicationDate>{date}</PublicationDate>
-      <PublicationTitle>{title}</PublicationTitle>
+      <CardImage url={`${API_URL}/${img}`}/>
+      <PublicationDate>{moment(date).locale('ru').format('DD MMMM YYYY')}</PublicationDate>
+      <PublicationTitle>{name}</PublicationTitle>
       <PublicationDescription>{description}</PublicationDescription>
     </CardWrapper>
   );
 }
 
-const CardMobile: React.FC<UpdatesCarouselTypes> = ({title, date, description, imageUrl, url}) => {
+const CardMobile: React.FC<EventTyped> = ({img, name, description, id, date}) => {
 
   return (
     <MobileCardWrapper>
-      <MobileCardImage width={slideWidth} height={pictureHeight} image={imageUrl}/>
-      <StyledDate> {date} </StyledDate>
-      <MobileTitle> {title} </MobileTitle>
+      <MobileCardImage width={slideWidth} height={pictureHeight} image={`${API_URL}/${img}`}/>
+      <StyledDate> {moment(date).locale('ru').format('DD MMMM YYYY')} </StyledDate>
+      <MobileTitle> {name} </MobileTitle>
       <MobileDescription>
         {description}
       </MobileDescription>
-      <MobileLink to={url}>
+      <MobileLink to={`/news/${id}`}>
         Подробнее <GreenArrow/>
       </MobileLink>
     </MobileCardWrapper>

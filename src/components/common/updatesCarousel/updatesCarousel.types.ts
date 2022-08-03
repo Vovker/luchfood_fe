@@ -1,11 +1,5 @@
-export interface IUpdatesCarouselProps {
-  slides: UpdatesCarouselTypes[]
-}
+import {EventTyped} from "../../../store/types/events.types";
 
-export interface UpdatesCarouselTypes {
-  title: string;
-  description: string;
-  url: string;
-  imageUrl: string;
-  date: string;
+export interface IUpdatesCarouselProps {
+  slides: EventTyped[]
 }

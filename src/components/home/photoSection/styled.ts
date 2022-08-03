@@ -38,7 +38,6 @@ const PhotoSectionInner = styled.div`
   gap: 2px;
   margin-bottom: 41px;
   width: 100%;
-  overflow: scroll;
   
   @media(max-width: 480px){
     padding: 0 15px;

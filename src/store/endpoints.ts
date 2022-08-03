@@ -7,4 +7,7 @@ export const endpoints = {
   getEvents: (amount: number, lastId: number) => `${API_URL}/event/${amount}/${lastId}`,
   getEventById: (id: number) => `${API_URL}/event/${id}`,
   getKitchenTypes: () => `${API_URL}/kitchen-type`,
+  getCorners: () => `${API_URL}/corner`,
+  getCornerById: (id: number) => `${API_URL}/corner/${id}`,
+  getMenuByCornerId: (id: number) => `${API_URL}/menu/corner/${id}`,
 }
