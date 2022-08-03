@@ -78,14 +78,12 @@ const PhotoSectionLink = styled.a`
   line-height: 24px;
   color: ${props => props.theme.colors.darkMain};
   text-decoration: none;
-  transition: 1s;
+  transition: 0.5s;
+  gap: 11px;
 
   &:hover {
     cursor: pointer;
-    
-    ${PhotoSectionLinkIcon} {
-      margin-left: 20px;
-    }
+    gap: 20px;
   }
   
   @media(max-width: 480px){

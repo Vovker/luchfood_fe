@@ -34,7 +34,8 @@ const CornerHeader = styled.div`
     margin-bottom: 0;
     height: fit-content;
     gap: 20px;
-    width: 345px;
+    width: 100%;
+    padding: 0 15px;
   }
 `
 
@@ -116,7 +117,7 @@ const MobileCornerItemDescription = styled.div`
 
   @media (max-width: 480px) {
     height: 42px;
-    width: 345px;
+    width: 100%;
     font-size: 14px;
     line-height: 21px;
   }
@@ -151,6 +152,7 @@ const CornerCardImage = styled(CardImg)`
 
 const MobileCornerCardImage = styled.img`
   width: 100%;
+  min-width: 100%;
 `
 
 export {

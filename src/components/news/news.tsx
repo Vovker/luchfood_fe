@@ -9,16 +9,15 @@ import {
   NewsListItemContentText,
   NewsListItemLink,
   NewsListItemWrapper,
-  NewsListWrapper,
+  NewsListWrapper, NewsTitle,
   NewsWrapper
 } from './styled'
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NewsItemProps, NewsProps} from "./news.types";
 import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {BackButton} from "../common/backButton/backButton";
 import theme from "../../theme";
 import {Search} from "../common/search/search";
-import {Title} from '../common/title/title';
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {getNews} from '../../store/actions/news.action';
 import {useAppSelector} from "../../hooks/useAppSelector";
@@ -53,8 +52,8 @@ export const News: React.FC<NewsProps> = () => {
       <BackButton title="Назад" url={routes.home}/>
       <NewsWrapper>
         <NewsHeaderWrapper>
-          <Title>Новости</Title>
-          <Search placeholder="Поиск по новостям"/>
+          <NewsTitle>Новости</NewsTitle>
+          {!isMobile && <Search placeholder="Поиск по новостям"/>}
         </NewsHeaderWrapper>
         <NewsListWrapper>
           <InfiniteScroll

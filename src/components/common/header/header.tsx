@@ -11,59 +11,31 @@ import {
   SubHeaderWrapper,
   SearchIcon,
   SearchComponentWrapper,
-  HeaderContainer
+  HeaderContainer,
+  WorkHours
 } from './styled';
 import logo from '../../../assets/logo.svg';
 import telegramIcon from '../../../assets/social_icons/telegram.svg';
 import instagramIcon from '../../../assets/social_icons/instagram.svg';
 import searchIcon from '../../../assets/search_icon.svg';
-import useMediaQuery from "../../../hooks/useMatchMedia";
+import {routes} from "../../../routes/routes";
+import {isMobile} from 'react-device-detect';
 
 export const Header = () => {
 
-  const isDesktop = useMediaQuery('(min-width: 1073px)')
-
   return (
     <HeaderContainer>
-      <HeaderWrapper isDesktop={isDesktop}>
-        {
-          isDesktop && <AddressWrapper>
-				<Address>
-					<b>Ул. Толбухина 4б (территория завода “Луч”)</b>
-				</Address>
-				<Address>
-					Часы работы <b>: пн-вс с 08:00 до 02.00</b>
-				</Address>
-			</AddressWrapper>
-        }
-        <LogoWrapper href={'/'}>
-          <Logo src={logo} isDesktop={isDesktop}/>
-        </LogoWrapper>
-        <SocialNetworksWrapper isDesktop={isDesktop}>
-          <SocialNetworkLink href={'tel:+375291234567'} isDesktop={isDesktop}>
-            +375(29) 123-45-67
-          </SocialNetworkLink>
-          {
-            isDesktop &&
-			  <>
-				  <SocialNetworkLink href={'#'}>
-					  <SocialNetworkIcon src={telegramIcon}/>
-				  </SocialNetworkLink>
-				  <SocialNetworkLink href={'#'}>
-					  <SocialNetworkIcon src={instagramIcon}/>
-				  </SocialNetworkLink>
-			  </>
-          }
-
-        </SocialNetworksWrapper>
-      </HeaderWrapper>
-      <SubHeaderWrapper isDesktop={isDesktop}>
-        <SubHeaderLink href={'/'}>Операторы</SubHeaderLink>
-        <SubHeaderLink href={'/news'}>Новости</SubHeaderLink>
-        <SubHeaderLink href={'/about'}>О нас</SubHeaderLink>
-        <SubHeaderLink href={'/afisha'}>Афиша</SubHeaderLink>
-        <SubHeaderLink href={'/gallery'}>Галерея</SubHeaderLink>
-        {isDesktop && <Search/>}
+      {
+        isMobile
+          ? <MainHeaderMobile/>
+          : <MainHeader/>
+      }
+      <SubHeaderWrapper>
+        <SubHeaderLink href={`/${routes.corners}`}>Корнеры</SubHeaderLink>
+        <SubHeaderLink href={`/${routes.news}`}>Новости</SubHeaderLink>
+        <SubHeaderLink href={`/${routes.about}`}>О нас</SubHeaderLink>
+        <SubHeaderLink href={`/${routes.afisha}`}>Афиша</SubHeaderLink>
+        <SubHeaderLink href={`/${routes.gallery}`}>Галерея</SubHeaderLink>
       </SubHeaderWrapper>
     </HeaderContainer>
   );
@@ -75,4 +47,56 @@ const Search = () => {
       <SearchIcon src={searchIcon}/>
     </SearchComponentWrapper>
   );
+}
+
+const MainHeader = () => {
+  return (
+    <HeaderWrapper>
+      <AddressWrapper>
+        <Address>
+          <b>Минск, Пр. Hезависимости 95, корпус 2</b>
+        </Address>
+        <Address>
+          Часы работы <b>: пн-вс с 09:00 до 02.00</b>
+        </Address>
+      </AddressWrapper>
+      <LogoWrapper href={`/${routes.home}`}>
+        <Logo src={logo}/>
+      </LogoWrapper>
+      <SocialNetworksWrapper>
+        <SocialNetworkLink href={'tel:+375296707088'}>
+          +375(29) 670-70-88
+        </SocialNetworkLink>
+        <SocialNetworkLink href={'#'}>
+          <SocialNetworkIcon src={telegramIcon}/>
+        </SocialNetworkLink>
+        <SocialNetworkLink href={'#'}>
+          <SocialNetworkIcon src={instagramIcon}/>
+        </SocialNetworkLink>
+      </SocialNetworksWrapper>
+    </HeaderWrapper>
+  )
+}
+
+const MainHeaderMobile = () => {
+  return (
+    <HeaderWrapper>
+      <div>
+        <LogoWrapper href={'/'}>
+          <Logo src={logo}/>
+        </LogoWrapper>
+        <SocialNetworkLink href={'tel:+375296707088'}>
+          +375(29) 670-70-88
+        </SocialNetworkLink>
+      </div>
+      <AddressWrapper>
+        <Address>
+          Пр. Hезависимости 95 корпус 2
+        </Address>
+        <WorkHours>
+          <b>пн-вс с 09:00 до 02.00</b>
+        </WorkHours>
+      </AddressWrapper>
+    </HeaderWrapper>
+  )
 }

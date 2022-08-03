@@ -53,7 +53,7 @@ const AfishaCardRow = styled.div`
   
   @media (max-width: 480px) {  
     gap: 30px;
-    width: 345px;
+    width: 100%;
   }
 `
 
@@ -79,6 +79,12 @@ const AfishaLink = styled(Link)`
   color: ${props => props.theme.colors.redMain};
   display: flex;
   align-items: center;
+  transition: 0.5s;
+  
+  &:hover{
+    gap: 20px;
+  }
+  
   @media (max-width: 480px) {
     gap: 15px;
     line-height: 18px;

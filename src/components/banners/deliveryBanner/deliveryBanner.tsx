@@ -15,7 +15,6 @@ import rightIcon from '../../../assets/delivery_banner/rightImage.png';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
 import theme from "../../../theme";
 import React from "react";
-import {IsDesktop} from "../../common/types/index.types";
 import {isMobile} from "react-device-detect";
 
 export const DeliveryBanner = () => {
@@ -23,10 +22,10 @@ export const DeliveryBanner = () => {
   return (
     <>
       <BannerWrapper>
-        {isMobile && <BannerText isDesktop={false}/>}
+        {isMobile && <BannerText/>}
         <ContentWrapper>
           <LeftBannerImage src={leftIcon}/>
-          {!isMobile && <BannerText isDesktop={true}/>}
+          {!isMobile && <BannerText/>}
           <RightBannerImage src={rightIcon}/>
         </ContentWrapper>
         {isMobile &&
@@ -41,7 +40,7 @@ export const DeliveryBanner = () => {
   );
 }
 
-const BannerText: React.FC<IsDesktop> = () => {
+const BannerText: React.FC = () => {
 
   return(
     <BannerTextWrapper>

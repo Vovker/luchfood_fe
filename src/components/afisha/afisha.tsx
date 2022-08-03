@@ -46,7 +46,7 @@ export const Afisha = () => {
       <AfishaWrapper>
         <AfishaHeader>
           <AfishaHeaderTitle>Афиша</AfishaHeaderTitle>
-          <Search placeholder='Найти мероприятие'/>
+          {!isMobile && <Search placeholder='Найти мероприятие'/>}
         </AfishaHeader>
         <InfiniteScroll
           pageStart={page}

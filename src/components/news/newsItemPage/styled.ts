@@ -39,6 +39,8 @@ const NewsItemTitle = styled.div`
     line-height: 24px;
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 30px;
+    word-break: break-word;
   }
 `
 
