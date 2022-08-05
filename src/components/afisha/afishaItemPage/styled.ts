@@ -23,9 +23,6 @@ const AfishaInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @media (max-width: 480px) {
-    gap: 6px;
-  }
 `
 
 const AfishaInfoDate = styled.div`

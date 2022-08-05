@@ -32,10 +32,16 @@ const CardContentWrapper = styled.div`
   transition: 1s;
   padding: 25px 16px;
   box-sizing: border-box;
+  
+  @media(max-width: 480px){
+    padding: 25px 24px 64px 24px;
+  }
 `;
 
 interface ICardWrapper {
-  url: string
+  url: string,
+  width?: string,
+  height?: string,
 }
 
 const CardWrapper = styled.div<ICardWrapper>`
@@ -44,8 +50,23 @@ const CardWrapper = styled.div<ICardWrapper>`
   background: url('${props => props.url}') center no-repeat;
   background-size: cover;
   border: 2px solid ${props => props.theme.colors.liteBackground};
+  box-sizing: border-box;
   position: relative;
   transition: 1s;
+  
+  @media(max-width: 480px){
+    width: ${props => props.width || '100%'};
+    height: ${props => props.height || '100%'};
+
+    ${CardContentWrapper}{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-direction: column;
+      backdrop-filter: blur(1px);
+      background: linear-gradient(360deg, #020101 0%, rgba(2, 1, 1, 0.2) 36.57%, rgba(1, 0, 0, 0) 96.17%);
+    }
+  }
   
   &:hover{
     ${CardContentWrapper}{

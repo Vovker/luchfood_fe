@@ -50,11 +50,7 @@ const CornersCarousel: React.FC<ICarouselProps> = ({slides}) => {
           {
             slides.map((slide, index) =>
               <Slide index={index} key={index}>
-                {
-                  !isMobile
-                    ? <Card {...slide}/>
-                    :  <MobileCard {...slide}/>
-                }
+                <Card {...slide}/>
               </Slide>
             )
           }
@@ -109,6 +105,8 @@ const Card: React.FC<CornersTyped> = ({
 
   return (
     <CardWrapper
+      width={slideWidth + 'px'}
+      height={slideHeight + 'px'}
       onClick={() => navigate(`/corners/${id}`)}
       url={`${API_URL}/${mainImage}`}
     >
@@ -125,15 +123,6 @@ const Card: React.FC<CornersTyped> = ({
       </CardContentWrapper>
     </CardWrapper>
   );
-}
-
-const MobileCard: React.FC<CornersTyped> = ({
- mainImage
-}) => {
-
-  return (
-      <MobileImage image={`${API_URL}/${mainImage}`} width={slideWidth} height={slideHeight}/>
-  )
 }
 
 export default CornersCarousel;

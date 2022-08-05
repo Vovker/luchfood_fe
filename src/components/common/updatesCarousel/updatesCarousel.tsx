@@ -117,7 +117,7 @@ const CardMobile: React.FC<EventTyped> = ({img, name, description, id, date}) =>
       <MobileDescription>
         {description}
       </MobileDescription>
-      <MobileLink to={`/news/${id}`}>
+      <MobileLink to={`/afisha/${id}`}>
         Подробнее <GreenArrow/>
       </MobileLink>
     </MobileCardWrapper>

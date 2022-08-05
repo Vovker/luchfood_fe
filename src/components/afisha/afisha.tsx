@@ -6,9 +6,7 @@ import {
 } from "./styled";
 import {ReactComponent as OrangeArrow} from '../../assets/orange-arrow.svg'
 import {StyledDate} from "../common/styled";
-import {AfishaCarousel} from "../common/afishaCarousel/afishaCarousel";
 import {BackButton} from "../common/backButton/backButton";
-import {Search} from "../common/search/search";
 import {isMobile} from "react-device-detect";
 import {routes} from "../../routes/routes";
 import moment from "moment";
@@ -26,7 +24,7 @@ export const Afisha = () => {
 
   const dispatch = useAppDispatch();
 
-  const {events, isLoading, error, isMore} = useAppSelector(state => state.events);
+  const {events, isLoading, isMore} = useAppSelector(state => state.events);
 
   function loadMore() {
     if (!isLoading) {
@@ -46,7 +44,6 @@ export const Afisha = () => {
       <AfishaWrapper>
         <AfishaHeader>
           <AfishaHeaderTitle>Афиша</AfishaHeaderTitle>
-          {!isMobile && <Search placeholder='Найти мероприятие'/>}
         </AfishaHeader>
         <InfiniteScroll
           pageStart={page}
@@ -65,7 +62,6 @@ export const Afisha = () => {
             }
           </AfishaCardRow>
         </InfiniteScroll>
-        {/*{!isMobile && <AfishaCarousel slides={data}/>}*/}
       </AfishaWrapper>
     </>
   )

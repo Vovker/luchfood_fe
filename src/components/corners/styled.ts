@@ -76,6 +76,11 @@ const OptionLabel = styled.label<FilterOptionStyle>`
   background-color: ${props => props.isChecked ? props.theme.colors.white : 'inherit'};
   padding: 4px 11px;
   
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
   @media (max-width: 480px) {
     padding: 6px 15px 6px 14px;
   }

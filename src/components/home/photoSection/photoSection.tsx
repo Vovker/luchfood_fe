@@ -6,9 +6,9 @@ import {
   PhotoSectionInner,
   PhotoSectionImg,
   PhotoSectionLink,
-  PhotoSectionLinkIcon
 } from './styled';
 import {ReactComponent as ArrowIcon} from '../../../assets/black-arrow.svg';
+import {routes} from "../../../routes/routes";
 
 export const PhotoSection: React.FC<IPhotoSectionProps> = ({urls}) => {
 
@@ -22,7 +22,7 @@ export const PhotoSection: React.FC<IPhotoSectionProps> = ({urls}) => {
           })
         }
       </PhotoSectionInner>
-      <PhotoSectionLink>
+      <PhotoSectionLink to={routes.gallery}>
         Перейти к галерее
         <ArrowIcon fill="#1E1E1E"/>
       </PhotoSectionLink>
