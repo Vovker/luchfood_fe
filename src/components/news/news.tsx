@@ -17,7 +17,6 @@ import {NewsItemProps, NewsProps} from "./news.types";
 import {ReactComponent as Arrow} from '../../assets/black-arrow.svg';
 import {BackButton} from "../common/backButton/backButton";
 import theme from "../../theme";
-import {Search} from "../common/search/search";
 import {useAppDispatch} from "../../hooks/useAppDispatch";
 import {getNews} from '../../store/actions/news.action';
 import {useAppSelector} from "../../hooks/useAppSelector";
@@ -33,7 +32,7 @@ export const News: React.FC<NewsProps> = () => {
 
   const dispatch = useAppDispatch();
 
-  const {news, isLoading, error, isMore} = useAppSelector(state => state.news)
+  const {news, isLoading, isMore} = useAppSelector(state => state.news)
 
   useEffect(() => {
     dispatch(getNews(5, page));
@@ -53,7 +52,6 @@ export const News: React.FC<NewsProps> = () => {
       <NewsWrapper>
         <NewsHeaderWrapper>
           <NewsTitle>Новости</NewsTitle>
-          {!isMobile && <Search placeholder="Поиск по новостям"/>}
         </NewsHeaderWrapper>
         <NewsListWrapper>
           <InfiniteScroll
@@ -63,7 +61,7 @@ export const News: React.FC<NewsProps> = () => {
             loader={<Loader/>}
           >
             {
-                news.map((value, index) => {
+                news.map((value) => {
                     return !isMobile
                       ? <NewsItem
                         key={value.id}

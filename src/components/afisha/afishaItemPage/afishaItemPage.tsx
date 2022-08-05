@@ -101,7 +101,7 @@ const AfishaItemMobile: React.FC<EventTyped> = ({
             {moment(date).locale('ru').format('llll')}
           </AfishaInfoDate>
           <AfishaInfoCategory>
-            Категория: {type.name}
+            Категория: <b>{type.name}</b>
           </AfishaInfoCategory>
         </MobileCategoryWrapper>
         <AfishaInfoDescription>

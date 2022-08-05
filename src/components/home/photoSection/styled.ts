@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const PhotoSectionWrapper = styled.div`
   background: ${props => props.theme.colors.liteBackground};
@@ -43,6 +44,7 @@ const PhotoSectionInner = styled.div`
     padding: 0 15px;
     margin-bottom: 24px;
     justify-content: flex-start;
+    overflow: auto;
   }
 `;
 
@@ -68,7 +70,7 @@ const PhotoSectionLinkIcon = styled.img`
   transition: 0.5s;
 `;
 
-const PhotoSectionLink = styled.a`
+const PhotoSectionLink = styled(Link)`
   display: flex;
   align-items: center;
   font-style: normal;
