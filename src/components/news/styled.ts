@@ -85,6 +85,7 @@ const NewsListItemContentInfoDate = styled.div`
   font-weight: 700;
   font-size: 14px;
   line-height: 20.62px;
+  width: 190px;
 `;
 
 const NewsListItemContentText = styled.div`

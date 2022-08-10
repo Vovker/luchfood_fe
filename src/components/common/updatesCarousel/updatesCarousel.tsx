@@ -48,7 +48,7 @@ export const UpdatesCarousel: React.FC<IUpdatesCarouselProps> = ({slides}) => {
       <SliderWrapper>
         <CarouselProvider
           naturalSlideWidth={!isMobile ? 380 : slideWidth}
-          naturalSlideHeight={!isMobile ? 480 : slideHeight}
+          naturalSlideHeight={!isMobile ? 520 : slideHeight}
           totalSlides={slides.length}
           visibleSlides={!isMobile ? 3 : 1}
           infinite={true}

@@ -27,7 +27,7 @@ const FooterAddress = styled.div`
 `
 
 const Logo = styled.img`
-  width: 171px;
+  width: 140px;
   margin-bottom: 9px;
 `;
 
@@ -78,6 +78,7 @@ const Copyright = styled.div`
   font-size: 15px;
   line-height: 18px;
   color: ${props => props.theme.colors.white};
+  margin-top: 6px;
 `;
 
 export {

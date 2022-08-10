@@ -5,7 +5,7 @@ import {MobileImage} from "../cornersCarousel/styled";
 
 const CarouselContainer = styled.div`
   width: 100%;
-  height: 706px;
+  height: 750px;
   background: ${props => props.theme.colors.darkMain};
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ const SliderWrapper = styled.div`
 
 const CardWrapper = styled.div`
   width: 380px;
-  height: 480px;
+  height: 520px;
   padding: 20px;
   background: transparent;
   border: 1px solid ${props => props.theme.colors.greyBorder};
@@ -99,6 +99,7 @@ const PublicationDate = styled.div`
 `;
 
 const PublicationTitle = styled.div`
+  height: 100px;
   margin-bottom: 16px;
   font-style: normal;
   font-weight: 700;
@@ -109,7 +110,7 @@ const PublicationTitle = styled.div`
 `;
 
 const PublicationDescription = styled.div`
-  height: 110px;
+  height: 85px;
   width: 340px;
   text-overflow: ellipsis;
   white-space: pre-wrap;
