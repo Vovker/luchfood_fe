@@ -1,10 +1,7 @@
 import React, {useEffect} from "react";
-import {SocialImg, SocialLinks} from "../../common/styled";
 import {AfishaInfoCategory, AfishaInfoDate, AfishaInfoDescription, AfishaInfoWrapper,
   AfishaItemImage,
   AfishaItemTitle, AfishaItemWrapper, AfishaMobileImage, MobileCategoryWrapper} from "./styled";
-import coloredIstagramIcon from "../../../assets/social_icons/instagramColored.svg";
-import twitterIcon from "../../../assets/social_icons/twitter.svg";
 import {BackButton} from "../../common/backButton/backButton";
 import {isMobile} from "react-device-detect";
 import {routes} from "../../../routes/routes";
@@ -71,11 +68,6 @@ const AfishaItem: React.FC<EventTyped> = ({
         <div>
           <AfishaItemImage
             image={`${API_URL}/${img}`}/>
-          <SocialLinks>
-            Поделиться:
-            <SocialImg src={coloredIstagramIcon}/>
-            <SocialImg src={twitterIcon}/>
-          </SocialLinks>
         </div>
     </AfishaItemWrapper>
   )
@@ -108,11 +100,6 @@ const AfishaItemMobile: React.FC<EventTyped> = ({
           {description}
         </AfishaInfoDescription>
       </AfishaInfoWrapper>
-      <SocialLinks>
-        Поделиться:
-        <SocialImg src={coloredIstagramIcon}/>
-        <SocialImg src={twitterIcon}/>
-      </SocialLinks>
     </AfishaItemWrapper>
   )
 }

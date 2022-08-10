@@ -91,9 +91,12 @@ export const CornerItemPage = () => {
                                       {item.name}
                                     </ItemTitle>
                                     <ItemChar>
-                                      <CharWeight>
-                                        {`${item.weight} г`}
-                                      </CharWeight>
+                                      {
+                                        item.weight &&
+                                          <CharWeight>
+                                            {`${item.weight} г`}
+                                          </CharWeight>
+                                      }
                                       <CharPrice>
                                         {`${item.price/100} BYN`}
                                       </CharPrice>

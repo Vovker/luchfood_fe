@@ -1,7 +1,5 @@
 import React, {useEffect} from "react";
-import {SocialImg, SocialLinks, StyledDate} from "../../common/styled";
-import coloredIstagramIcon from "../../../assets/social_icons/instagramColored.svg";
-import twitterIcon from "../../../assets/social_icons/twitter.svg";
+import {StyledDate} from "../../common/styled";
 import {BackButton} from "../../common/backButton/backButton";
 import {isMobile} from 'react-device-detect';
 import {
@@ -31,7 +29,7 @@ export const NewsItemPage: React.FC = () => {
     dispatch(getNewsById(Number(newsId)));
   }, [dispatch])
 
-  const {news, isLoading, error} = useAppSelector(state => state.currentNews);
+  const {news} = useAppSelector(state => state.currentNews);
 
   return (
     <>
@@ -77,11 +75,6 @@ const NewsItem: React.FC<NewsItemTypes> = ({id, description, body, title, img, c
       </NewsItemInfoWrapper>
       <div>
         <NewsItemImage image={`${API_URL}/${img}`}/>
-        <SocialLinks>
-          Поделиться:
-          <SocialImg src={coloredIstagramIcon}/>
-          <SocialImg src={twitterIcon}/>
-        </SocialLinks>
       </div>
     </NewsItemWrapper>
   )
@@ -102,11 +95,6 @@ const NewsItemMobile: React.FC<NewsItemTypes> = ({id, description, body, title, 
           {body}
         </NewsItemInfoDescription>
       </NewsItemInfoWrapper>
-      <SocialLinks>
-        Поделиться:
-        <SocialImg src={coloredIstagramIcon}/>
-        <SocialImg src={twitterIcon}/>
-      </SocialLinks>
     </NewsItemWrapper>
   )
 }
