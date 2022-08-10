@@ -11,14 +11,8 @@ import {getCorners} from "../../store/actions/corners.action";
 import {useAppSelector} from "../../hooks/useAppSelector";
 import Loader from "../common/loader/loader";
 import {getEvents} from "../../store/actions/events.action";
-
-
-const photos = [
-  'https://incrussia.ru/wp-content/uploads/2020/11/iStock-1175505781.jpg',
-  'https://flomaster.club/uploads/posts/2021-10/1634761592_9-flomaster-club-p-nabroski-yedi-krasivii-risunok-9.jpg',
-  'https://e0.edimdoma.ru/data/posts/0002/2597/22597-ed4_wide.jpg?1631189893',
-  'https://avatars.mds.yandex.net/get-altay/2960979/2a0000017260a9d9f85eb44d3ab634dd7d7f/XXL',
-]
+import {getGallery} from "../../store/actions/gallery.action";
+import {API_URL} from "../../store/endpoints";
 
 export const Home = () => {
 
@@ -27,24 +21,26 @@ export const Home = () => {
   useEffect(() => {
     dispatch(getCorners());
     dispatch(getEvents(10, 0))
+    dispatch(getGallery(10, 0));
   }, [dispatch])
 
   const {corners, isLoading} = useAppSelector(state => state.corners);
   const {events} = useAppSelector(state => state.events);
+  const {gallery} = useAppSelector(state => state.gallery);
 
   return (
-    corners.length && events.length && !isLoading ?
+    corners.length && events.length && gallery.length && !isLoading ?
       <>
         <CornersSliderWrapper>
           <CornersCarousel
             slides={corners}
           />
         </CornersSliderWrapper>
-        <DeliveryBanner/>
+        {/*<DeliveryBanner/>*/}
         <UpdatesCarousel
           slides={events}
         />
-        <PhotoSection urls={photos}/>
+        <PhotoSection urls={gallery.slice(0, 4).map(img => `${API_URL}/${img.img}`)}/>
       </>
       : <Loader/>
   );

@@ -28,11 +28,11 @@ export const Header = () => {
           : <MainHeader/>
       }
       <SubHeaderWrapper>
-        <SubHeaderLink href={`/${routes.corners}`}>Корнеры</SubHeaderLink>
-        <SubHeaderLink href={`/${routes.news}`}>Новости</SubHeaderLink>
-        <SubHeaderLink href={`/${routes.about}`}>О нас</SubHeaderLink>
-        <SubHeaderLink href={`/${routes.afisha}`}>Афиша</SubHeaderLink>
-        <SubHeaderLink href={`/${routes.gallery}`}>Галерея</SubHeaderLink>
+        <SubHeaderLink to={`/${routes.corners}`}>Корнеры</SubHeaderLink>
+        <SubHeaderLink to={`/${routes.news}`}>Новости</SubHeaderLink>
+        <SubHeaderLink to={`/${routes.about}`}>О нас</SubHeaderLink>
+        <SubHeaderLink to={`/${routes.afisha}`}>Афиша</SubHeaderLink>
+        <SubHeaderLink to={`/${routes.gallery}`}>Галерея</SubHeaderLink>
       </SubHeaderWrapper>
     </HeaderContainer>
   );

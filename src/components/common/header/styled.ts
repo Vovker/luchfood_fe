@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 const HeaderContainer = styled.header`
   
@@ -136,7 +137,7 @@ const SubHeaderWrapper = styled.div`
   }
 `;
 
-const SubHeaderLink = styled.a`
+const SubHeaderLink = styled(NavLink)`
   font-style: normal;
   color: ${props => props.theme.colors.darkMain};
   text-decoration: none;
@@ -144,6 +145,10 @@ const SubHeaderLink = styled.a`
   border-bottom: 1px solid transparent;
   
   &:hover {
+    border-bottom: 1px solid ${props => props.theme.colors.darkMain};
+  }
+  
+  &.active {
     border-bottom: 1px solid ${props => props.theme.colors.darkMain};
   }
 `;
