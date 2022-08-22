@@ -24,6 +24,7 @@ import {getCorners} from "../../store/actions/corners.action";
 import Loader from "../common/loader/loader";
 import {CornersTyped} from "../../store/types/corners.types";
 import {API_URL} from "../../store/endpoints";
+import {KITCHEN_TYPES_SELECT} from "../../store/types/kitchenTypes.types";
 
 export const Corners = () => {
 
@@ -34,11 +35,15 @@ export const Corners = () => {
     dispatch(getCorners());
   }, [dispatch]);
 
-  const [activeOption, setActiveOption] = useState(0)
 
-
-  const {kitchenType} = useAppSelector(state => state.kitchenTypes);
+  const {kitchenType, selectedKitchenType} = useAppSelector(state => state.kitchenTypes);
   const {corners, isLoading} = useAppSelector(state => state.corners);
+
+  const [activeOption, setActiveOption] = useState(selectedKitchenType);
+
+  useEffect(() => {
+    dispatch({type: KITCHEN_TYPES_SELECT, payload: [{id: activeOption}]})
+  }, [activeOption]);
 
   return (
     <>

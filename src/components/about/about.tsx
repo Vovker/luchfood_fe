@@ -1,8 +1,9 @@
 import React from "react";
 import {BackButton} from "../common/backButton/backButton";
-import {AboutDescription, AboutMap, AboutTitle, AboutWrapper, DescriptionLine, DescriptionLink} from "./styled";
+import {AboutDescription, AboutTitle, AboutWrapper, DescriptionLine, DescriptionLink} from "./styled";
 import {routes} from "../../routes/routes";
 import {isMobile} from "react-device-detect";
+import {Map, Placemark, YMaps} from "react-yandex-maps";
 
 export const About = () => {
 
@@ -23,7 +24,7 @@ export const About = () => {
               ООО "Рога и Копыта" УНП 11234556
             </DescriptionLine>
             <DescriptionLine>
-              Адрес: Ул. Толбухина 4 (территория завода "луч")
+              Адрес: пр. Hезависимости 95, корпус 2 (территория завода "луч")
             </DescriptionLine>
             <DescriptionLine>
               Менеджер: Ольга
@@ -33,12 +34,12 @@ export const About = () => {
               </DescriptionLink>
             </DescriptionLine>
             <DescriptionLine>
-              Часы работы : пн-вс с 9.00 по 22.00
+              Часы работы : пн-вс с 12:00 по 22:00
             </DescriptionLine>
             <DescriptionLine>
               Почта:
               {' '}
-              <DescriptionLink href="mailto:">
+              <DescriptionLink href="mailto:info@luch.com">
                 info@luch.com
               </DescriptionLink>
             </DescriptionLine>
@@ -47,4 +48,20 @@ export const About = () => {
       </AboutWrapper>
     </>
   )
+}
+
+const AboutMap = () => {
+  return(
+    <YMaps>
+        <Map defaultState={{ center: [53.927253, 27.615756], zoom: 17 }} width={'100%'}>
+          <Placemark
+            modules={[
+              "geoObject.addon.balloon",
+              "geoObject.addon.hint"
+            ]}
+            geometry={[53.927253, 27.615756]}
+          />
+        </Map>
+    </YMaps>
+  );
 }

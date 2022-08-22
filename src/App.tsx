@@ -20,6 +20,7 @@ import {Gallery} from "./components/gallery/gallery";
 import {NewsItemPage} from "./components/news/newsItemPage/newsItemPage";
 import 'moment/locale/ru';
 import {routes} from "./routes/routes";
+import 'antd/dist/antd.css';
 
 function App() {
   return (

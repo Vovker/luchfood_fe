@@ -112,9 +112,12 @@ const PublicationTitle = styled.div`
 const PublicationDescription = styled.div`
   height: 85px;
   width: 340px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-wrap;
-  overflow: hidden;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

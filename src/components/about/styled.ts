@@ -37,16 +37,6 @@ const DescriptionLink = styled.a`
   text-decoration: none;
 `
 
-const AboutMap = styled.div`
-  //TOOD temporary 
-  width: 100%;
-  height: 405px;
-  background-color: red;
-  @media(max-width: 480px){
-    height: 225px;
-  }
-`
-
 const AboutTitle = styled.div`
   font-size: 40px;
   font-weight: 700;
@@ -66,6 +56,5 @@ export {
   AboutDescription,
   DescriptionLine,
   DescriptionLink,
-  AboutMap,
   AboutTitle
 }
