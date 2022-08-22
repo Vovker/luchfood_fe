@@ -43,10 +43,10 @@ const MainHeader = () => {
     <HeaderWrapper>
       <AddressWrapper>
         <Address>
-          <b>Минск, Пр. Hезависимости 95, корпус 2</b>
+          <b>Минск, пр. Hезависимости 95, корпус 2</b>
         </Address>
         <Address>
-          Часы работы <b>: пн-вс с 09:00 до 02.00</b>
+          Часы работы <b>: пн-вс с 12:00 до 02:00</b>
         </Address>
       </AddressWrapper>
       <LogoWrapper href={`/`}>
@@ -54,7 +54,7 @@ const MainHeader = () => {
       </LogoWrapper>
       <SocialNetworksWrapper>
         <SocialNetworkLink href={'tel:+375296707088'}>
-          +375(29) 670-70-88
+          +375 (29) 670-70-88
         </SocialNetworkLink>
         <SocialNetworkLink href={'#'}>
           <SocialNetworkIcon src={telegramIcon}/>
@@ -75,15 +75,15 @@ const MainHeaderMobile = () => {
           <Logo src={logo}/>
         </LogoWrapper>
         <SocialNetworkLink href={'tel:+375296707088'}>
-          +375(29) 670-70-88
+          +375 (29) 670-70-88
         </SocialNetworkLink>
       </div>
       <AddressWrapper>
         <Address>
-          Пр. Hезависимости 95 корпус 2
+          пр. Hезависимости 95 корпус 2
         </Address>
         <WorkHours>
-          <b>пн-вс с 09:00 до 02.00</b>
+          <b>пн-вс с 12:00 до 02:00</b>
         </WorkHours>
       </AddressWrapper>
     </HeaderWrapper>

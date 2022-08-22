@@ -27,6 +27,7 @@ import {isMobile} from "react-device-detect";
 import {API_URL} from "../../../store/endpoints";
 import moment from "moment";
 import {EventTyped} from "../../../store/types/events.types";
+import { CustomLink } from '../../afisha/styled';
 
 
 const ratio = 0.76589
@@ -101,7 +102,9 @@ const CardDesktop: React.FC<EventTyped> = ({img, name, description, id, date}) =
     <CardWrapper>
       <CardImage url={`${API_URL}/${img}`}/>
       <PublicationDate>{moment(date).locale('ru').format('DD MMMM YYYY')}</PublicationDate>
-      <PublicationTitle>{name}</PublicationTitle>
+      <PublicationTitle>
+        <CustomLink to={`/afisha/${id}`}>{name}</CustomLink>
+      </PublicationTitle>
       <PublicationDescription>{description}</PublicationDescription>
     </CardWrapper>
   );

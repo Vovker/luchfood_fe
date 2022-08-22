@@ -10,7 +10,6 @@ import {
   GalleryCardRow,
   GalleryCardWrapper,
   GalleryDate,
-  GalleryImage,
   GalleryImageMobile,
   GalleryTitle,
   GalleryWrapper
@@ -19,6 +18,7 @@ import {isMobile} from "react-device-detect";
 import {GalleryTyped} from "../../store/types/gallery.types";
 import Loader from "../common/loader/loader";
 import InfiniteScroll from "react-infinite-scroller";
+import {ImageWithPreview} from "../common/imageWithPreview/imageWithPreview";
 
 export const Gallery = () => {
 
@@ -26,7 +26,7 @@ export const Gallery = () => {
 
   const dispatch = useAppDispatch();
 
-  const {gallery, isLoading, error, isMore} = useAppSelector(state => state.gallery);
+  const {gallery, isLoading, isMore} = useAppSelector(state => state.gallery);
 
   function loadMore() {
     if (!isLoading) {
@@ -70,7 +70,7 @@ const GalleryCard: React.FC<GalleryTyped> = ({created_at, img}) => {
     <GalleryCardWrapper>
       {
         !isMobile
-          ? <GalleryImage image={`${API_URL}/${img}`}/>
+          ? <ImageWithPreview url={`${API_URL}/${img}`} width={'300px'} height={'230px'}/>
           : <GalleryImageMobile src={`${API_URL}/${img}`}/>
       }
       <GalleryDate>
