@@ -1,4 +1,4 @@
-export const API_URL = 'http://185.179.83.233';
+export const API_URL = process.env.REACT_APP_API_URL;
 
 export const endpoints = {
   getNews:  (amount: number, lastId: number) => `${API_URL}/news/${amount}/${lastId}`,
