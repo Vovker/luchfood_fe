@@ -29,7 +29,7 @@ export const AfishaItemPage: React.FC = () => {
 
   return (
     <>
-      <BackButton title='Вся Афиша' url={`/${routes.afisha}`}/>
+      <BackButton title='Вся афиша' url={`/${routes.afisha}`}/>
       {
         !isLoading && event ? (
             !isMobile

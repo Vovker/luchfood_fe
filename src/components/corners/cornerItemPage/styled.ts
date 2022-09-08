@@ -90,6 +90,7 @@ const CornerInfoDescription = styled.div`
   font-size: 18px;
   font-weight: 700;
   line-height: 25px;
+  white-space: pre-wrap;
   
   @media (max-width: 480px) {
     font-size: 14px;

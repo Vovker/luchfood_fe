@@ -24,18 +24,18 @@ export const Footer = () => {
         {
           isMobile &&
 			<FooterAddress>
-				<b>Минск, Пр. Hезависимости 95, корпус 2</b>
+				<b>Минск, пр. Hезависимости 95, корпус 2</b>
 			</FooterAddress>
         }
         <WorkHours>
-          {!isMobile && "Часы работы:"} <b>пн-вс с 09:00 до 02.00</b>
+          {!isMobile && "Часы работы:"} <b>пн-вс с 12:00 до 02:00</b>
         </WorkHours>
       </div>
       {
         !isMobile &&
 		  <div style={{display: 'flex', alignItems: 'flex-end', flexDirection: 'column'}}>
 			  <Socials>
-				  <SocialLink href={'tel:+375296707088'}>+375(29) 670-70-88</SocialLink>
+				  <SocialLink href={'tel:+375296707088'}>+375 (29) 670-70-88</SocialLink>
 				  <SocialLink>
 					  <SocialIcon src={telegramIcon}/>
 				  </SocialLink>
