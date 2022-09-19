@@ -69,6 +69,7 @@ const SocialLink = styled.a`
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+    color: ${props => props.theme.colors.white} !important;
   }
 `;
 

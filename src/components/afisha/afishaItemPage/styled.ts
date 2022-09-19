@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {CardImg} from "../../common/card/styled";
 
 const AfishaItemWrapper = styled.div`
   width: 980px;
@@ -65,6 +64,7 @@ const MobileCategoryWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 `
 
 const AfishaItemTitle = styled.div`
@@ -86,9 +86,8 @@ const AfishaMobileImage = styled.img`
   width: 100%;
 `
 
-const AfishaItemImage = styled(CardImg)`
+const AfishaItemImage = styled.img`
   width: 435px;
-  height: 333px;
 `
 
 export {

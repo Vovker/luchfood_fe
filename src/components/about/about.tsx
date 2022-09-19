@@ -20,17 +20,17 @@ export const About = () => {
             <DescriptionLine>
               ЛУЧшая улица
             </DescriptionLine>
-            <DescriptionLine>
-              ООО "Рога и Копыта" УНП 11234556
-            </DescriptionLine>
+            {/*<DescriptionLine>*/}
+            {/*  ООО "Рога и Копыта" УНП 11234556*/}
+            {/*</DescriptionLine>*/}
             <DescriptionLine>
               Адрес: пр. Hезависимости 95, корпус 2 (территория завода "луч")
             </DescriptionLine>
             <DescriptionLine>
-              Менеджер: Ольга
+              Телефон:
               {' '}
-              <DescriptionLink href="tel:">
-                +3754555454545
+              <DescriptionLink href="tel:+375295697777">
+                +375 (29) 569-77-77
               </DescriptionLink>
             </DescriptionLine>
             <DescriptionLine>

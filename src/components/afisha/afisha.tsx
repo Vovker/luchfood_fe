@@ -51,7 +51,7 @@ export const Afisha = () => {
           hasMore={isMore}
           loader={<Loader/>}
         >
-          <AfishaCardRow>
+          <AfishaCardRow key={page}>
             {
               events.map(afisha => {
                   return !isMobile

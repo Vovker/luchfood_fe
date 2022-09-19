@@ -53,13 +53,13 @@ const MainHeader = () => {
         <Logo src={logo}/>
       </LogoWrapper>
       <SocialNetworksWrapper>
-        <SocialNetworkLink href={'tel:+375296707088'}>
-          +375 (29) 670-70-88
+        <SocialNetworkLink href={'tel:+375295697777'}>
+          +375 (29) 569-77-77
         </SocialNetworkLink>
-        <SocialNetworkLink href={'#'}>
+        <SocialNetworkLink href={'https://t.me/luchstreetfood'} target={'_blank'}>
           <SocialNetworkIcon src={telegramIcon}/>
         </SocialNetworkLink>
-        <SocialNetworkLink href={'#'}>
+        <SocialNetworkLink href={'https://www.instagram.com/luchshaya_ulitsa/'} target={'_blank'}>
           <SocialNetworkIcon src={instagramIcon}/>
         </SocialNetworkLink>
       </SocialNetworksWrapper>
@@ -74,8 +74,8 @@ const MainHeaderMobile = () => {
         <LogoWrapper href={'/'}>
           <Logo src={logo}/>
         </LogoWrapper>
-        <SocialNetworkLink href={'tel:+375296707088'}>
-          +375 (29) 670-70-88
+        <SocialNetworkLink href={'tel:+375295697777'}>
+          +375 (29) 569-77-77
         </SocialNetworkLink>
       </div>
       <AddressWrapper>

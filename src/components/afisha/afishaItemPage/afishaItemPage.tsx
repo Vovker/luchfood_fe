@@ -67,7 +67,7 @@ const AfishaItem: React.FC<EventTyped> = ({
         </AfishaInfoWrapper>
         <div>
           <AfishaItemImage
-            image={`${API_URL}/${img}`}/>
+            src={`${API_URL}/${img}`}/>
         </div>
     </AfishaItemWrapper>
   )

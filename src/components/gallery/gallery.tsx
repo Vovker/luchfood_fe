@@ -31,7 +31,7 @@ export const Gallery = () => {
   function loadMore() {
     if (!isLoading) {
       dispatch(getGallery(9, page))
-      setPage(prevState => prevState + 1)
+      setPage(page+1)
     }
   }
 

@@ -96,6 +96,7 @@ const SocialNetworkLink = styled.a`
   
   &:hover {
     text-decoration: underline;
+    color: ${props => props.theme.colors.white} !important;
   }
 
   @media(max-width: 480px){

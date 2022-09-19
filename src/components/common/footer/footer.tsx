@@ -35,11 +35,11 @@ export const Footer = () => {
         !isMobile &&
 		  <div style={{display: 'flex', alignItems: 'flex-end', flexDirection: 'column'}}>
 			  <Socials>
-				  <SocialLink href={'tel:+375296707088'}>+375 (29) 670-70-88</SocialLink>
-				  <SocialLink>
+				  <SocialLink href={'tel:+375295697777'}>+375 (29) 569-77-77</SocialLink>
+				  <SocialLink href={'https://t.me/luchstreetfood'} target={'_blank'}>
 					  <SocialIcon src={telegramIcon}/>
 				  </SocialLink>
-				  <SocialLink>
+				  <SocialLink href={'https://www.instagram.com/luchshaya_ulitsa/'} target={'_blank'}>
 					  <SocialIcon src={instagramIcon}/>
 				  </SocialLink>
 			  </Socials>

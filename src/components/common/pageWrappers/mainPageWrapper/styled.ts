@@ -7,6 +7,25 @@ const PageWrapperStyled = styled.div`
   margin: 0;
 `;
 
+const MobileSocialIcon = styled.a<{bottom: number}>`
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: ${props => props.bottom}px;
+  right: 10px;
+  background: ${props => props.theme.colors.redMain};
+  z-index: 100;
+`;
+
+const MobileSocialIconImg = styled.img`
+  width: 28px;
+`;
+
 export {
-  PageWrapperStyled
+  PageWrapperStyled,
+  MobileSocialIcon,
+  MobileSocialIconImg
 }
